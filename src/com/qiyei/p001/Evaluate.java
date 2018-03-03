@@ -2,7 +2,6 @@ package com.qiyei.p001;
 
 import com.qiyei.stack.ResizingArrayStack;
 import com.qiyei.stack.Stack;
-import com.qiyei.util.LogUtil;
 
 /**
  * @author Created by qiyei2015 on 2018/3/2.
@@ -12,7 +11,7 @@ import com.qiyei.util.LogUtil;
  */
 public class Evaluate {
 
-    private static final String TAG = "Evaluate";
+    public static final String TAG = "Evaluate";
 
     /**
      * 计算表达式值
@@ -157,15 +156,6 @@ public class Evaluate {
             default:
                 return null;
         }
-    }
-
-
-    public static void main(String[] args){
-
-        //7.3333333
-        String express = "( ( ( 2 * 5 ) + ( 4 / 3 ) ) - ( 1 + 3 ) )";
-        String[] array = express.split(" ");
-        LogUtil.println(TAG,"" + new Evaluate().calculateExpression(array));
     }
 
 }

@@ -17,4 +17,12 @@ public class LogUtil {
         System.out.println(TAG + " " + message);
     }
 
+    /**
+     * 打印，不换行
+     * @param message
+     */
+    public static void print(String message){
+        System.out.print(message);
+    }
+
 }

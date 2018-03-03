@@ -1,8 +1,5 @@
 package com.qiyei.stack;
 
-import com.qiyei.p001.Evaluate;
-import com.qiyei.util.LogUtil;
-
 import java.util.Iterator;
 
 /**
@@ -13,7 +10,7 @@ import java.util.Iterator;
  */
 public class Stack<T> implements Iterable<T>{
 
-    private static final String TAG = "Stack";
+    public static final String TAG = "Stack";
 
     private int mSize;
 
@@ -96,7 +93,10 @@ public class Stack<T> implements Iterable<T>{
 
         @Override
         public T next() {
-            return mTop.data;
+            T t = mTop.data;
+            //指向下一个结点
+            mTop = mTop.next;
+            return t;
         }
 
         @Override
@@ -104,16 +104,5 @@ public class Stack<T> implements Iterable<T>{
             pop();
         }
     }
-
-    public static void main(String[] args){
-        //7.333333
-        String express = "( ( ( 2 * 5 ) + ( 4 / 3 ) ) - ( 1 + 3 ) )";
-        String[] array = express.split(" ");
-
-        Stack<String> stringStack = new Stack<>();
-        Stack<Double> numStack = new Stack<>();
-        LogUtil.println(TAG,"" + new Evaluate().calculateExpression3(array,numStack,stringStack));
-    }
-
 
 }

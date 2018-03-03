@@ -1,8 +1,5 @@
 package com.qiyei.stack;
 
-import com.qiyei.p001.Evaluate;
-import com.qiyei.util.LogUtil;
-
 import java.util.Iterator;
 
 /**
@@ -13,7 +10,7 @@ import java.util.Iterator;
  */
 public class ResizingArrayStack<T> implements Iterable<T> {
 
-    private static final String TAG = "ResizingArrayStack";
+    public static final String TAG = "ResizingArrayStack";
 
     /**
      * 数据存储
@@ -117,18 +114,4 @@ public class ResizingArrayStack<T> implements Iterable<T> {
             pop();
         }
     }
-
-
-    public static void main(String[] args){
-        //7.333333
-        String express = "( ( ( 2 * 5 ) + ( 4 / 3 ) ) - ( 1 + 3 ) )";
-        String[] array = express.split(" ");
-
-        ResizingArrayStack<String> stringStack = new ResizingArrayStack<>();
-        ResizingArrayStack<Double> numStack = new ResizingArrayStack<>();
-        LogUtil.println(TAG,"" + new Evaluate().calculateExpression(array,numStack,stringStack));
-    }
-
-
-
 }
