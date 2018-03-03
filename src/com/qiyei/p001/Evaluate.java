@@ -1,8 +1,8 @@
 package com.qiyei.p001;
 
+import com.qiyei.stack.ResizingArrayStack;
+import com.qiyei.stack.Stack;
 import com.qiyei.util.LogUtil;
-
-import java.util.Stack;
 
 /**
  * @author Created by qiyei2015 on 2018/3/2.
@@ -27,6 +27,72 @@ public class Evaluate {
         Double result = 0.0;
         for (String s : expression){
 
+            //开始运算，并计算结果
+            if (")".equals(s)){
+                Double a2 = numStack.pop();
+                Double a1 = numStack.pop();
+                String sign = stringStack.pop();
+                result = calculate(a1,a2,sign);
+                //压入栈中
+                numStack.push(result);
+            }
+            if (isNumber(s)){
+                try {
+                    numStack.push(Double.parseDouble(s));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }else if (isSign(s)){
+                stringStack.push(s);
+            }
+        }
+
+        return numStack.pop();
+    }
+
+    /**
+     * 重载方法
+     * @param expression
+     * @param numStack
+     * @param stringStack
+     * @return
+     */
+    public Double calculateExpression(String[] expression, ResizingArrayStack<Double> numStack, ResizingArrayStack<String> stringStack){
+        Double result = 0.0;
+        for (String s : expression){
+            //开始运算，并计算结果
+            if (")".equals(s)){
+                Double a2 = numStack.pop();
+                Double a1 = numStack.pop();
+                String sign = stringStack.pop();
+                result = calculate(a1,a2,sign);
+                //压入栈中
+                numStack.push(result);
+            }
+            if (isNumber(s)){
+                try {
+                    numStack.push(Double.parseDouble(s));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }else if (isSign(s)){
+                stringStack.push(s);
+            }
+        }
+
+        return numStack.pop();
+    }
+
+    /**
+     * 重载方法
+     * @param expression
+     * @param numStack
+     * @param stringStack
+     * @return
+     */
+    public Double calculateExpression3(String[] expression,Stack<Double> numStack,Stack<String> stringStack){
+        Double result = 0.0;
+        for (String s : expression){
             //开始运算，并计算结果
             if (")".equals(s)){
                 Double a2 = numStack.pop();
