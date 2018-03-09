@@ -48,7 +48,7 @@ public class P001Test {
 
         son.A = 2;
         son.f();
-        
+
 
     }
 
