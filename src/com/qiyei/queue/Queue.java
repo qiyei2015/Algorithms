@@ -17,7 +17,7 @@ public class Queue<T> implements Iterable<T> {
      */
     private Node<T> mFirst;
     /**
-     * 未结点
+     * 末结点
      */
     private Node<T> mLast;
 

@@ -1,5 +1,6 @@
 package com.qiyei.p001;
 
+import com.qiyei.Son;
 import com.qiyei.queue.Queue;
 import com.qiyei.stack.ResizingArrayStack;
 import com.qiyei.stack.Stack;
@@ -42,6 +43,12 @@ public class P001Test {
         for (String s : stringQueue1){
             LogUtil.print(s + " ");
         }
+
+        Son son = new Son();
+
+        son.A = 2;
+        son.f();
+        
 
     }
 
