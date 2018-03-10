@@ -39,6 +39,7 @@ public class P001Test {
         for (String s : array){
             stringQueue1.enqueue(s);
         }
+        stringQueue1.removeLast();
         LogUtil.println(Queue.TAG,"queue foreach");
         for (String s : stringQueue1){
             LogUtil.print(s + " ");

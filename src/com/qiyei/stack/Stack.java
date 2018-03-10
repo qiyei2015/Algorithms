@@ -80,6 +80,22 @@ public class Stack<T> implements Iterable<T>{
         Node next;
     }
 
+
+    public void removeLast(){
+        for (Node node = mTop; node != null ; node = node.next ){
+            //尾结点的上一个结点
+            if (node.next.next == null){
+                node.next = null;
+                mSize--;
+            }else if (node.next == null){
+                node = null;
+                mSize--;
+            }
+        }
+
+    }
+
+
     /**
      * 迭代器
      * @param

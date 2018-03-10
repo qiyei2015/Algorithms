@@ -75,6 +75,20 @@ public class Queue<T> implements Iterable<T> {
     }
 
 
+    public void removeLast(){
+        for (Node node = mFirst; node != null ; node = node.next ){
+            //尾结点的上一个结点
+            if (node.next.next == null){
+                node.next = null;
+                mSize--;
+            }else if (node.next == null){
+                node = null;
+                mSize--;
+            }
+        }
+
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new QueueIterator();
