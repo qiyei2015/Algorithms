@@ -1,10 +1,11 @@
 package com.qiyei.p001;
 
-import com.qiyei.Son;
 import com.qiyei.queue.Queue;
 import com.qiyei.stack.ResizingArrayStack;
 import com.qiyei.stack.Stack;
 import com.qiyei.util.LogUtil;
+
+import java.util.Random;
 
 /**
  * @author Created by qiyei2015 on 2018/3/3.
@@ -39,19 +40,56 @@ public class P001Test {
         for (String s : array){
             stringQueue1.enqueue(s);
         }
-        stringQueue1.removeLast();
+
+        //stringQueue1.removeLast();
         LogUtil.println(Queue.TAG,"queue foreach");
         for (String s : stringQueue1){
             LogUtil.print(s + " ");
         }
 
-        Son son = new Son();
 
-        son.A = 2;
-        son.f();
+        LogUtil.print("\n");
+
+        for (String s : array){
+            stringStack1.push(s);
+        }
+
+        LogUtil.println(Stack.TAG,"stack foreach");
+        for (String s : stringStack1){
+            LogUtil.print(s + " ");
+        }
+        LogUtil.print("\n");
+        LogUtil.println(Stack.TAG,"" + tableSizeFor(0));
+
+        LogUtil.println(Stack.TAG,"" + tableSizeFor(1));
+
+        LogUtil.println(Stack.TAG,"" + tableSizeFor(3));
+
+        LogUtil.println(Stack.TAG,"" + tableSizeFor(1029));
 
 
+        Random random = new Random(127);
+        int[] a = new int[100];
+        for (int i = 0;i< a.length ;i++){
+            a[i] = random.nextInt();
+        }
+        int[] b = new int[]{1,-2,3,-5,6,8,-1,-7,-8,-3,4,10,-12,-15,5,11};
+        LogUtil.println("TwoSum","" + TwoSum.count2(b));
+        LogUtil.println("ThreeSum","" + ThreeSum.count2(b));
     }
 
-
+    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        LogUtil.println(Stack.TAG,"1 " + n);
+        n |= n >>> 2;
+        LogUtil.println(Stack.TAG,"2 " + n);
+        n |= n >>> 4;
+        LogUtil.println(Stack.TAG,"3 " + n);
+        n |= n >>> 8;
+        LogUtil.println(Stack.TAG,"4 " + n);
+        n |= n >>> 16;
+        LogUtil.println(Stack.TAG,"5 " + n);
+        return (n < 0) ? 1 :  n + 1;
+    }
 }

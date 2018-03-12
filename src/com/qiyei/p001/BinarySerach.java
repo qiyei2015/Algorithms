@@ -13,14 +13,14 @@ public class BinarySerach {
      * @param key 查找key值
      * @param array 已升序排好的数组
      */
-    public static void rank(int key,int[] array){
+    public static int rank(int key,int[] array){
         int left = 0;
         int right = array.length - 1;
         int mid = left + (right - left) / 2;
         while (left <= right){
             if (key == array[mid]){
-                System.out.println("index:" + mid);
-                return;
+                //System.out.println("index:" + mid);
+                return mid;
             }else if (key < array[mid]){ //在left查找
                 right = mid - 1;
                 mid = left + (right - left) / 2;
@@ -29,7 +29,8 @@ public class BinarySerach {
                 mid = left + (right - left) / 2;
             }
         }
-        System.out.println("not find " + key);
+        //System.out.println("not find " + key);
+        return -1;
     }
 
 
