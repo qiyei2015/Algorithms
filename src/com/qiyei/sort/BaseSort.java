@@ -9,8 +9,7 @@ import com.qiyei.util.LogUtil;
  * @description:
  */
 public abstract class BaseSort {
-
-
+    
     /**
      * 排序算法
      * @param array
