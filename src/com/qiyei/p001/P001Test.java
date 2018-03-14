@@ -76,6 +76,7 @@ public class P001Test {
         int[] b = new int[]{1,-2,3,-5,6,8,-1,-7,-8,-3,4,10,-12,-15,5,11};
         LogUtil.println("TwoSum","" + TwoSum.count2(b));
         LogUtil.println("ThreeSum","" + ThreeSum.count2(b));
+
     }
 
     static final int tableSizeFor(int cap) {
