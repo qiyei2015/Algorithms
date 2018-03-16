@@ -25,4 +25,11 @@ public class LogUtil {
         System.out.print(message);
     }
 
+    /**
+     * 打印，不换行
+     * @param message
+     */
+    public static void println(String message){
+        System.out.println(message);
+    }
 }
