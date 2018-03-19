@@ -23,6 +23,10 @@ public class SortCompare {
         StopWatch stopWatch = new StopWatch();
         SelectionSort selectionSort = new SelectionSort();
         InsertionSort insertionSort = new InsertionSort();
+        ShellSort shellSort = new ShellSort();
+        MergeSort mergeSort = new MergeSort();
+        BubbleSort bubbleSort = new BubbleSort();
+
         switch (args){
             case "insertion" :
                 insertionSort.sort(array);
@@ -30,9 +34,15 @@ public class SortCompare {
             case "selection" :
                 selectionSort.sort(array);
                 break;
+            case "bubble" :
+                bubbleSort.sort(array);
+                break;
             case "shell" :
+                shellSort.sort(array);
+//                shellSort.print(array);
                 break;
             case "merge" :
+                mergeSort.sort(array);
                 break;
             default:
                 break;
@@ -61,12 +71,18 @@ public class SortCompare {
 
     public static void main(String[] args){
 
-        Double insertion = timeRandomInput("insertion",10000,10);
-        Double selection = timeRandomInput("selection",10000,10);
+        Double bubbleSort = timeRandomInput("bubble",10000,5);
+        Double shell = timeRandomInput("shell",10000,5);
+        Double insertion = timeRandomInput("insertion",10000,5);
+        Double selection = timeRandomInput("selection",10000,5);
+        Double merge = timeRandomInput("merge",10000,5);
 
+        LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);
         LogUtil.println("insertion:" + insertion);
-        LogUtil.println("insertion/selection:" + insertion/selection);
+        LogUtil.println("shell:" + shell);
+        LogUtil.println("merge:" + merge);
+
     }
 
 }
