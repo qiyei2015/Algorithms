@@ -15,8 +15,9 @@ public class MergeBUSort extends BaseSort {
         aux = new Comparable[array.length];
         int length = array.length;
 
-        //第一个循环为子数组的大小 j j+i j+2*i
+        //第一个循环为子数组的大小
         for (int i = 1 ; i < length ; i *= 2) {
+            //最后一个是 a[length - 1 - i] a[length-1] 大小为 i
             for (int j = 0; j < length - i; j += 2 * i) {
                 //子数组序号为 j j+i-1 j+2*i-1 减1是因为i从1开始 n - j = i;
                 merge(array,j,j + i - 1 ,Math.min((j + 2*i - 1),length - 1));
@@ -24,7 +25,7 @@ public class MergeBUSort extends BaseSort {
         }
     }
 
-    /**
+    /** a[j] a[j+i]
      * 数组合并
      * @param array
      * @param lo
