@@ -17,7 +17,7 @@ public class SelectionSort extends BaseSort{
         for (int i = 0 ; i < array.length ; i++){
             int min = i;
             for (int j = i + 1 ; j < array.length ; j++){
-                //找到本次循环最小的数
+                //找到本次循环最小的数 [i+1,length-1]中最小的数
                 if (less(array[j],array[min])){
                     min = j;
                 }
