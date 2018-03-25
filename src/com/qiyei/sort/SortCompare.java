@@ -2,6 +2,7 @@ package com.qiyei.sort;
 
 import com.qiyei.util.LogUtil;
 import com.qiyei.util.StopWatch;
+import edu.princeton.cs.algs4.MaxPQ;
 import edu.princeton.cs.algs4.StdRandom;
 
 /**
@@ -95,6 +96,24 @@ public class SortCompare {
         LogUtil.println("shell:" + shell);
         LogUtil.println("merge:" + merge);
         LogUtil.println("mergeBU:" + mergeBU);
+
+        testHeap();
+    }
+
+
+    private static void testHeap(){
+        Integer[] a = new Integer[100];
+        MaxPQ<Integer> maxPQ = new MaxPQ<>(100);
+
+        for (int i = 0; i < 100 ; i++){
+            a[i] = StdRandom.uniform(1000);
+            maxPQ.insert(a[i]);
+        }
+
+        for (int i = 0; i < 100 ; i++){
+            LogUtil.print(" "+ maxPQ.delMax());
+        }
+
     }
 
 }
