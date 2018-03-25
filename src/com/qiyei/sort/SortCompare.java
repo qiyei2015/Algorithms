@@ -19,7 +19,7 @@ public class SortCompare {
      * @param array
      * @return
      */
-    public static double time(String args,Double[] array){
+    public static double time(String args,Integer[] array){
         StopWatch stopWatch = new StopWatch();
         SelectionSort selectionSort = new SelectionSort();
         InsertionSort insertionSort = new InsertionSort();
@@ -31,6 +31,10 @@ public class SortCompare {
         switch (args){
             case "insertion" :
                 insertionSort.sort(array);
+                break;
+            case "insertionOpt" :
+                insertionSort.sortOpt(array);
+//                insertionSort.print(array);
                 break;
             case "selection" :
                 selectionSort.sort(array);
@@ -63,10 +67,10 @@ public class SortCompare {
      */
     public static double timeRandomInput(String args,int N , int T){
         double total = 0.0;
-        Double[] array = new Double[N];
+        Integer[] array = new Integer[N];
         for (int t = 0; t < T ; t++){
             for (int i = 0 ; i < N ; i++){
-                array[i] = StdRandom.uniform();
+                array[i] = StdRandom.uniform(N);
             }
             total += time(args,array);
         }
@@ -78,6 +82,7 @@ public class SortCompare {
         Double bubbleSort = timeRandomInput("bubble",10000,5);
         Double shell = timeRandomInput("shell",10000,5);
         Double insertion = timeRandomInput("insertion",10000,5);
+        Double insertionOpt = timeRandomInput("insertionOpt",10000,5);
         Double selection = timeRandomInput("selection",10000,5);
         Double merge = timeRandomInput("merge",10000,5);
         Double mergeBU = timeRandomInput("mergeBU",10000,5);
@@ -85,6 +90,7 @@ public class SortCompare {
         LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);
         LogUtil.println("insertion:" + insertion);
+        LogUtil.println("insertionOpt:" + insertionOpt);
         LogUtil.println("shell:" + shell);
         LogUtil.println("merge:" + merge);
         LogUtil.println("mergeBU:" + mergeBU);

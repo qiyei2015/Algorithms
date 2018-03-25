@@ -17,13 +17,30 @@ public class InsertionSort extends BaseSort{
     public void sort(Comparable[] array) {
         int length = array.length;
         for (int i = 1 ; i < length ; i++){
-            //处理a[0] ---- a[i-1]数组
+            //处理a[0] ---- a[i-1]数组,找到a[i]可以插入的位置
             for (int j = i ; j > 0 && less(array[j],array[j-1]); j--){
                 exch(array,j,j-1);
             }
         }
     }
 
-
+    /**
+     * 插入排序优化 少交换，不用每次都从j-1到i处交换，只用在前面找到合适的位置，最后交换一次
+     * @param array
+     */
+    public void sortOpt(Comparable[] array) {
+        int length = array.length;
+        for (int i = 1 ; i < length ; i++){
+            int j = i;
+            Comparable temp = array[i];
+            //不用每次都交换，直接找到合适的位置，然后交换
+            for (; j > 0 && less(temp,array[j-1]); j--){
+                //后移一个位置
+                array[j] = array[j-1];
+            }
+            //找到a[i]合适的位置j了
+            array[j] = temp;
+        }
+    }
 
 }
