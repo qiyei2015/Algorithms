@@ -41,6 +41,7 @@ public class SortCompare {
                 break;
             case "bubble" :
                 bubbleSort.sort(array);
+                bubbleSort.print(array);
                 break;
             case "shell" :
                 shellSort.sort(array);

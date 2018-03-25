@@ -25,7 +25,7 @@ public class InsertionSort extends BaseSort{
     }
 
     /**
-     * 插入排序优化 少交换，不用每次都从j-1到i处交换，只用在前面找到合适的位置，最后交换一次
+     * 插入排序优化 少交换，不用每次都从j-1到i处交换，只用在前面找到合适的位置，最后赋值
      * @param array
      */
     public void sortOpt(Comparable[] array) {
