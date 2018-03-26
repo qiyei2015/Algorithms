@@ -35,7 +35,9 @@ public class MergeSort extends BaseSort{
         //排右半边
         sort(array,mid + 1,hi);
         //归并
-        merge(array,lo,mid,hi);
+        if (array[mid].compareTo(array[mid + 1]) > 0){
+            merge(array,lo,mid,hi);
+        }
     }
 
     /**
@@ -55,7 +57,6 @@ public class MergeSort extends BaseSort{
         }
 
         for (int k = lo ; k < hi ; k++){
-
             if (i > mid){
                 //i 超过mid，说明左半边用完，取右半边
                 array[k] = aux[j++];

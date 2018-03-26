@@ -28,6 +28,7 @@ public class SortCompare {
         MergeSort mergeSort = new MergeSort();
         MergeBUSort mergeSortBU = new MergeBUSort();
         BubbleSort bubbleSort = new BubbleSort();
+        QuickSort quickSort = new QuickSort();
 
         switch (args){
             case "insertion" :
@@ -42,7 +43,7 @@ public class SortCompare {
                 break;
             case "bubble" :
                 bubbleSort.sort(array);
-                bubbleSort.print(array);
+//                bubbleSort.print(array);
                 break;
             case "shell" :
                 shellSort.sort(array);
@@ -53,6 +54,10 @@ public class SortCompare {
                 break;
             case "mergeBU" :
                 mergeSortBU.sort(array);
+                break;
+            case "quick" :
+                quickSort.sort(array);
+//                quickSort.print(array);
                 break;
             default:
                 break;
@@ -88,6 +93,7 @@ public class SortCompare {
         Double selection = timeRandomInput("selection",10000,5);
         Double merge = timeRandomInput("merge",10000,5);
         Double mergeBU = timeRandomInput("mergeBU",10000,5);
+        Double quick = timeRandomInput("quick",10000,5);
 
         LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);
@@ -96,8 +102,9 @@ public class SortCompare {
         LogUtil.println("shell:" + shell);
         LogUtil.println("merge:" + merge);
         LogUtil.println("mergeBU:" + mergeBU);
-
-        testHeap();
+        LogUtil.println("quick:" + quick);
+        
+//        testHeap();
     }
 
 

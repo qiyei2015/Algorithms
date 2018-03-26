@@ -25,6 +25,29 @@ public class InsertionSort extends BaseSort{
     }
 
     /**
+     * 将数组lo 到hi之间快速排序
+     * @param array
+     * @param lo
+     * @param hi
+     */
+    public void sort(Comparable[] array,int lo,int hi) {
+        if (lo >= hi || array == null){
+            return;
+        }
+        if (lo < 0 || hi >= array.length){
+            return;
+        }
+        int length = array.length;
+        for (int i = lo + 1 ; i <= hi ; i++){
+            //处理a[lo] ---- a[i-1]数组,找到a[i]可以插入的位置
+            for (int j = i ; j > lo && less(array[j],array[j-1]); j--){
+                exch(array,j,j-1);
+            }
+        }
+    }
+
+
+    /**
      * 插入排序优化 少交换，不用每次都从j-1到i处交换，只用在前面找到合适的位置，最后赋值
      * @param array
      */

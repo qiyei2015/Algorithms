@@ -42,7 +42,6 @@ public class MergeBUSort extends BaseSort {
         }
 
         for (int k = lo ; k < hi ; k++){
-
             if (i > mid){
                 //i 超过mid，说明左半边用完，取右半边
                 array[k] = aux[j++];
