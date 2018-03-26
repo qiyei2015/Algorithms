@@ -9,6 +9,7 @@ package com.qiyei.sort;
 public class MergeSort extends BaseSort{
 
     private Comparable[] aux;
+    private static final int M = 15;
 
     @Override
     public void sort(Comparable[] array) {
@@ -26,7 +27,7 @@ public class MergeSort extends BaseSort{
      * @param hi
      */
     private void sort(Comparable[]array,int lo,int hi){
-        if (hi <= lo){
+        if (hi - lo <= M){
             return;
         }
         int mid = lo + (hi - lo)/2;

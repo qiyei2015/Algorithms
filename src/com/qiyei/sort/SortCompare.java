@@ -59,6 +59,14 @@ public class SortCompare {
                 quickSort.sort(array);
 //                quickSort.print(array);
                 break;
+            case "quick2" :
+                quickSort.sortTwoWays(array);
+//                quickSort.print(array);
+                break;
+            case "quick3" :
+                quickSort.sortThreeWays(array);
+//                quickSort.print(array);
+                break;
             default:
                 break;
         }
@@ -84,6 +92,25 @@ public class SortCompare {
         return total;
     }
 
+    /**
+     * 将T个长度为N的数组排序
+     * @param args
+     * @param N
+     * @param T
+     * @return
+     */
+    public static double timeRandomInput(String args,int N , int T, int M){
+        double total = 0.0;
+        Integer[] array = new Integer[N];
+        for (int t = 0; t < T ; t++){
+            for (int i = 0 ; i < N ; i++){
+                array[i] = StdRandom.uniform(M);
+            }
+            total += time(args,array);
+        }
+        return total;
+    }
+
     public static void main(String[] args){
 
         Double bubbleSort = timeRandomInput("bubble",10000,5);
@@ -93,7 +120,9 @@ public class SortCompare {
         Double selection = timeRandomInput("selection",10000,5);
         Double merge = timeRandomInput("merge",10000,5);
         Double mergeBU = timeRandomInput("mergeBU",10000,5);
-        Double quick = timeRandomInput("quick",10000,5);
+        Double quick = timeRandomInput("quick",10000,5,100);
+        Double quick2Ways = timeRandomInput("quick2",10000,5,100);
+        Double quick3Ways = timeRandomInput("quick3",10000,5,100);
 
         LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);
@@ -103,7 +132,9 @@ public class SortCompare {
         LogUtil.println("merge:" + merge);
         LogUtil.println("mergeBU:" + mergeBU);
         LogUtil.println("quick:" + quick);
-        
+        LogUtil.println("quick2Ways:" + quick2Ways);
+        LogUtil.println("quick3Ways:" + quick3Ways);
+
 //        testHeap();
     }
 
