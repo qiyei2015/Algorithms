@@ -24,11 +24,14 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     }
 
     /**
-     * 用数组创建堆
+     * 用数组创建堆,时间复杂度 O(logN)
      * @param a
      */
     public MaxPQ(Comparable[] a){
         super(a);
+        for (int i = N/2; i >= 1 ; i--){
+            sinkBetter(i);
+        }
     }
 
     /**
@@ -74,12 +77,11 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
         Comparable temp =  pq[k];
         //子节点比父结点大
         while (k > 1 && less(k/2,k)){
-            //父结点移到子节点
+            //父结点移到子节点 子节点暂存 不用每次都去新建一个临时变量来交换
             pq[k] = pq[k/2];
+            pq[k/2] = temp;
             k = k/2;
         }
-        //最终的k就是应该插入的节点
-        pq[k] = temp;
     }
 
 
@@ -137,10 +139,10 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
                 break;
             }
 
-            //将子节点移到父结点
+            //将子节点移到父结点,父结点移到子节点 不用每次都去新建一个临时变量来交换
             pq[k] = pq[j];
+            pq[j] = temp;
             k = j; //更新k的位置
         }
-        pq[k] = temp;
     }
 }

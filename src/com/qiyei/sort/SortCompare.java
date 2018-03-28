@@ -1,5 +1,6 @@
 package com.qiyei.sort;
 
+import com.qiyei.heap.HeapSort;
 import com.qiyei.util.LogUtil;
 import com.qiyei.util.StopWatch;
 import edu.princeton.cs.algs4.MaxPQ;
@@ -29,6 +30,7 @@ public class SortCompare {
         MergeBUSort mergeSortBU = new MergeBUSort();
         BubbleSort bubbleSort = new BubbleSort();
         QuickSort quickSort = new QuickSort();
+        HeapSort heapSort = new HeapSort();
 
         switch (args){
             case "insertion" :
@@ -66,6 +68,14 @@ public class SortCompare {
             case "quick3" :
                 quickSort.sortThreeWays(array);
 //                quickSort.print(array);
+                break;
+            case "heap1" :
+                heapSort.sort(array);
+//                heapSort.print(array);
+                break;
+            case "heap2" :
+                heapSort.sort2(array);
+//                heapSort.print(array);
                 break;
             default:
                 break;
@@ -123,6 +133,7 @@ public class SortCompare {
         Double quick = timeRandomInput("quick",10000,5,100);
         Double quick2Ways = timeRandomInput("quick2",10000,5,100);
         Double quick3Ways = timeRandomInput("quick3",10000,5,100);
+        Double heap1 = timeRandomInput("heap1",10000,5,100);
 
         LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);
@@ -134,10 +145,11 @@ public class SortCompare {
         LogUtil.println("quick:" + quick);
         LogUtil.println("quick2Ways:" + quick2Ways);
         LogUtil.println("quick3Ways:" + quick3Ways);
+        LogUtil.println("heap1:" + heap1);
 
-        testHeap();
+//        testHeap();
+
     }
-
 
     private static void testHeap(){
         Integer[] a = new Integer[100];
