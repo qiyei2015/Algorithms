@@ -135,7 +135,7 @@ public class SortCompare {
         LogUtil.println("quick2Ways:" + quick2Ways);
         LogUtil.println("quick3Ways:" + quick3Ways);
 
-//        testHeap();
+        testHeap();
     }
 
 
