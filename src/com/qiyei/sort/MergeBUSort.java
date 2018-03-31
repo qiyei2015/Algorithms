@@ -37,23 +37,24 @@ public class MergeBUSort extends BaseSort {
         int j = mid + 1;
 
         //将数组array复制到aux中
-        for (int k = lo ;k < hi ; k++){
+        for (int k = lo ;k <= hi ; k++){
             aux[k] = array[k];
         }
 
-        for (int k = lo ; k < hi ; k++){
+        //aux[lo..mid] aux[mid+1..hi]
+        for (int k = lo ; k <= hi ; k++){
             if (i > mid){
                 //i 超过mid，说明左半边用完，取右半边
                 array[k] = aux[j++];
             }else if (j > hi){
                 //j 超过hi，说明右半边用完，取左半边
-                array[k] = array[i++];
+                array[k] = aux[i++];
 
-            }else if (less(array[i],array[j])){
+            }else if (less(aux[i],aux[j])){
                 //i 比j小，取i
-                array[k] = array[i++];
+                array[k] = aux[i++];
             }else {
-                array[k] = array[j++];
+                array[k] = aux[j++];
             }
         }
     }

@@ -53,6 +53,7 @@ public class SortCompare {
                 break;
             case "merge" :
                 mergeSort.sort(array);
+//                mergeSort.print(array);
                 break;
             case "mergeBU" :
                 mergeSortBU.sort(array);
