@@ -15,10 +15,10 @@ public class ShellSort extends BaseSort {
         int h = 0;
 
         /**
-         * 递增序列 8*k + 1
+         * 递增序列 3*k + 1
          */
-        while (h < length / 8){
-            h = 8 * h + 1;
+        while (h < length / 3){
+            h = 3 * h + 1;
         }
         //间隔为n的插入排序
         while (h >= 1){

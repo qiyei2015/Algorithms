@@ -11,7 +11,7 @@ import java.util.Random;
  * @description:
  */
 public class UnionFindTest {
-    
+
     public static void main(String[] args){
 
         UnionFind1 unionFind1 = new UnionFind1(100);

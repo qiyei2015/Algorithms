@@ -15,6 +15,8 @@ public class BaseHeap<T extends Comparable<T>> {
 
     protected int N;
 
+    protected int count;
+
 
     public BaseHeap() {
         pq = new Comparable[0];
@@ -40,11 +42,11 @@ public class BaseHeap<T extends Comparable<T>> {
      * @return
      */
     public boolean isEmpty(){
-        return N == 0;
+        return count == 0;
     }
 
     public int size(){
-        return N;
+        return count;
     }
 
     /**

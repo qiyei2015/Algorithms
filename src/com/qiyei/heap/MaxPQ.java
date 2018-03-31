@@ -29,7 +29,7 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
      */
     public MaxPQ(Comparable[] a){
         super(a);
-        for (int i = N/2; i >= 1 ; i--){
+        for (int i = count/2; i >= 1 ; i--){
             sinkBetter(i);
         }
     }
@@ -39,8 +39,8 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
      * @param t
      */
     public void insert(T t){
-        pq[++N] = t;
-        swimBetter(N);
+        pq[++count] = t;
+        swimBetter(count);
     }
 
     /**
@@ -49,9 +49,9 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
      */
     public T delMax(){
         T t = (T) pq[1];
-        exch(1,N);
-        pq[N] = null;
-        N--;
+        exch(1,count);
+        pq[count] = null;
+        count--;
         sinkBetter(1);
         return t;
     }
@@ -90,11 +90,11 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
      * @param k
      */
     private void sink(int k){
-        if (k > N){
+        if (k > count){
             return;
         }
         int i = 2 * k;
-        if (i > N ){
+        if (i > count ){
             return;
         }
         if (less(i,i+1)){
@@ -129,9 +129,9 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     private void sinkBetter(int k) {
         Comparable temp = pq[k];
         //判断有左孩子，有孩子就行
-        while (2 * k <= N) {
+        while (2 * k <= count) {
             int j = 2 * k; //此轮循环中 k 与j交换
-            if ((j + 1) <= N && less(j, j + 1)) {
+            if ((j + 1) <= count && less(j, j + 1)) {
                 j++; //更新为右孩子
             }
             //父结点大于子节点

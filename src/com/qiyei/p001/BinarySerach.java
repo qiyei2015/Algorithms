@@ -33,6 +33,39 @@ public class BinarySerach {
         return -1;
     }
 
+    /**
+     * 二分法搜索
+     * @param key 查找key值
+     * @param array 已升序排好的数组
+     */
+    public static int rank2(int key,int[] array){
+        return serach(key,array,0,array.length - 1);
+    }
+
+    /**
+     * 搜索关键字key 递归方式
+     * @param key
+     * @param array
+     * @param lo
+     * @param hi
+     * @return key的index
+     */
+    private static int serach(int key,int[] array,int lo,int hi){
+        if (lo > hi){
+            return -1;
+        }
+        int mid = lo + (hi - lo)/2;
+        //在a[lo..hi]数组中查找
+        if (key == array[mid]){
+            return mid;
+        }else if (key < array[mid]){
+            //在a[lo..mid-1]中找
+            return serach(key,array,lo,mid - 1);
+        }else {
+            //在a[mid+1..hi]中找
+            return serach(key,array,mid + 1,hi);
+        }
+    }
 
     public static void main(String[] args){
 
