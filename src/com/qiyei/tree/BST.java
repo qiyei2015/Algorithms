@@ -1,5 +1,7 @@
 package com.qiyei.tree;
 
+import com.qiyei.util.LogUtil;
+
 /**
  * @author Created by qiyei2015 on 2018/3/31.
  * @version: 1.0
@@ -25,6 +27,24 @@ public class BST<K extends Comparable<K>,V> {
     }
 
     /**
+     * 是否包含
+     * @param key
+     * @return
+     */
+    public boolean contains(K key){
+        return contains(root,key);
+    }
+
+    /**
+     * 搜索key对应的Value
+     * @param key
+     * @return
+     */
+    public V search(K key){
+        return search(root,key);
+    }
+
+    /**
      * 判断是否为NULL
      * @return
      */
@@ -40,6 +60,26 @@ public class BST<K extends Comparable<K>,V> {
         return count;
     }
 
+    /**
+     * 前序遍历
+     */
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    /**
+     * 中序遍历
+     */
+    public void inOrder(){
+        inOrder(root);
+    }
+
+    /**
+     * 后续遍历
+     */
+    public void postOrder(){
+        postOrder(root);
+    }
 
     /**
      * 内部类
@@ -61,27 +101,29 @@ public class BST<K extends Comparable<K>,V> {
 
     /**
      * 递归方式插入节点
-     * @param root
+     * @param node
      * @param key
      * @param value
      * @return
      */
-    private Node insert(Node root, K key, V value) {
-        if (root == null){
-            root = new Node(key,value);
-            return root;
+    private Node insert(Node node, K key, V value) {
+        if (node == null){
+            node = new Node(key,value);
+            count++;
+            LogUtil.println(getNodeMessage(node));
+            return node;
         }
-        if (key.compareTo((K) root.key) == 0){
+        if (key.compareTo((K) node.key) == 0){
             //相等直接更新Value
-            root.value = value;
-            return root;
-        }else if (key.compareTo((K) root.key) < 0){
+            node.value = value;
+        }else if (key.compareTo((K)(node.key)) < 0){
             //在左子树中插入
-            return insert(root.left,key,value);
+            node.left = insert(node.left,key,value);
         }else {
             //在右子树中插入
-            return insert(root.right,key,value);
+            node.right = insert(node.right,key,value);
         }
+        return node;
     }
 
     /**
@@ -101,6 +143,7 @@ public class BST<K extends Comparable<K>,V> {
 
             if (p.key == null){
                 p = new Node(key,value);
+                count++;
                 break;
             }
             if (key.compareTo((K) p.key) == 0){
@@ -115,9 +158,104 @@ public class BST<K extends Comparable<K>,V> {
                 p = p.right;
             }
         }
-
         return root;
-
     }
 
+    /**
+     * 在root根节点中查找是否包含key
+     * @param node
+     * @param key
+     * @return
+     */
+    private boolean contains(Node node,K key){
+        if (node == null){
+            return false;
+        }
+        if (node.key.compareTo(key) == 0){
+            return true;
+        }else if (key.compareTo((K)(node.key)) < 0){
+            return contains(node.left,key);
+        }else {
+            return contains(node.right,key);
+        }
+    }
+
+    /**
+     * 在root中搜索key对应的value
+     * @param node
+     * @param key
+     * @return
+     */
+    private V search(Node<K, V> node, K key) {
+        if (node == null){
+            return null;
+        }
+        if (node.key.compareTo(key) == 0){
+            return root.value;
+        }else if (key.compareTo((K)(node.key)) < 0){
+            return search(node.left,key);
+        }else {
+            return search(node.right,key);
+        }
+    }
+
+    /**
+     * 递归方式前序遍历
+     * @param node
+     */
+    private void preOrder(Node node){
+        if (node == null){
+            return;
+        }
+        printNode(node);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    /**
+     * 递归方式中序遍历
+     * @param node
+     */
+    private void inOrder(Node node){
+        if (node == null){
+            return;
+        }
+        inOrder(node.left);
+        printNode(node);
+        inOrder(node.right);
+    }
+
+    /**
+     * 递归后序遍历
+     * @param node
+     */
+    private void postOrder(Node node){
+        if (node == null){
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        printNode(node);
+    }
+
+    /**
+     * 打印node信息
+     * @param node
+     */
+    private void printNode(Node node){
+        LogUtil.print(getNodeMessage(node));
+        LogUtil.print(" ");
+    }
+
+    /**
+     * 获取node信息
+     * @param node
+     * @return
+     */
+    private String getNodeMessage(Node node){
+        if (node == null){
+            return null;
+        }
+        return "[" + node.key + " " + node.value + "]";
+    }
 }
