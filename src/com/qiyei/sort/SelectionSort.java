@@ -16,6 +16,7 @@ public class SelectionSort extends BaseSort{
     public void sort(Comparable[] array) {
         for (int i = 0 ; i < array.length ; i++){
             int min = i;
+            //比较a[i]与之后的数谁更小，更新最小的值
             for (int j = i + 1 ; j < array.length ; j++){
                 //找到本次循环最小的数 [i+1,length-1]中最小的数
                 if (less(array[j],array[min])){
@@ -25,5 +26,4 @@ public class SelectionSort extends BaseSort{
             exch(array,i,min);
         }
     }
-
 }

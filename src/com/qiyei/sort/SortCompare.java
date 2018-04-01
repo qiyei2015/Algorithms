@@ -44,8 +44,8 @@ public class SortCompare {
                 selectionSort.sort(array);
                 break;
             case "bubble" :
-                bubbleSort.sort(array);
-//                bubbleSort.print(array);
+                bubbleSort.sortBackToFace(array);
+                bubbleSort.print(array);
                 break;
             case "shell" :
                 shellSort.sort(array);
@@ -124,7 +124,7 @@ public class SortCompare {
 
     public static void main(String[] args){
 
-        Double bubbleSort = timeRandomInput("bubble",10000,5);
+        Double bubbleSort = timeRandomInput("bubble",10000,1);
         Double shell = timeRandomInput("shell",10000,5);
         Double insertion = timeRandomInput("insertion",10000,5);
         Double insertionOpt = timeRandomInput("insertionOpt",10000,5);

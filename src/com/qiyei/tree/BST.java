@@ -71,7 +71,6 @@ public class BST<K extends Comparable<K>,V> {
             root = new Node(key,value);
             return root;
         }
-
         if (key.compareTo((K) root.key) == 0){
             //相等直接更新Value
             root.value = value;
@@ -85,5 +84,40 @@ public class BST<K extends Comparable<K>,V> {
         }
     }
 
+    /**
+     * 插入二叉树，非递归方式，迭代方式
+     * @param root
+     * @param key
+     * @param value
+     * @return
+     */
+    private Node insert2(Node root, K key, V value){
+        if (root == null){
+            root = new Node(key,value);
+            return root;
+        }
+        Node p = root;
+        while (true){
+
+            if (p.key == null){
+                p = new Node(key,value);
+                break;
+            }
+            if (key.compareTo((K) p.key) == 0){
+                //相等直接更新Value
+                root.value = value;
+                break;
+            }else if (key.compareTo((K) p.key) < 0){
+                //在左子树中插入
+                p = p.left;
+            }else {
+                //在右子树中插入
+                p = p.right;
+            }
+        }
+
+        return root;
+
+    }
 
 }

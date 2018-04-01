@@ -26,15 +26,18 @@ public class BubbleSort extends BaseSort{
 
     }
 
-    public void sortFacetoBack(Comparable[] array) {
+    /**
+     * 从后往前扫描，每次把最大的元素排好序
+     * @param array
+     */
+    public void sortBackToFace(Comparable[] array) {
         for (int i = array.length - 1 ; i >= 0 ; i--){
             //每一次会排好一个数，因此需要减i
-            for (int j = 0; j < i;j++){
+            for (int j = 0; j <= i - 1;j++){
                 if (less(array[j+1],array[j])){
                     exch(array,j,j+1);
                 }
             }
         }
-
     }
 }
