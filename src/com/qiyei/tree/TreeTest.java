@@ -30,11 +30,13 @@ public class TreeTest {
 //        integerStringBST.preOrder();
         LogUtil.println("");
 //        integerStringBST.levelOrder();
-        LogUtil.println("");
+
         LogUtil.println("min:" + integerStringBST.minimum() + "  Max:" + integerStringBST.maximum());
         integerStringBST.removeMin();
         integerStringBST.removeMax();
         integerStringBST.inOrder();
+        LogUtil.println("");
+        LogUtil.println("integerStringBST size:" + integerStringBST.size());
     }
 
 }

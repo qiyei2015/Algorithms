@@ -175,7 +175,6 @@ public class BST<K extends Comparable<K>,V> {
         if (node == null){
             node = new Node(key,value);
             count++;
-            LogUtil.println(getNodeMessage(node));
             return node;
         }
         if (key.compareTo((K) node.key) == 0){
@@ -339,6 +338,8 @@ public class BST<K extends Comparable<K>,V> {
         if (node.left == null){
             //直接删除该节点
             Node temp = node.right;
+            node = null;
+            count--;
             return temp;
         }
         node.left = removeMin(node.left);
@@ -355,6 +356,8 @@ public class BST<K extends Comparable<K>,V> {
         if (node.right == null){
             //直接删除该节点
             Node temp = node.left;
+            node = null;
+            count--;
             return temp;
         }
         node.right = removeMax(node.right);
@@ -363,7 +366,7 @@ public class BST<K extends Comparable<K>,V> {
 
 
 
-    
+
     /**
      * 打印node信息
      * @param node
