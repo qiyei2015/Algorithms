@@ -1,6 +1,7 @@
 package com.qiyei.tree;
 
 import com.qiyei.util.LogUtil;
+import sun.misc.Queue;
 
 /**
  * @author Created by qiyei2015 on 2018/3/31.
@@ -79,6 +80,70 @@ public class BST<K extends Comparable<K>,V> {
      */
     public void postOrder(){
         postOrder(root);
+    }
+
+    /**
+     * 层序遍历
+     */
+    public void levelOrder(){
+        Queue<Node> queue = new Queue<>();
+        //入队
+        queue.enqueue(root);
+        while (!queue.isEmpty()){
+            try {
+                Node node = queue.dequeue();
+                LogUtil.print(getNodeMessage(node));
+                if (node!= null && node.left != null){
+                    queue.enqueue(node.left);
+                }
+                if (node!= null && node.right != null){
+                    queue.enqueue(node.right);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 找到最小结点
+     * @return
+     */
+    public K minimum(){
+        if (root == null){
+            return null;
+        }
+        Node node = minimum(root);
+        return (K) node.key;
+    }
+
+    public K maximum(){
+        if (root == null){
+            return null;
+        }
+        Node node = maximum(root);
+        return (K) node.key;
+    }
+
+    /**
+     * 删除最小结点
+     */
+    public void removeMin(){
+        if (root == null){
+            return ;
+        }
+        Node node = removeMin(root);
+    }
+
+    /**
+     * 删除最大结点
+     * @return
+     */
+    public void removeMax(){
+        if (root == null){
+            return ;
+        }
+        Node node = removeMax(root);
     }
 
     /**
@@ -238,6 +303,67 @@ public class BST<K extends Comparable<K>,V> {
         printNode(node);
     }
 
+    /**
+     * 返回最小的节点
+     * @param node
+     * @return
+     */
+    private Node minimum(Node node){
+        //如果没有左子树，就返回该节点
+        if (node.left == null){
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    /**
+     * 返回最大的节点
+     * @param node
+     * @return
+     */
+    private Node maximum(Node node){
+        //没有右子树，返回最大节点
+        if (node.right == null){
+            return node;
+        }
+        return maximum(node.right);
+    }
+
+    /**
+     * 删除最小结点
+     * @param node
+     * @return
+     */
+    private Node removeMin(Node node){
+        //没有左子树了，该节点就是最小结点
+        if (node.left == null){
+            //直接删除该节点
+            Node temp = node.right;
+            return temp;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    /**
+     * 删除最大结点
+     * @param node
+     * @return
+     */
+    private Node removeMax(Node node){
+        //没有右子树了，该结点就是最大结点
+        if (node.right == null){
+            //直接删除该节点
+            Node temp = node.left;
+            return temp;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+
+
+    
     /**
      * 打印node信息
      * @param node

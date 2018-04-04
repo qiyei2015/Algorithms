@@ -27,7 +27,14 @@ public class TreeTest {
         LogUtil.println("integerStringBST size:" + integerStringBST.contains(4));
         integerStringBST.inOrder();
         LogUtil.println("");
-        integerStringBST.preOrder();
+//        integerStringBST.preOrder();
+        LogUtil.println("");
+//        integerStringBST.levelOrder();
+        LogUtil.println("");
+        LogUtil.println("min:" + integerStringBST.minimum() + "  Max:" + integerStringBST.maximum());
+        integerStringBST.removeMin();
+        integerStringBST.removeMax();
+        integerStringBST.inOrder();
     }
 
 }
