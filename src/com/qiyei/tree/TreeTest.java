@@ -37,6 +37,10 @@ public class TreeTest {
         integerStringBST.inOrder();
         LogUtil.println("");
         LogUtil.println("integerStringBST size:" + integerStringBST.size());
+
+        integerStringBST.remove(12);
+        LogUtil.println("integerStringBST size:" + integerStringBST.size());
+        integerStringBST.inOrder();
     }
 
 }

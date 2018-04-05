@@ -147,6 +147,69 @@ public class BST<K extends Comparable<K>,V> {
     }
 
     /**
+     * 返回key的排名 实现思路，在每个结点下在增加一个元素来存储该结点下的元素个数
+     * @param key
+     * @return
+     */
+    public int rank(K key){
+        return 0;
+    }
+
+    /**
+     * 获取排名k的元素
+     * @param k
+     * @return
+     */
+    public K select(int k){
+        return null;
+    }
+
+    /**
+     * 删除结点
+     * @param key
+     */
+    public void remove(K key){
+        root = remove(root,key);
+    }
+
+    /**
+     * 如果该元素存在，则返回该元素，不存在就返回小于该元素中最大的
+     * @param key
+     * @return
+     */
+    protected Node floor(K key){
+        return null;
+    }
+
+    /**
+     * 如果该元素存在，则返回该元素，不存在就返回大于该元素中最小的
+     * @param key
+     * @return
+     */
+    protected Node ceil(K key){
+        return null;
+    }
+
+    /**
+     * 某个结点的前驱结点
+     * @param key 该结点，在二叉树中必须存在
+     * @return
+     */
+    protected Node predecessor(K key){
+        return null;
+    }
+
+    /**
+     * 某个结点的后驱结点
+     * @param key
+     * @return
+     */
+    protected Node successor(K key){
+
+        return null;
+    }
+
+    /**
      * 内部类
      * @param <K>
      * @param <V>
@@ -161,6 +224,13 @@ public class BST<K extends Comparable<K>,V> {
             this.value = value;
             left = null;
             right = null;
+        }
+
+        public Node(Node<K,V> node) {
+            this.key = node.key;
+            this.value = node.value;
+            this.left = node.left;
+            this.right = node.right;
         }
     }
 
@@ -364,6 +434,67 @@ public class BST<K extends Comparable<K>,V> {
         return node;
     }
 
+    /**
+     * 删除以node为根结点的key
+     * @param node
+     * @param key
+     * @return 返回删除后的root结点
+     */
+    private Node<K,V> remove(Node<K, V> node, K key) {
+        if (node == null || key == null){
+            return null;
+        }
+
+        if (key.compareTo(node.key) < 0){
+            //在左子树中删除
+            node.left = remove(node.left,key);
+            return node;
+        }else if (key.compareTo(node.key) > 0){
+            //在右子树中删除
+            node.right = remove(node.right,key);
+            return node;
+        }else {
+            //如果只有右子结点
+            if (node.left == null){
+                Node tempRight = node.right;
+                count--;
+                node = null;
+                return tempRight;
+            }
+            //如果只有左子结点
+            if (node.right == null){
+                Node tempLeft = node.left;
+                count--;
+                node = null;
+                return tempLeft;
+            }
+
+            /**
+             * 如果左右子节点都有
+             * 找到这个结点的后驱结点，然后删除这个结点，并用这个后驱结点替换这个结点，左子树和右子树部分不变
+             * 后驱结点 就是该结点的右子树的minimum(node.right)
+             */
+            Node successor = new Node(minimum(node.right));
+            count++;
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            node = null;
+            count--;
+            return successor;
+
+//            /**
+//             * 找到前驱结点的删除
+//             */
+//            Node preNode = new Node(maximum(node.left));
+//            count++;
+//            successor.left = removeMax(node.left);
+//            successor.right = node.right;
+//            node = null;
+//            count--;
+//            return preNode;
+
+        }
+    }
 
 
 
