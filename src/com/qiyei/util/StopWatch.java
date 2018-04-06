@@ -13,12 +13,25 @@ public class StopWatch {
         start = System.currentTimeMillis();
     }
 
+    public StopWatch(int n) {
+        start = System.nanoTime();
+    }
+
     /**
      * 秒
      * @return
      */
     public double elapsedTime(){
         long now = System.currentTimeMillis();
+        return (now - start) / 1000.0;
+    }
+
+    /**
+     * 毫秒
+     * @return
+     */
+    public double elapsedTimeMilli(){
+        long now = System.nanoTime();
         return (now - start) / 1000.0;
     }
 }
