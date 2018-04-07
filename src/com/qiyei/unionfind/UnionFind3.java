@@ -1,33 +1,33 @@
 package com.qiyei.unionfind;
 
 /**
- * @author Created by qiyei2015 on 2018/4/6.
+ * @author Created by qiyei2015 on 2018/4/7.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 基于rank的优化
  */
-public class UnionFind {
+public class UnionFind3 {
     /**
      * 每个元素i的根节点
      */
     private int[] parent;
     /**
-     * sz[i] 表示以i为根节点的元素的个数
+     * rank[i] 表示以i为根节点的集合的层数
      */
-    private int[] sz;
+    private int[] rank;
 
     /**
      * 元素个数
      */
     private int count;
 
-    public UnionFind(int size) {
+    public UnionFind3(int size) {
         parent = new int[size];
-        sz = new int[size];
+        rank = new int[size];
         count = size;
         for (int i = 0 ; i < count ; i++){
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -70,15 +70,15 @@ public class UnionFind {
             return;
         }
         // 基于size的优化
-        if (sz[pRoot] < sz[qRoot]){
+        if (rank[pRoot] < rank[qRoot]){
             //将p的根指向q的根
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        }else {
+        }else if (rank[pRoot] > rank[qRoot]){
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        }else {
+            //二者相等
+            parent[qRoot] = pRoot;
+            rank[pRoot]++;
         }
     }
-
-
 }

@@ -1,12 +1,12 @@
 package com.qiyei.unionfind;
 
 /**
- * @author Created by qiyei2015 on 2018/4/6.
+ * @author Created by qiyei2015 on 2018/4/7.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 基于size的优化
  */
-public class UnionFind {
+public class UnionFind2 {
     /**
      * 每个元素i的根节点
      */
@@ -21,7 +21,7 @@ public class UnionFind {
      */
     private int count;
 
-    public UnionFind(int size) {
+    public UnionFind2(int size) {
         parent = new int[size];
         sz = new int[size];
         count = size;
@@ -79,6 +79,4 @@ public class UnionFind {
             sz[pRoot] += sz[qRoot];
         }
     }
-
-
 }
