@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class UnionFindTest {
 
-    private static final int SIZE = 8000;
+    private static final int SIZE = 500000;
 
 
     public static void main(String[] args){
@@ -21,12 +21,12 @@ public class UnionFindTest {
         UnionFind1 unionFind1 = new UnionFind1(1000000);
         UnionFind2 unionFind2 = new UnionFind2(1000000);
         UnionFind3 unionFind3 = new UnionFind3(1000000);
-
+        UnionFind unionFind = new UnionFind(1000000);
 
         LogUtil.println("unionfind1 test:" + test1(unionFind1) + " s");
         LogUtil.println("unionfind2 test:" + test(unionFind2) + " s");
         LogUtil.println("unionfind3 test:" + test(unionFind3) + " s");
-
+        LogUtil.println("unionfind test:" + test(unionFind) + " s");
     }
 
 
@@ -43,7 +43,9 @@ public class UnionFindTest {
         }
 
         for (int i = 0 ;i < SIZE ;i++){
-            unionFind1.connected(i,i+5);
+            int p = random.nextInt(SIZE);
+            int q = random.nextInt(SIZE);
+            unionFind1.connected(p,q);
         }
         return stopWatch.elapsedTime();
     }
@@ -61,7 +63,9 @@ public class UnionFindTest {
             unionFind.union(p,q);
         }
         for (int i = 0 ;i < SIZE ;i++){
-            unionFind.connected(i,i+5);
+            int p = random.nextInt(SIZE);
+            int q = random.nextInt(SIZE);
+            unionFind.connected(p,q);
         }
         return stopWatch.elapsedTime();
     }
@@ -80,7 +84,29 @@ public class UnionFindTest {
             unionFind.union(p,q);
         }
         for (int i = 0 ;i < SIZE ;i++){
-            unionFind.connected(i,i+5);
+            int p = random.nextInt(SIZE);
+            int q = random.nextInt(SIZE);
+            unionFind.connected(p,q);
+        }
+        return stopWatch.elapsedTime();
+    }
+
+    private static double test(UnionFind unionFind){
+        StopWatch stopWatch = new StopWatch();
+
+        Random random = new Random();
+        for (int i = 0 ;i < SIZE ;i++){
+            int p = random.nextInt(SIZE);
+            int q = random.nextInt(SIZE);
+            if (p == q){
+                continue;
+            }
+            unionFind.union(p,q);
+        }
+        for (int i = 0 ;i < SIZE ;i++){
+            int p = random.nextInt(SIZE);
+            int q = random.nextInt(SIZE);
+            unionFind.connected(p,q);
         }
         return stopWatch.elapsedTime();
     }

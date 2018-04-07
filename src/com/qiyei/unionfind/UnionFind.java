@@ -12,9 +12,9 @@ public class UnionFind {
      */
     private int[] parent;
     /**
-     * sz[i] 表示以i为根节点的元素的个数
+     * rank[i] 表示以i为根节点的集合的层数
      */
-    private int[] sz;
+    private int[] rank;
 
     /**
      * 元素个数
@@ -23,11 +23,11 @@ public class UnionFind {
 
     public UnionFind(int size) {
         parent = new int[size];
-        sz = new int[size];
+        rank = new int[size];
         count = size;
         for (int i = 0 ; i < count ; i++){
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -39,8 +39,15 @@ public class UnionFind {
     public int find(int p){
         if (p >= 0 && p <= count){
             while (p != parent[p]){
+                //基于路径的压缩
+                parent[p] = parent[parent[p]];
                 p = parent[p];
             }
+
+//            if (p != parent[p]){
+//                parent[p] = find(parent[p]);
+//            }
+//            return parent[p];
         }
         return p;
     }
@@ -70,15 +77,15 @@ public class UnionFind {
             return;
         }
         // 基于size的优化
-        if (sz[pRoot] < sz[qRoot]){
+        if (rank[pRoot] < rank[qRoot]){
             //将p的根指向q的根
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        }else {
+        }else if (rank[pRoot] > rank[qRoot]){
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        }else {
+            //二者相等
+            parent[qRoot] = pRoot;
+            rank[pRoot]++;
         }
     }
-
-
 }
