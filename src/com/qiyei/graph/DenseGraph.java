@@ -1,5 +1,8 @@
 package com.qiyei.graph;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Created by qiyei2015 on 2018/4/8.
  * @version: 1.0
@@ -72,7 +75,7 @@ public class DenseGraph {
      * @return
      */
     public boolean hasEdge(int v,int w){
-        if (assertV(v) || assertV(w)){
+        if (!assertV(v) || !assertV(w)){
             return false;
         }
         return mG[v][w];
@@ -84,7 +87,12 @@ public class DenseGraph {
      * @param w
      */
     public void addEdge(int v,int w){
-        if (assertV(v) || assertV(w)){
+        if (!assertV(v) || !assertV(w)){
+            return;
+        }
+
+        //处理自选边的问题
+        if (v == w){
             return;
         }
 
@@ -100,6 +108,21 @@ public class DenseGraph {
             mG[w][v] = true;
         }
         mE++;
+    }
+
+    /**
+     * 返回v相邻的顶点
+     * @param v
+     * @return
+     */
+    public Iterable<Integer> adj(int v){
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0 ; i < mV ; i++){
+            if (mG[v][i] == true){
+                list.add(i);
+            }
+        }
+        return list;
     }
 
     /**

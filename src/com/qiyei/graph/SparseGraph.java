@@ -35,6 +35,7 @@ public class SparseGraph {
     public SparseGraph(int n,boolean directed) {
         mV = n;
         mE = 0;
+        mG = new List[n];
         this.directed = directed;
         for (int i = 0 ; i < n ; i++){
             mG[i] = new ArrayList<>();
@@ -70,7 +71,7 @@ public class SparseGraph {
      * @return
      */
     public boolean hasEdge(int v,int w){
-        if (assertV(v) || assertV(w)){
+        if (!assertV(v) || !assertV(w)){
             return false;
         }
 
@@ -89,19 +90,32 @@ public class SparseGraph {
      * @param w
      */
     public void addEdge(int v,int w){
-        if (assertV(v) || assertV(w)){
+        if (!assertV(v) || !assertV(w)){
             return;
         }
 
         //暂时不处理有平行边的问题
 
+        //要除去自旋边的问题
+        if (v == w){
+            return;
+        }
         //直接添加到list中就表示v连接了w
         mG[v].add(w);
-        //无向图的话，也要添加，另外，要除去自旋边的问题
-        if (v != w && !directed){
+        //无向图的话，也要添加，
+        if (!directed){
             mG[w].add(v);
         }
         mE++;
+    }
+
+    /**
+     * 返回v相邻的顶点
+     * @param v
+     * @return
+     */
+    public Iterable<Integer> adj(int v){
+        return mG[v];
     }
 
     /**
