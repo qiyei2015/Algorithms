@@ -14,13 +14,15 @@ public class GraphTest {
 
     private static final int N = 100;
 
+    static String graphFile1 = "src/com/qiyei/graph/tinyG.txt";
+    static String graphFile2 = "src/com/qiyei/graph/mediumG.txt";
+    static String graphFile3 = "src/com/qiyei/graph/largeG.txt";
 
     public static void main(String[] args){
         Random random = new Random();
 
         DenseGraph denseGraph = new DenseGraph(N,false);
         SparseGraph sparseGraph = new SparseGraph(N,false);
-
 
         for (int i = 0 ;i < N ; i++){
             int v = random.nextInt(N);
@@ -37,7 +39,19 @@ public class GraphTest {
         for (int i = 0 ;i < N ; i++){
             LogUtil.println(i + " " + sparseGraph.adj(i).toString());
         }
+        LogUtil.println("\n denseGraph1 ");
+        DenseGraph denseGraph1 = GraphRead.denseGraphRead(graphFile2,false);
+        if (denseGraph1 == null){
+            return;
+        }
+        for (int i = 0 ; i < denseGraph1.V(); i++){
+            LogUtil.println(i + " " + denseGraph1.adj(i).toString());
+        }
 
+        DepthFirstSerach depthFirstSerach1 = new DepthFirstSerach(denseGraph);
+        LogUtil.println("\n denseGraph1 depthFirstSerach1 :\n" + depthFirstSerach1.dfs().toString());
+        LogUtil.println("\n denseGraph1 count :\n" + depthFirstSerach1.count());
+        LogUtil.println("\n denseGraph1 2 connect 7 :\n" + depthFirstSerach1.connect(2,7));
     }
 
 }

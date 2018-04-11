@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description: 稀疏图，用邻接表表示
  */
-public class SparseGraph {
+public class SparseGraph implements IGraph {
     /**
      * 顶点个数
      */
@@ -46,6 +46,7 @@ public class SparseGraph {
      * 返回顶点数
      * @return
      */
+    @Override
     public int V(){
         return mV;
     }
@@ -54,6 +55,7 @@ public class SparseGraph {
      * 返回边数
      * @return
      */
+    @Override
     public int E(){
         return mE;
     }
@@ -62,6 +64,7 @@ public class SparseGraph {
      * 是否为有向图
      * @return
      */
+    @Override
     public boolean isDirected(){
         return directed;
     }
@@ -70,6 +73,7 @@ public class SparseGraph {
      * 是否有边
      * @return
      */
+    @Override
     public boolean hasEdge(int v,int w){
         if (!assertV(v) || !assertV(w)){
             return false;
@@ -89,6 +93,7 @@ public class SparseGraph {
      * @param v
      * @param w
      */
+    @Override
     public void addEdge(int v,int w){
         if (!assertV(v) || !assertV(w)){
             return;
@@ -114,6 +119,7 @@ public class SparseGraph {
      * @param v
      * @return
      */
+    @Override
     public Iterable<Integer> adj(int v){
         return mG[v];
     }
