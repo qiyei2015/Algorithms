@@ -62,6 +62,24 @@ public class GraphTest {
         if (shortPath1.hasPath(211)){
             shortPath1.showPath(211);
         }
+
+
+    }
+
+    /**
+     * 不使用第三者，交换两个数
+     */
+    private static void testExch(){
+        int m = 10,n = 20;
+
+        m = m + n;
+
+        // n = m
+        n = m - n;
+
+        m = m - n;
+
+        System.out.print( " m = " + m + " n = " + n);
     }
 
 }
