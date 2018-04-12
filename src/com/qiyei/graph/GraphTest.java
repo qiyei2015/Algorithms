@@ -52,6 +52,12 @@ public class GraphTest {
         LogUtil.println("\n denseGraph1 depthFirstSerach1 :\n" + depthFirstSerach1.dfs().toString());
         LogUtil.println("\n denseGraph1 count :\n" + depthFirstSerach1.count());
         LogUtil.println("\n denseGraph1 2 connect 7 :\n" + depthFirstSerach1.connect(2,7));
+
+        Path graphPath1 = new Path(denseGraph1,0);
+        if (graphPath1.hasPath(211)){
+            graphPath1.showPath(211);
+        }
+
     }
 
 }
