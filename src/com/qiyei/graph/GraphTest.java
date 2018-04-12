@@ -58,6 +58,10 @@ public class GraphTest {
             graphPath1.showPath(211);
         }
 
+        ShortPath shortPath1 = new ShortPath(denseGraph1,0);
+        if (shortPath1.hasPath(211)){
+            shortPath1.showPath(211);
+        }
     }
 
 }

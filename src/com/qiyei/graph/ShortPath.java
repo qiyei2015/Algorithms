@@ -1,16 +1,14 @@
 package com.qiyei.graph;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Created by qiyei2015 on 2018/4/12.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 寻找路径
+ * @description:
  */
-public class Path {
+public class ShortPath {
 
     /**
      * 图
@@ -30,17 +28,46 @@ public class Path {
      */
     private int[] from;
 
-    public Path(IGraph graph, int s) {
+    /**
+     * 表示从s到目标节点的最短距离
+     */
+    private int[] order;
+
+    public ShortPath(IGraph graph, int s) {
         this.mGraph = graph;
         this.source = s;
         marked = new boolean[mGraph.V()];
         from = new int[mGraph.V()];
+        order = new int[mGraph.V()];
         for (int i = 0 ;i < mGraph.V() ; i++){
             marked[i] = false;
             from[i] = -1;
+            order[i] = -1;
         }
-        //进行深度优先遍历
-        dfs(source);
+        //进行广度优先遍历 无向图的最短路径算法
+
+        Queue<Integer> queue = new ArrayDeque<>();
+
+        queue.add(source);
+        marked[source] = true;
+        order[source] = 0;
+        while (!queue.isEmpty()){
+            //出队
+            int p = queue.poll();
+
+            //将p的所有相邻的顶点加入队列
+            for (Integer i : mGraph.adj(p)){
+                if (!marked[i]){
+                    //标记i被访问过
+                    marked[i] = true;
+                    //记录i的order
+                    order[i] = order[p] + 1;
+                    //标记i的节点是从p访问过来的
+                    from[i] = p;
+                    queue.add(i);
+                }
+            }
+        }
     }
 
     /**
@@ -94,19 +121,12 @@ public class Path {
     }
 
     /**
-     * 深度优先搜索
-     * @param i
+     * source到w的路径的距离
+     * @param w
+     * @return
      */
-    private void dfs(int i) {
-        marked[i] = true;
-        //遍历i的邻接点，依次进行深度优先遍历
-        for (int j : mGraph.adj(i)){
-            if (!marked[j]){
-                //表示j这个节点是从i遍历过来的
-                from[j] = i;
-                dfs(j);
-            }
-        }
+    public int length(int w){
+        return order[w];
     }
 
 }
