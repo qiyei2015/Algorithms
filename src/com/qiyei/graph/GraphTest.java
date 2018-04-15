@@ -67,7 +67,7 @@ public class GraphTest {
     }
 
     /**
-     * 不使用第三者，交换两个数
+     * 不使用第三者，交换两个数·
      */
     private static void testExch(){
         int m = 10,n = 20;
