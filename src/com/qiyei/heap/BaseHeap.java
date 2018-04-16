@@ -35,6 +35,7 @@ public class BaseHeap<T extends Comparable<T>> {
         this.pq = new Comparable[array.length + 1];
         System.arraycopy(array,0,pq,1,array.length);
         N = array.length;
+        count = N;
     }
 
     /**

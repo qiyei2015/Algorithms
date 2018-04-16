@@ -1,33 +1,32 @@
 package com.qiyei.heap;
 
 /**
- * @author Created by qiyei2015 on 2018/3/25.
+ * @author Created by qiyei2015 on 2018/4/16.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 最大堆
+ * @description: 最小堆
  */
-public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
-
+public class MinPQ<T extends Comparable<T>> extends BaseHeap {
     /**
      * 无参构造方法
      */
-    public MaxPQ() {
+    public MinPQ() {
         super();
     }
 
     /**
      * 创建一个初始容量为max的堆
-     * @param max
+     * @param n
      */
-    public MaxPQ(int max) {
-        super(max);
+    public MinPQ(int n) {
+        super(n);
     }
 
     /**
      * 用数组创建堆,时间复杂度 O(logN)
      * @param a
      */
-    public MaxPQ(Comparable[] a){
+    public MinPQ(Comparable[] a){
         super(a);
         for (int i = count/2; i >= 1 ; i--){
             sinkBetter(i);
@@ -44,10 +43,10 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     }
 
     /**
-     * 删除最大的元素
+     * 删除最小的元素
      * @return
      */
-    public T delMax(){
+    public T delMin(){
         T t = (T) pq[1];
         exch(1,count);
         pq[count] = null;
@@ -57,12 +56,12 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     }
 
     /**
-     * 堆的上浮，解决子节点比父结点大的问题
+     * 堆的上浮，如果子节点比父节点小，就交换
      * @param k 节点k上浮
      */
     private void swim(int k){
         //子节点比父结点大
-        while (k > 1 && less(k/2,k)){
+        while (k > 1 && less(k,k/2)){
             //交换两个节点
             exch(k/2,k);
             k = k/2;
@@ -70,13 +69,13 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     }
 
     /**
-     * 堆的上浮，解决子节点比父结点大的问题,少交换，优化堆的上浮过程
+     * 堆的上浮，如果子节点比父节点小，就交换。优化堆的上浮过程
      * @param k 节点k上浮
      */
     private void swimBetter(int k){
         Comparable temp =  pq[k];
         //子节点比父结点大
-        while (k > 1 && less(k/2,k)){
+        while (k > 1 && less(k,k/2)){
             //父结点移到子节点 子节点暂存 不用每次都去新建一个临时变量来交换
             pq[k] = pq[k/2];
             pq[k/2] = temp;
@@ -86,7 +85,7 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
 
 
     /**
-     * 堆的下沉 父结点小于子节点,将父节点与较大的子节点交换
+     * 堆的下沉 父结点大于子节点,将父节点与较小的子节点交换,并下沉子节点
      * @param k
      */
     private void sink(int k){
@@ -99,42 +98,29 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
         }
 
         //只有左子节点 i = count;
-        if ((i + 1 ) > count){
-            if (less(k,i)){
+        if ((i+1) > count){
+            if (less(i,k)){
                 exch(k,i);
             }
             return;
         }
-        //两个孩子都大于父节点
-        if (less(k,i) || less(k,i + 1)){
+
+        //父节点与较小的子节点交换
+        if (less(i,k) || less(i+1,k)){
+            //将父节点与较小的节点交换
             if (less(i,i+1)){
-                exch(k,i+1);
-                sink(i+1);
-            }else {
                 exch(k,i);
                 sink(i);
+            }else {
+                exch(k,i+1);
+                sink(i+1);
             }
         }
-
-//        //判断有左孩子，有孩子就行
-//        while (2 * k <= N){
-//            int j = 2 * k; //此轮循环中 k 与j交换
-//            if ((j +1) <= N && less(j,j+1)){
-//                j++; //更新为右孩子
-//            }
-//            //父结点大于子节点
-//            if (!less(k,j)){
-//                break;
-//            }
-//            exch(k,j);
-//            k = j; //更新k的位置
-//        }
-
     }
 
 
     /**
-     * 堆的下沉 父结点小于子节点,将父节点与较大的子节点交换
+     * 堆的下沉 父结点大于子节点,将父节点与较小的子节点交换
      * @param k
      */
     private void sinkBetter(int k) {
@@ -142,11 +128,11 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
         //判断有左孩子，有孩子就行
         while (2 * k <= count) {
             int j = 2 * k; //此轮循环中 k 与j交换
-            if ((j + 1) <= count && less(j, j + 1)) {
+            if ((j + 1) <= count && less(j+1, j)) {
                 j++; //更新为右孩子
             }
             //父结点大于子节点
-            if (!less(k, j)) {
+            if (!less(j, k)) {
                 break;
             }
 
