@@ -45,7 +45,7 @@ public class SortCompare {
                 break;
             case "bubble" :
                 bubbleSort.sortBackToFace(array);
-                bubbleSort.print(array);
+//                bubbleSort.print(array);
                 break;
             case "shell" :
                 shellSort.sort(array);
@@ -76,6 +76,14 @@ public class SortCompare {
                 break;
             case "heap2" :
                 heapSort.sort2(array);
+//                heapSort.print(array);
+                break;
+            case "heap3" :
+                heapSort.sort3(array);
+//                heapSort.print(array);
+                break;
+            case "heap4" :
+                heapSort.sort4(array);
 //                heapSort.print(array);
                 break;
             default:
@@ -134,7 +142,9 @@ public class SortCompare {
         Double quick = timeRandomInput("quick",10000,5,100);
         Double quick2Ways = timeRandomInput("quick2",10000,5,100);
         Double quick3Ways = timeRandomInput("quick3",10000,5,100);
-        Double heap1 = timeRandomInput("heap1",10000,5,100);
+        Double heap1 = timeRandomInput("heap1",10000,5,1000);
+        Double heap3 = timeRandomInput("heap3",10000,5,1000);
+        Double heap4 = timeRandomInput("heap4",10000,5,1000);
 
         LogUtil.println("bubbleSort:" + bubbleSort);
         LogUtil.println("selection:" + selection);

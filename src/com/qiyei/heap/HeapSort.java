@@ -31,4 +31,31 @@ public class HeapSort extends BaseSort {
             array[i] = maxPQ.delMax();
         }
     }
+
+    /**
+     * 使用最小堆排序
+     * @param array
+     */
+    public void sort3(Comparable[] array){
+        MinPQ<Integer> minPQ = new MinPQ(array.length);
+        for (int i = 0 ; i < array.length ; i++){
+            minPQ.insert((Integer) array[i]);
+        }
+        for (int i = 0 ; i < array.length; i++){
+            array[i] = minPQ.delMin();
+        }
+    }
+
+
+    /**
+     * 使用最小堆排序
+     * @param array
+     */
+    public void sort4(Comparable[] array){
+        MinPQ<Integer> minPQ = new MinPQ(array);
+        for (int i = 0 ; i < array.length; i++){
+            array[i] = minPQ.delMin();
+        }
+    }
+
 }
