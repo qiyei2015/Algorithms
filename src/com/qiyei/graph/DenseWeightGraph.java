@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description: 稠密有权图 用邻接矩阵表示
  */
-public class DenseWeightGraph<T extends Number & Comparable> implements IWeightGraph{
+public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph{
 
     /**
      * 顶点个数
@@ -94,6 +94,11 @@ public class DenseWeightGraph<T extends Number & Comparable> implements IWeightG
         mE++;
     }
 
+    /**
+     * 与其相邻的边
+     * @param v
+     * @return
+     */
     @Override
     public Iterable<Edge<T>> adj(int v) {
         List<Edge<T>> list = new ArrayList<>();

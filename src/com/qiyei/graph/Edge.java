@@ -6,7 +6,7 @@ package com.qiyei.graph;
  * @email: 1273482124@qq.com
  * @description: 边对于有向图，v -> w
  */
-public class Edge<T extends Number & Comparable> implements Comparable<Edge>{
+public class Edge<T extends Number & Comparable<T>> implements Comparable<Edge<T>>{
     /**
      * 顶点v
      */
@@ -67,7 +67,7 @@ public class Edge<T extends Number & Comparable> implements Comparable<Edge>{
     }
 
     @Override
-    public int compareTo(Edge o) {
+    public int compareTo(Edge<T> o) {
         if (weight.compareTo(o.getWeight()) < 0){
             return -1;
         }else if (weight.compareTo(o.getWeight()) > 0){
@@ -76,4 +76,10 @@ public class Edge<T extends Number & Comparable> implements Comparable<Edge>{
             return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return v + "-"+ w + ": " + weight;
+    }
+
 }

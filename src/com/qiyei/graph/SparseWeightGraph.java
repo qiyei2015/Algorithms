@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description:
  */
-public class SparseWeightGraph<T extends Number & Comparable> implements IWeightGraph{
+public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph{
 
     /**
      * 顶点个数

@@ -12,26 +12,28 @@ import java.util.Scanner;
  * @email: 1273482124@qq.com
  * @description: 从文件中读取图
  */
-public class GraphRead {
+public class GraphReadUtil {
 
     /**
      * 从某个文件中读取图
      * @param path
      * @param direct
+     * @param sparse
      * @return
      */
-    public static DenseGraph denseGraphRead(String path,boolean direct){
+    public static IGraph readGraph(String path, boolean direct,boolean sparse){
         File file = new File(path);
-        return denseGraphRead(file,direct);
+        return readGraph(file,direct,sparse);
     }
 
     /**
      * 从某个文件中读取图
      * @param file
      * @param direct
+     * @param sparse
      * @return
      */
-    public static DenseGraph denseGraphRead(File file , boolean direct){
+    public static IGraph readGraph(File file , boolean direct,boolean sparse){
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             Scanner scanner = new Scanner(new BufferedInputStream(fileInputStream));
@@ -39,7 +41,12 @@ public class GraphRead {
             int V = scanner.nextInt();
             //边数
             int E = scanner.nextInt();
-            DenseGraph graph = new DenseGraph(V,direct);
+            IGraph graph = null;
+            if (sparse){
+                graph = new SparseGraph(V,direct);
+            }else {
+                graph = new DenseGraph(V,direct);
+            }
             while (scanner.hasNext()){
                 int v = scanner.nextInt();
                 int w = scanner.nextInt();
@@ -54,24 +61,25 @@ public class GraphRead {
 
 
     /**
-     * 从某个文件中读取图
+     * 从某个文件中读取有权图
      * @param path
      * @param direct
+     * @param sparse 是否是稀疏图
      * @return
      */
-    public static SparseGraph sparseGraphRead(String path,boolean direct){
+    public static IWeightGraph readWeightGraph(String path,boolean direct,boolean sparse){
         File file = new File(path);
-        return sparseGraphRead(file,direct);
+        return readWeightGraph(file,direct,sparse);
     }
 
-
     /**
-     * 从某个文件中读取图
+     * 从某个文件中读取有权图
      * @param file
      * @param direct
+     * @param sparse 是否是稀疏图
      * @return
      */
-    public static SparseGraph sparseGraphRead(File file,boolean direct){
+    public static IWeightGraph readWeightGraph(File file , boolean direct,boolean sparse){
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             Scanner scanner = new Scanner(new BufferedInputStream(fileInputStream));
@@ -79,11 +87,18 @@ public class GraphRead {
             int V = scanner.nextInt();
             //边数
             int E = scanner.nextInt();
-            SparseGraph graph = new SparseGraph(V,direct);
+            IWeightGraph graph = null;
+            if (sparse){
+                graph = new SparseWeightGraph(V,direct);
+            }else {
+                graph = new DenseWeightGraph(V,direct);
+            }
             while (scanner.hasNext()){
                 int v = scanner.nextInt();
                 int w = scanner.nextInt();
-                graph.addEdge(v,w);
+                double value = scanner.nextDouble();
+                Edge edge = new Edge(v,w,value);
+                graph.addEdge(v,w,edge);
             }
             return graph;
         } catch (FileNotFoundException e) {
@@ -91,6 +106,5 @@ public class GraphRead {
         }
         return null;
     }
-
 
 }

@@ -14,13 +14,28 @@ public class GraphTest {
 
     private static final int N = 100;
 
-    static String graphFile1 = "src/com/qiyei/graph/tinyG.txt";
-    static String graphFile2 = "src/com/qiyei/graph/mediumG.txt";
-    static String graphFile3 = "src/com/qiyei/graph/largeG.txt";
+    private static String graphFile1 = "src/com/qiyei/graph/tinyG.txt";
+    private static String graphFile2 = "src/com/qiyei/graph/mediumG.txt";
+    private static String graphFile3 = "src/com/qiyei/graph/largeG.txt";
+
+    private static String weightGraphFile2 = "src/com/qiyei/graph/mediumEWG.txt";
+
+    private static Random random = new Random();
+
 
     public static void main(String[] args){
-        Random random = new Random();
 
+//        testGraph1();
+
+        testWeightGraph();
+
+    }
+
+
+
+
+
+    private static void testGraph1(){
         DenseGraph denseGraph = new DenseGraph(N,false);
         SparseGraph sparseGraph = new SparseGraph(N,false);
 
@@ -40,7 +55,7 @@ public class GraphTest {
             LogUtil.println(i + " " + sparseGraph.adj(i).toString());
         }
         LogUtil.println("\n denseGraph1 ");
-        DenseGraph denseGraph1 = GraphRead.denseGraphRead(graphFile2,false);
+        DenseGraph denseGraph1 = (DenseGraph) GraphReadUtil.readGraph(graphFile2,false,false);
         if (denseGraph1 == null){
             return;
         }
@@ -63,8 +78,29 @@ public class GraphTest {
             shortPath1.showPath(211);
         }
 
+    }
+
+
+
+    private static void testWeightGraph(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+        LazyPrimMST<Double> lazyPrimMST = new LazyPrimMST<>(sparseGraph);
+
+        LogUtil.println("lazyPrimMST:");
+        for (int i = 0 ; i < lazyPrimMST.getMstEdges().size(); i++){
+            LogUtil.println(lazyPrimMST.getMstEdges().get(i).toString());
+        }
+        LogUtil.println("minWeight:" + lazyPrimMST.getMinWeight());
 
     }
+
+
+
+
+
+
+
+
 
     /**
      * 不使用第三者，交换两个数·
@@ -81,5 +117,8 @@ public class GraphTest {
 
         System.out.print( " m = " + m + " n = " + n);
     }
+
+
+
 
 }

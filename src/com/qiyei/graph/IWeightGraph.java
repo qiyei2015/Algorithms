@@ -6,7 +6,7 @@ package com.qiyei.graph;
  * @email: 1273482124@qq.com
  * @description: 有权图
  */
-public interface IWeightGraph<T extends Number & Comparable> {
+public interface IWeightGraph<T extends Number & Comparable<T>> {
 
     /**
      * 返回顶点数
