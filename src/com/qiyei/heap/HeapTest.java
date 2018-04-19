@@ -13,10 +13,24 @@ import java.util.Random;
 public class HeapTest {
 
 
-    public static void main(String[] args){
 
-        Integer[] array = new Integer[100];
-        Random random = new Random();
+    static Integer[] array = new Integer[100];
+    static Random random = new Random();
+
+
+
+    public static void main(String[] args){
+        testHeap();
+        testIndexMaxHeap();
+    }
+
+
+    
+
+    /**
+     * 测试对
+     */
+    private static void testHeap() {
         for (int i = 0 ; i < 100;i++){
             array[i] = random.nextInt(100);
         }
@@ -33,5 +47,25 @@ public class HeapTest {
         LogUtil.println("");
     }
 
+
+    /**
+     * 测试最大索引堆
+     */
+    private static void testIndexMaxHeap(){
+        //索引堆测试
+        IndexMaxHeap<Integer> indexMaxHeap = new IndexMaxHeap<>(100);
+        for (int i = 0 ; i < 100;i++){
+            indexMaxHeap.insert(i,random.nextInt(100));
+        }
+        LogUtil.println("indexMaxHeap size:" + indexMaxHeap.size());
+        LogUtil.println("indexMaxHeap getIndexMax():" + indexMaxHeap.getIndexMax());
+        LogUtil.println("indexMaxHeap getMax:" + indexMaxHeap.getMax());
+
+        LogUtil.println("indexMaxHeap getItemIndex(5):" + indexMaxHeap.getItemIndex(5));
+
+        for (int i = 0 ; i < 100;i++){
+            LogUtil.println("[ " + indexMaxHeap.getIndexMax() + " " + indexMaxHeap.delMax() + " ]");
+        }
+    }
 
 }

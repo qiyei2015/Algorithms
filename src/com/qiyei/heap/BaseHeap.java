@@ -28,6 +28,8 @@ public class BaseHeap<T extends Comparable<T>> {
      */
     public BaseHeap(int max) {
         pq = new Comparable[max + 1];
+        count = 0;
+        N = max;
     }
 
 
