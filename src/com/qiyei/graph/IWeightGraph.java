@@ -33,11 +33,10 @@ public interface IWeightGraph<T extends Number & Comparable<T>> {
     boolean hasEdge(int v,int w);
 
     /**
-     * 在v,w之间添加一条边
-     * @param v
-     * @param w
+     * 在图中添加一条边 顶点是v - w
+     * @param edge
      */
-    void addEdge(int v,int w,Edge<T> edge);
+    void addEdge(Edge<T> edge);
 
     /**
      * 返回v相邻的顶点

@@ -98,7 +98,7 @@ public class GraphReadUtil {
                 int w = scanner.nextInt();
                 double value = scanner.nextDouble();
                 Edge edge = new Edge(v,w,value);
-                graph.addEdge(v,w,edge);
+                graph.addEdge(edge);
             }
             return graph;
         } catch (FileNotFoundException e) {

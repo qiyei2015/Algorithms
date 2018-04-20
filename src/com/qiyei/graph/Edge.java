@@ -29,6 +29,25 @@ public class Edge<T extends Number & Comparable<T>> implements Comparable<Edge<T
     public Edge() {
     }
 
+    /**
+     * 返回n的另一个顶点
+     * @param n
+     * @return
+     */
+    public int other(int n){
+        if (n == v || n == w){
+            return n == v ? w : v;
+        }
+        return -1;
+    }
+
+    /**
+     * 返回v-w的镜像边 即 w-v
+     * @return
+     */
+    public Edge<T> mirrorEdge(){
+        return new Edge<>(w,v,weight);
+    }
 
     public void setV(int v) {
         this.v = v;
@@ -54,17 +73,6 @@ public class Edge<T extends Number & Comparable<T>> implements Comparable<Edge<T
         return weight;
     }
 
-    /**
-     * 返回n的另一个顶点
-     * @param n
-     * @return
-     */
-    public int other(int n){
-        if (n == v || n == w){
-            return n == v ? w : v;
-        }
-        return -1;
-    }
 
     @Override
     public int compareTo(Edge<T> o) {

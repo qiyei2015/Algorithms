@@ -26,10 +26,13 @@ public class GraphTest {
     public static void main(String[] args){
 
 //        testGraph1();
+//        testWeightGraph();
 
         testLazyPrimMST();
         LogUtil.println("\n\n");
         testPrimMST();
+        LogUtil.println("\n\n");
+        testKruskalMST();
     }
 
     /**
@@ -80,6 +83,23 @@ public class GraphTest {
 
     }
 
+    /**
+     * 测试有权图
+     */
+    private static void testWeightGraph(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+
+        LogUtil.println("WeightGraph:");
+        LogUtil.println("V():" + sparseGraph.V());
+        LogUtil.println("E():" + sparseGraph.E());
+        for (int i = 0 ; i < sparseGraph.V(); i++){
+            for (Edge<Double> edge : sparseGraph.adj(i)){
+                LogUtil.println("V:" + i + " v-w:" + edge.getV() + "-" + edge.getW() + " " + edge.getWeight());
+            }
+        }
+
+    }
+
 
     /**
      * 测试LazyPrim算法
@@ -109,6 +129,21 @@ public class GraphTest {
             LogUtil.println(primMST.getMstEdges().get(i).toString());
         }
         LogUtil.println("minWeight:" + primMST.getMinWeight());
+
+    }
+
+    /**
+     * 测试Kruskal算法
+     */
+    private static void testKruskalMST(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+        KruskalMST<Double> kruskalMST = new KruskalMST<>(sparseGraph);
+
+        LogUtil.println("KruskalMST:");
+        for (int i = 0 ; i < kruskalMST.getMstEdges().size(); i++){
+            LogUtil.println(kruskalMST.getMstEdges().get(i).toString());
+        }
+        LogUtil.println("minWeight:" + kruskalMST.getMinWeight());
 
     }
 

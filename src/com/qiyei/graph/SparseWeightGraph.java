@@ -70,22 +70,22 @@ public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWei
     }
 
     @Override
-    public void addEdge(int v, int w, Edge edge) {
-        if (!assertV(v) || !assertV(w)){
+    public void addEdge(Edge edge) {
+        if (!assertV(edge.getV()) || !assertV(edge.getW())){
             return;
         }
 
         //暂时不处理有平行边的问题
 
         //要除去自旋边的问题
-        if (v == w){
+        if (edge.getV() == edge.getW()){
             return;
         }
         //直接添加到list中就表示v连接了w
-        mG[v].add(edge);
+        mG[edge.getV()].add(edge);
         //无向图的话，也要添加，
         if (!directed){
-            mG[w].add(edge);
+            mG[edge.getW()].add(edge.mirrorEdge());
         }
         mE++;
     }
