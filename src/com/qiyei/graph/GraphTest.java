@@ -27,14 +27,14 @@ public class GraphTest {
 
 //        testGraph1();
 
-        testWeightGraph();
-
+        testLazyPrimMST();
+        LogUtil.println("\n\n");
+        testPrimMST();
     }
 
-
-
-
-
+    /**
+     * 测试图
+     */
     private static void testGraph1(){
         DenseGraph denseGraph = new DenseGraph(N,false);
         SparseGraph sparseGraph = new SparseGraph(N,false);
@@ -81,8 +81,10 @@ public class GraphTest {
     }
 
 
-
-    private static void testWeightGraph(){
+    /**
+     * 测试LazyPrim算法
+     */
+    private static void testLazyPrimMST(){
         IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
         LazyPrimMST<Double> lazyPrimMST = new LazyPrimMST<>(sparseGraph);
 
@@ -95,11 +97,20 @@ public class GraphTest {
     }
 
 
+    /**
+     * 测试Prim算法
+     */
+    private static void testPrimMST(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+        PrimMST<Double> primMST = new PrimMST<>(sparseGraph);
 
+        LogUtil.println("PrimMST:");
+        for (int i = 0 ; i < primMST.getMstEdges().size(); i++){
+            LogUtil.println(primMST.getMstEdges().get(i).toString());
+        }
+        LogUtil.println("minWeight:" + primMST.getMinWeight());
 
-
-
-
+    }
 
 
     /**
