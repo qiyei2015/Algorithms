@@ -11,7 +11,7 @@ import java.util.List;
  * @author Created by qiyei2015 on 2018/4/20.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: kruskal 最小生成树算法
+ * @description: kruskal 最小生成树算法  时间复杂度 O(ElogE)
  */
 public class KruskalMST<T extends Number & Comparable<T>> {
 

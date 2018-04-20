@@ -10,7 +10,7 @@ import java.util.List;
  * @author Created by qiyei2015 on 2018/4/18.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: LazyPrim 最小生成树算法 根据切分定理
+ * @description: LazyPrim 最小生成树算法 根据切分定理 时间复杂度O(ElogE)
  */
 public class LazyPrimMST<T extends Number & Comparable<T>> {
 
