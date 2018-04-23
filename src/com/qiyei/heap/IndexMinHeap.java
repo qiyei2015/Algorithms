@@ -118,6 +118,19 @@ public class IndexMinHeap<T extends Comparable<T>> extends BaseHeap {
     }
 
     /**
+     * 是否包含w结点
+     * @param w
+     * @return
+     */
+    public boolean contains(int w){
+        w++;
+        if (w >= 1 && w <= count){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * 堆的上浮，解决子节点比父结点小的问题,少交换，优化堆的上浮过程
      * 比较是比较pq[]的值，交换是交换indexArray[]的值
      * @param k 节点k上浮

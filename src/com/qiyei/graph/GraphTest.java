@@ -33,6 +33,8 @@ public class GraphTest {
         testPrimMST();
         LogUtil.println("\n\n");
         testKruskalMST();
+        LogUtil.println("\n\n");
+        testDijikstra();
     }
 
     /**
@@ -144,6 +146,22 @@ public class GraphTest {
             LogUtil.println(kruskalMST.getMstEdges().get(i).toString());
         }
         LogUtil.println("minWeight:" + kruskalMST.getMinWeight());
+
+    }
+
+    /**
+     * 测试Dijkstra算法
+     */
+    private static void testDijikstra(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+        Dijkstra<Double> dijkstra = new Dijkstra<>(sparseGraph,0);
+
+        int w = 10;
+
+        LogUtil.println("Dijkstra:");
+        LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
+        LogUtil.println("Dijkstra shortestPathTo("  + w +"):"+ dijkstra.shortestPathTo(w));
+        dijkstra.showShortestPath(w);
 
     }
 
