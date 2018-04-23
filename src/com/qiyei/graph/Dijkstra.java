@@ -142,5 +142,4 @@ public class Dijkstra<T extends Number & Comparable<T>> {
         LogUtil.println("result weight:" + result.doubleValue());
 
     }
-
 }
