@@ -71,6 +71,9 @@ public class NodeList<T> {
         Node<T> p = head;
         Node<T> newHead = null;
 
+        //更新last
+        last = p;
+
         while (p != null){
 
             //保存p的下一个结点
@@ -89,8 +92,40 @@ public class NodeList<T> {
             p = temp;
 
         }
+        //更新head
+        head = newHead;
         return newHead;
     }
+
+    /**
+     * 反转链表结点
+     */
+    public Node<T> reverse2(){
+        Node<T> p = head;
+        Node<T> newHead = null;
+
+        //更新last
+        last = p;
+        
+        while (p != null){
+            //保存p的下一结点，防止p改变时无法获取下一个结点
+            Node<T> temp = p.next;
+
+            //p的下一个结点指向新的头结点
+            p.next = newHead;
+            //更新新头结点，让其指向p
+            newHead = p;
+
+            //更新p
+            p = temp;
+
+        }
+        //更新head
+        head = newHead;
+        return newHead;
+    }
+
+
 
     /**
      * 打印结点

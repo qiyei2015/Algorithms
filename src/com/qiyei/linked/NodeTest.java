@@ -24,5 +24,7 @@ public class NodeTest {
 
         nodeList.show(nodeList.reverse());
 
+        nodeList.show(nodeList.reverse2());
+
     }
 }
