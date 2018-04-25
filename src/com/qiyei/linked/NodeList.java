@@ -106,7 +106,7 @@ public class NodeList<T> {
 
         //更新last
         last = p;
-        
+
         while (p != null){
             //保存p的下一结点，防止p改变时无法获取下一个结点
             Node<T> temp = p.next;

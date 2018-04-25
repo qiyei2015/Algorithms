@@ -19,6 +19,7 @@ public class GraphTest {
     private static String graphFile3 = "src/com/qiyei/graph/largeG.txt";
 
     private static String weightGraphFile2 = "src/com/qiyei/graph/mediumEWG.txt";
+    private static String weightGraphFile3 = "src/com/qiyei/graph/testG2.txt";
 
     private static Random random = new Random();
 
@@ -35,6 +36,8 @@ public class GraphTest {
         testKruskalMST();
         LogUtil.println("\n\n");
         testDijikstra();
+        LogUtil.println("\n\n");
+        testBellmanFord();
     }
 
     /**
@@ -118,7 +121,6 @@ public class GraphTest {
 
     }
 
-
     /**
      * 测试Prim算法
      */
@@ -162,6 +164,22 @@ public class GraphTest {
         LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
         LogUtil.println("Dijkstra shortestPathTo("  + w +"):"+ dijkstra.shortestPathTo(w));
         dijkstra.showShortestPath(w);
+
+    }
+
+    /**
+     * 测试BellmanFord算法
+     */
+    private static void testBellmanFord(){
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile3,true,true);
+        BellmanFord<Double> bellmanFord = new BellmanFord<>(sparseGraph,0);
+
+        int w = 3;
+
+        LogUtil.println("BellmanFord:");
+        LogUtil.println("BellmanFord hasPath("  + w +"):"+ bellmanFord.hasPath(w));
+        LogUtil.println("BellmanFord shortestPathTo("  + w +"):"+ bellmanFord.shortestPathTo(w));
+        bellmanFord.showShortestPath(w);
 
     }
 
