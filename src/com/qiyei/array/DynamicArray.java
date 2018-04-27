@@ -1,7 +1,5 @@
 package com.qiyei.array;
 
-import java.util.Arrays;
-
 /**
  * @author Created by qiyei2015 on 2018/4/27.
  * @version: 1.0
@@ -114,7 +112,7 @@ public class DynamicArray<T> {
                 ", capacity=" + capacity +
                 " }" +
                 "\n" +
-                "element=" + Arrays.toString(element);
+                "element=" + printElement();
     }
 
     /**
@@ -150,7 +148,23 @@ public class DynamicArray<T> {
         element = temp;
     }
 
+    /**
+     * 打印数组元素
+     * @return
+     */
+    private String printElement(){
+        StringBuilder stringBuilder = new StringBuilder();
 
+        stringBuilder.append("[");
+        for (int i = 0 ; i < size ; i++){
+            stringBuilder.append(element[i]);
+            stringBuilder.append(", ");
+        }
+        //删除最后两个字符
+        stringBuilder.delete(stringBuilder.length() - 2,stringBuilder.length());
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
 
 
 }
