@@ -41,7 +41,7 @@ public class ResizingArrayStack<T> implements Iterable<T> {
     public void push(T item){
         //调整大小，如果满了就扩大二倍数组
         if (size == datas.length){
-            reSize(2 * datas.length);
+            resize(2 * datas.length);
         }
         datas[size++] = item;
     }
@@ -57,7 +57,7 @@ public class ResizingArrayStack<T> implements Iterable<T> {
 
         //调整大小，节约空间，如果size 等于大小的四分之一，就减少数组大小
         if (size > 0 && size == datas.length / 4){
-            reSize(datas.length / 2);
+            resize(datas.length / 2);
         }
         return t;
     }
@@ -83,7 +83,7 @@ public class ResizingArrayStack<T> implements Iterable<T> {
      * 将栈重新调整到max大小
      * @param max
      */
-    private void reSize(int max){
+    private void resize(int max){
         T[] temp = (T[]) new Object[max];
         for (int i = 0 ; i < size ; i++){
             temp[i] = datas[i];
