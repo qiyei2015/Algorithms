@@ -165,5 +165,5 @@ public class DynamicArray<T> {
         stringBuilder.append("]");
         return stringBuilder.toString();
     }
-    
+
 }
