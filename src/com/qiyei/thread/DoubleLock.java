@@ -50,7 +50,7 @@ public class DoubleLock {
             }
         }
     }
-    
+
     public synchronized void print3(){
         LogUtil.println("DoubleLock print3() need lock");
         try {

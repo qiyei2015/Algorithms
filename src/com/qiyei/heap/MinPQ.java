@@ -23,7 +23,7 @@ public class MinPQ<T extends Comparable<T>> extends BaseHeap {
     }
 
     /**
-     * 用数组创建堆,时间复杂度 O(logN)
+     * 用数组创建堆,时间复杂度 O(N)
      * @param a
      */
     public MinPQ(Comparable[] a){
@@ -53,6 +53,36 @@ public class MinPQ<T extends Comparable<T>> extends BaseHeap {
         count--;
         sinkBetter(1);
         return t;
+    }
+
+    /**
+     * 获取最小值
+     * @return
+     */
+    public T getMin(){
+        return (T) pq[1];
+    }
+
+    /**
+     * 改变堆顶元素，并调整堆结构
+     * @param t
+     */
+    public void replaceTop(T t){
+        pq[1] = t;
+        sinkBetter(1);
+    }
+
+    @Override
+    public String print() {
+        return printMinPQ();
+    }
+
+    @Override
+    public String toString() {
+        return "MinPQ{" +
+                "count=" + count +
+                ", pq=" + printMinPQ() +
+                '}';
     }
 
     /**
@@ -141,5 +171,16 @@ public class MinPQ<T extends Comparable<T>> extends BaseHeap {
             pq[j] = temp;
             k = j; //更新k的位置
         }
+    }
+
+    private String printMinPQ(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        int size = count;
+        for (int i = 0 ;i < size ;i++){
+            builder.append(delMin() + " ");
+        }
+        builder.append("]");
+        return builder.toString();
     }
 }

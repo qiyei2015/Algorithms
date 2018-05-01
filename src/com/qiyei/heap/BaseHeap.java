@@ -13,11 +13,18 @@ public class BaseHeap<T extends Comparable<T>> {
      */
     protected Comparable[] pq;
 
+    /**
+     * 容量 pq[1....N]
+     */
     protected int N;
-
+    /**
+     * 堆中元素个数
+     */
     protected int count;
 
-
+    /**
+     * 构造方法
+     */
     public BaseHeap() {
         pq = new Comparable[0];
     }
@@ -32,7 +39,10 @@ public class BaseHeap<T extends Comparable<T>> {
         N = max;
     }
 
-
+    /**
+     * 数组创建
+     * @param array
+     */
     public BaseHeap(Comparable[] array) {
         this.pq = new Comparable[array.length + 1];
         System.arraycopy(array,0,pq,1,array.length);
@@ -48,8 +58,20 @@ public class BaseHeap<T extends Comparable<T>> {
         return count == 0;
     }
 
+    /**
+     * 返回堆中元素个数
+     * @return
+     */
     public int size(){
         return count;
+    }
+
+    /**
+     * 打印数组,从小到大
+     * @return
+     */
+    public String print(){
+        return null;
     }
 
     /**
@@ -72,6 +94,5 @@ public class BaseHeap<T extends Comparable<T>> {
         pq[i] = pq[j];
         pq[j] = temp;
     }
-
 
 }

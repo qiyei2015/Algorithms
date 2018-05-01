@@ -24,18 +24,19 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
     }
 
     /**
-     * 用数组创建堆,时间复杂度 O(logN)
+     * 用数组创建堆,时间复杂度 O(N)
      * @param a
      */
     public MaxPQ(Comparable[] a){
         super(a);
+        //最后一个父结点是 count / 2 [count/2...1]这个结点区间的结点都下沉，就是堆了
         for (int i = count/2; i >= 1 ; i--){
             sinkBetter(i);
         }
     }
 
     /**
-     * 插入一个元素
+     * 插入一个元素，并上浮
      * @param t
      */
     public void insert(T t){
@@ -49,11 +50,42 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
      */
     public T delMax(){
         T t = (T) pq[1];
+        //删除最大的，然后将末尾元素交换，并下沉
         exch(1,count);
         pq[count] = null;
         count--;
         sinkBetter(1);
         return t;
+    }
+
+    /**
+     * 获取最大值
+     * @return
+     */
+    public T getMax(){
+        return (T) pq[1];
+    }
+
+    /**
+     * 改变堆顶元素，并调整堆结构
+     * @param t
+     */
+    public void replaceTop(T t){
+        pq[1] = t;
+        sinkBetter(1);
+    }
+
+    @Override
+    public String print() {
+        return printMaxPQ();
+    }
+
+    @Override
+    public String toString() {
+        return "MaxPQ{" +
+                "count=" + count +
+                ", pq=" + printMaxPQ() +
+                '}';
     }
 
     /**
@@ -156,4 +188,16 @@ public class MaxPQ<T extends Comparable<T>> extends BaseHeap{
             k = j; //更新k的位置
         }
     }
+
+    private String printMaxPQ(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        int size = count;
+        for (int i = 0 ;i < size ;i++){
+            builder.append(delMax() + " ");
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
 }

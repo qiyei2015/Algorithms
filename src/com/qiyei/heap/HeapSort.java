@@ -26,8 +26,10 @@ public class HeapSort extends BaseSort {
     }
 
     public void sort2(Comparable[] array) {
+        //时间复杂度O(n)
         MaxPQ maxPQ = new MaxPQ(array);
         for (int i = array.length - 1 ; i >= 0 ; i--){
+            //时间复杂度O(logn)
             array[i] = maxPQ.delMax();
         }
     }

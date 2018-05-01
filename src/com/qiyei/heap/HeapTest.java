@@ -1,5 +1,6 @@
 package com.qiyei.heap;
 
+import com.qiyei.sort.QuickSort;
 import com.qiyei.util.LogUtil;
 
 import java.util.Random;
@@ -17,7 +18,8 @@ public class HeapTest {
     public static void main(String[] args){
 //        testHeap();
 //        testIndexMaxHeap();
-        testIndexMinHeap();
+//        testIndexMinHeap();
+        testTopK();
     }
 
     /**
@@ -88,6 +90,68 @@ public class HeapTest {
         for (int i = 0 ; i < 100;i++){
             LogUtil.println("[ " + indexMinHeap.getIndexMin() + " " + indexMinHeap.delMin() + " ]");
         }
+    }
+
+    /**
+     * 测试TopK问题
+     */
+    private static void testTopK(){
+        int N = 1000000;
+        int M = 100;
+
+
+        Integer[] array = new Integer[N];
+        Integer[] tempArray = new Integer[M];
+        Random random = new Random();
+        for (int i = 0 ;i < N ; i++){
+            array[i] = random.nextInt(10*N);
+            if (i < M){
+                tempArray[i] = array[i];
+            }
+        }
+
+        //找出N中M个最大的数
+        MinPQ<Integer> minPQ = new MinPQ<>(tempArray);
+        for (int i = M ; i< N ;i++){
+            if (array[i] > minPQ.getMin()){
+                minPQ.replaceTop(array[i]);
+            }
+        }
+
+        //找出N中M个最小的数
+        MaxPQ<Integer> maxPQ = new MaxPQ<>(tempArray);
+        for (int i = M ; i< N ;i++){
+            if (array[i] < maxPQ.getMax()){
+                maxPQ.replaceTop(array[i]);
+            }
+        }
+
+        //快速排序做参考
+        QuickSort quickSort = new QuickSort();
+        quickSort.sortThreeWays(array);
+
+        LogUtil.println(N + "中" + M + "个最大的数为:" + minPQ.print());
+        LogUtil.println(N + "中" + M + "个最大的数为:" + printArray(array,N-M,N));
+
+        LogUtil.println(N + "中" + M + "个最小的数为:" + maxPQ.print());
+        LogUtil.println(N + "中" + M + "个最小的数为:" + printArray(array,0,M));
+    }
+
+    /**
+     * 打印数组
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
+    private static String printArray(Comparable[] arr,int start,int end){
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        for (int i = start ; i < end;i++){
+            builder.append(arr[i] + " ");
+        }
+        builder.append("]");
+        return builder.toString();
     }
 
 }
