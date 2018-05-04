@@ -197,6 +197,7 @@ public class QuickSort extends BaseSort {
         exch(array,lo,k);
 
         Comparable v = array[lo];
+        //(
         int i = lo + 1;
         int j = hi;
         //找到切分点 a[lo..i) <= v,a(j..hi] => v
