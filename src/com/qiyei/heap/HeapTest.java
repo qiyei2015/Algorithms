@@ -18,8 +18,8 @@ public class HeapTest {
     public static void main(String[] args){
 //        testHeap();
 //        testIndexMaxHeap();
-//        testIndexMinHeap();
-        testTopK();
+        testIndexMinHeap();
+//        testTopK();
     }
 
     /**
@@ -62,6 +62,9 @@ public class HeapTest {
 
         LogUtil.println("indexMaxHeap getItemIndex(5):" + indexMaxHeap.getItemIndex(5));
 
+        LogUtil.println("indexMaxHeap data:");
+        indexMaxHeap.printData();
+
         for (int i = 0 ; i < 100;i++){
             LogUtil.println("[ " + indexMaxHeap.getIndexMax() + " " + indexMaxHeap.delMax() + " ]");
         }
@@ -86,7 +89,8 @@ public class HeapTest {
         LogUtil.println("indexMinHeap getMin:" + indexMinHeap.getMin());
 
         LogUtil.println("indexMinHeap getItemIndex(5):" + indexMinHeap.getItemIndex(5));
-
+        LogUtil.println("indexMinHeap data:");
+        indexMinHeap.printData();
         for (int i = 0 ; i < 100;i++){
             LogUtil.println("[ " + indexMinHeap.getIndexMin() + " " + indexMinHeap.delMin() + " ]");
         }

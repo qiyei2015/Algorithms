@@ -1,5 +1,7 @@
 package com.qiyei.heap;
 
+import com.qiyei.util.LogUtil;
+
 /**
  * @author Created by qiyei2015 on 2018/3/31.
  * @version: 1.0
@@ -23,10 +25,10 @@ public class IndexMaxHeap<T extends Comparable<T>> extends BaseHeap{
         indexArray = new int[max + 1];
     }
 
-    public IndexMaxHeap(Comparable[] array) {
-        super(array);
-//        System.arraycopy(array,0,in,1,array.length);
-    }
+//    public IndexMaxHeap(Comparable[] array) {
+//        super(array);
+////        System.arraycopy(array,0,in,1,array.length);
+//    }
 
     /**
      * 插入元素到最大索引堆
@@ -166,5 +168,14 @@ public class IndexMaxHeap<T extends Comparable<T>> extends BaseHeap{
         int temp = indexArray[i];
         indexArray[i] = indexArray[j];
         indexArray[j] = temp;
+    }
+
+    /**
+     * 打印数组
+     */
+    public void printData(){
+        for (int i = 1 ; i < pq.length ;i++){
+            LogUtil.println("data:[ " + (i - 1) + " " + pq[i] + " ]");
+        }
     }
 }

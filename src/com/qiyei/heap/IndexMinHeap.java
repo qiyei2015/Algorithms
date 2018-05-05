@@ -1,5 +1,7 @@
 package com.qiyei.heap;
 
+import com.qiyei.util.LogUtil;
+
 /**
  * @author Created by qiyei2015 on 2018/4/19.
  * @version: 1.0
@@ -23,9 +25,9 @@ public class IndexMinHeap<T extends Comparable<T>> extends BaseHeap {
         indexArray = new int[max + 1];
     }
 
-    public IndexMinHeap(Comparable[] array) {
-        super(array);
-    }
+//    public IndexMinHeap(Comparable[] array) {
+//        super(array);
+//    }
 
     /**
      * 插入元素到最小索引堆
@@ -181,5 +183,14 @@ public class IndexMinHeap<T extends Comparable<T>> extends BaseHeap {
         int temp = indexArray[i];
         indexArray[i] = indexArray[j];
         indexArray[j] = temp;
+    }
+
+    /**
+     * 打印数组
+     */
+    public void printData(){
+        for (int i = 1 ; i < pq.length ;i++){
+            LogUtil.println("data:[ " + (i - 1) + " " + pq[i] + " ]");
+        }
     }
 }
