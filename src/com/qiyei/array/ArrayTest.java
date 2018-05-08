@@ -15,6 +15,13 @@ public class ArrayTest {
 
     public static void main(String[] args){
 
+//        testDynamicArray();
+
+        testTwoDimensionalArray();
+    }
+
+
+    private static void testDynamicArray() {
         DynamicArray<Integer> integerDynamicArray = new DynamicArray<>();
         Random random = new Random();
 
@@ -28,5 +35,19 @@ public class ArrayTest {
             integerDynamicArray.remove();
         }
         LogUtil.println(integerDynamicArray.toString());
+    }
+
+    private static void testTwoDimensionalArray(){
+        int size = 100;
+        int[][] array = new int[size][size];
+        int k = 0;
+        for (int i = 0 ;i < size ;i++){
+            for (int j = 0 ;j < size;j++){
+                array[i][j] = k++;
+            }
+        }
+        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.NONE);
+        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.TOP_LEFT);
+
     }
 }
