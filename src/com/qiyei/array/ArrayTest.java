@@ -28,7 +28,6 @@ public class ArrayTest {
         for (int i = 0 ;i < 100 ;i++){
             integerDynamicArray.add(random.nextInt(1000));
         }
-
         LogUtil.println(integerDynamicArray.toString());
 
         for (int i = 0 ;i < 80 ;i++){

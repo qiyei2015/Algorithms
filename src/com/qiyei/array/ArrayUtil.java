@@ -99,7 +99,6 @@ public class ArrayUtil {
             LogUtil.println("");
         }
 
-
         //再从1 到 row - 1 行
         for (int k = 1 ; k <= row - 1; k++){
             //每一列的循环 行下标i会增加，列下标j会减少

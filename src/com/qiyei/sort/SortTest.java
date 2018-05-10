@@ -1,5 +1,7 @@
 package com.qiyei.sort;
 
+import com.qiyei.util.LogUtil;
+
 import java.util.Random;
 
 /**
@@ -12,6 +14,11 @@ public class SortTest {
 
 
     public static void main(String[] args){
+//        testSort1();
+        testRankN();
+    }
+
+    private static void testSort1() {
         Random random = new Random(1234567);
         Integer[] a1 = new Integer[100];
         Integer[] a2 = new Integer[100];
@@ -27,6 +34,21 @@ public class SortTest {
         InsertionSort insertionSort = new InsertionSort();
         insertionSort.sort(a2);
         insertionSort.print(a2);
+    }
+
+
+    private static void testRankN(){
+        int size = 100;
+        Random random = new Random(1234567);
+        Integer[] a1 = new Integer[size];
+        for (int i = 0;i< size ;i++){
+            a1[i] = random.nextInt(1000);
+        }
+        int k = 3;
+        QuickSort quickSort = new QuickSort();
+        quickSort.sortThreeWays(a1);
+        quickSort.print(a1);
+        LogUtil.println("第" + k + "大数是：" + quickSort.search(a1,k));
 
     }
 

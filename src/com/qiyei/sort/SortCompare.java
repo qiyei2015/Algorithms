@@ -64,7 +64,7 @@ public class SortCompare {
                 break;
             case "quick2" :
                 quickSort.sortTwoWays(array);
-//                quickSort.print(array);
+                quickSort.print(array);
                 break;
             case "quick3" :
                 quickSort.sortThreeWays(array);
