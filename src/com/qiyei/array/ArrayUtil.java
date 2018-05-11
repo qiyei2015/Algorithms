@@ -17,7 +17,7 @@ public class ArrayUtil {
         NONE,
         TOP_LEFT,
         TOP_RIGHT,
-        BOTTOM__LFET,
+        BOTTOM_LEFT,
         BOTTOM_RIGHT
     }
 
@@ -33,10 +33,13 @@ public class ArrayUtil {
                 printTwoDimensionalArrayTopLeft(array);
                 break;
             case TOP_RIGHT:
+                printTwoDimensionalArrayTopRight(array);
                 break;
-            case BOTTOM__LFET:
+            case BOTTOM_LEFT:
+                printTwoDimensionalArrayBottomLeft(array);
                 break;
             case BOTTOM_RIGHT:
+                printTwoDimensionalArrayBottomRight(array);
                 break;
             default:
                 printTwoDimensionalArray(array);
@@ -110,6 +113,126 @@ public class ArrayUtil {
         }
         LogUtil.println("");
     }
+
+    /**
+     * 左上角开始打印二维矩阵数组
+     * @param array
+     */
+    private static void printTwoDimensionalArrayTopRight(int[][] array){
+        //行 共有 0 -- row-1 行
+        int row = array.length;
+        //列 共有 0 -- column-1 行
+        int column = array.length;
+
+        int maxSize = row * column;
+        int len = (maxSize + "").length();
+
+        //初始角标
+        int i = 0;
+        int j = column - 1;
+
+        //右上角，我们可以认为先从column - 1 到 0 列
+        for (int k = column - 1 ; k >= 0; k--){
+            //每一列的循环 行下标i会增加，列下标j会增加
+            for (i = 0 ,j = k; i <= column - 1 - k && j <= column - 1 ; i++,j++){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+
+        //再从1 到 row - 1 行
+        for (int k = 1 ; k <= row - 1; k++){
+            //每一列的循环 行下标i会增加，列下标j会增加
+            for (i = k ,j = 0; i <= row - 1 && j <= row - 1 - k ; i++,j++){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+        LogUtil.println("");
+    }
+
+    /**
+     * 左下角开始打印二维矩阵数组
+     * @param array
+     */
+    private static void printTwoDimensionalArrayBottomLeft(int[][] array){
+        //行 共有 0 -- row-1 行
+        int row = array.length;
+        //列 共有 0 -- column-1 行
+        int column = array.length;
+
+        int maxSize = row * column;
+        int len = (maxSize + "").length();
+
+        //初始角标
+        int i = row - 1;
+        int j = 0;
+
+        //右上角，我们可以认为先从row - 1 到 0 行
+        for (int k = row - 1 ; k >= 0; k--){
+            //每一列的循环 行下标i会增加，列下标j会增加
+            for (i = k ,j = 0; i <= row - 1 && j <= row - 1 - k ; i++,j++){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+
+        //再从1 到 co - 1 列
+        for (int k = 1 ; k <= column - 1; k++){
+            //每一列的循环 行下标i会增加，列下标j会增加
+            for (i = 0 ,j = k; i <= column - 1 - k && j <= column - 1 ; i++,j++){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+        LogUtil.println("");
+    }
+
+
+    /**
+     * 右下角开始打印二维矩阵数组
+     * @param array
+     */
+    private static void printTwoDimensionalArrayBottomRight(int[][] array){
+        //行 共有 0 -- row-1 行
+        int row = array.length;
+        //列 共有 0 -- column-1 行
+        int column = array.length;
+
+        int maxSize = row * column;
+        int len = (maxSize + "").length();
+
+        //初始角标
+        int i = row - 1;
+        int j = column - 1;
+
+        //右上角，我们可以认为先从row - 1 到 0 行
+        for (int k = row - 1 ; k >= 0; k--){
+            //每一列的循环 行下标i会增加，列下标j减少
+            for (i = k ,j = row - 1; i <= row - 1 && j >= k ; i++,j--){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+
+        //再从column - 2 到 0列
+        for (int k = column - 2 ; k >= 0; k--){
+            //每一列的循环 行下标i会增加，列下标j会减少
+            for (i = 0 ,j = k; i <= k && j >= 0 ; i++,j--){
+                LogUtil.print(getFixedLenString(array[i][j] + "",len," ") + " ");
+            }
+            //换行
+            LogUtil.println("");
+        }
+        LogUtil.println("");
+    }
+
+
 
     /**
      * 获取定长的字符串
