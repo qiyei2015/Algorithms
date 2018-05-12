@@ -37,17 +37,17 @@ public class ArrayTest {
     }
 
     private static void testTwoDimensionalArray(){
-        int size = 10;
+        int size = 4;
         int[][] array = new int[size][size];
         int k = 0;
         for (int i = 0 ;i < size ;i++){
             for (int j = 0 ;j < size;j++){
-                array[i][j] = k++;
+                array[i][j] = ++k;
             }
         }
         ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.NONE);
-        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.TOP_LEFT);
-        ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.TOP_RIGHT);
+//        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.TOP_LEFT);
+//        ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.TOP_RIGHT);
         ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.BOTTOM_LEFT);
         ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.BOTTOM_RIGHT);
     }
