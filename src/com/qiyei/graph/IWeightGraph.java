@@ -39,7 +39,7 @@ public interface IWeightGraph<T extends Number & Comparable<T>> {
     void addEdge(Edge<T> edge);
 
     /**
-     * 返回v相邻的顶点
+     * 返回v连接的边
      * @param v
      * @return
      */
