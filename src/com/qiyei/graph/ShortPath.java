@@ -6,7 +6,7 @@ import java.util.*;
  * @author Created by qiyei2015 on 2018/4/12.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 使用广度优先遍历图
  */
 public class ShortPath {
 
@@ -29,7 +29,7 @@ public class ShortPath {
     private int[] from;
 
     /**
-     * 表示从s到目标节点的最短距离
+     * 表示从s到目标节点的最短距离，即经过的节点个数
      */
     private int[] order;
 
@@ -44,8 +44,15 @@ public class ShortPath {
             from[i] = -1;
             order[i] = -1;
         }
-        //进行广度优先遍历 无向图的最短路径算法
+        //广度优先遍历
+        bfs();
+    }
 
+    /**
+     * 广度优先遍历，使用辅助结构队列
+     */
+    public void bfs(){
+        //进行广度优先遍历 无向图的最短路径算法
         Queue<Integer> queue = new ArrayDeque<>();
 
         queue.add(source);

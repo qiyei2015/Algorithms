@@ -1,5 +1,6 @@
 package com.leetcode.array;
 
+import com.qiyei.array.ArrayUtil;
 import com.qiyei.util.LogUtil;
 
 /**
@@ -67,21 +68,10 @@ public class MoveZeros {
         for (int i = 0 ;i < length ;i++){
             if (nums[i] != 0){
                 //与第j个元素交换
-                exch(nums,i,j);
+                ArrayUtil.exch(nums,i,j);
                 j++;
             }
         }
     }
 
-    /**
-     * 交换数组
-     * @param array
-     * @param i
-     * @param j
-     */
-    public void exch(int[] array,int i,int j){
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
 }

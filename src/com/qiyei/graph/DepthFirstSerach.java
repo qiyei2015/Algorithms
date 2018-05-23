@@ -7,7 +7,7 @@ import java.util.List;
  * @author Created by qiyei2015 on 2018/4/11.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 深度优先搜索
+ * @description: 深度优先搜索 O(V+E) ？
  */
 public class DepthFirstSerach {
 

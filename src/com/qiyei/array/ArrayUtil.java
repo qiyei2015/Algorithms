@@ -241,4 +241,16 @@ public class ArrayUtil {
         return sb.toString();
     }
 
+    /**
+     * 交换数组
+     * @param array
+     * @param i
+     * @param j
+     */
+    public static void exch(int[] array,int i,int j){
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
 }
