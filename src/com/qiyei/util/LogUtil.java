@@ -62,4 +62,19 @@ public class LogUtil {
         }
         LogUtil.print("\n");
     }
+
+    /**
+     * 打印数组
+     * @param array
+     */
+    public static void printArray(char[] array){
+        for (int i = 0 ;i < array.length ; i++){
+            LogUtil.print(array[i] + " ");
+            //每10个数换一行
+            if ((i + 1) % 10 == 0){
+                LogUtil.print("\n");
+            }
+        }
+        LogUtil.print("\n");
+    }
 }

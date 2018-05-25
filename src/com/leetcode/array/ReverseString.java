@@ -24,7 +24,7 @@ public class ReverseString {
         return new String(array);
     }
 
-    private void exch(char[] array,int i,int j){
+    public static void exch(char[] array,int i,int j){
         char temp = array[i];
         array[i] = array[j];
         array[j] = temp;

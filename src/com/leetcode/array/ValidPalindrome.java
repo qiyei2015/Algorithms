@@ -12,19 +12,6 @@ import com.qiyei.util.LogUtil;
 public class ValidPalindrome {
 
 
-
-    public static void main(String[] args){
-        String s = "A man, a plan, a canal: Panama";
-        String s1 = "race a car";
-        String s2 = "0P";
-        String s3 = "Zeus was deified, saw Suez.";
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s1));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s2));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s3));
-    }
-
-
     public boolean isPalindrome(String s) {
         char[] array = s.toCharArray();
         int i = 0;

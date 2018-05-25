@@ -253,4 +253,15 @@ public class ArrayUtil {
         array[j] = temp;
     }
 
+    /**
+     * 交换char
+     * @param array
+     * @param i
+     * @param j
+     */
+    public static void exch(char[] array,int i,int j){
+        char temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
