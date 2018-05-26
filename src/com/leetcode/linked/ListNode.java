@@ -72,12 +72,15 @@ public class ListNode {
      */
     public static void show(ListNode node){
         ListNode p = node;
+        StringBuilder builder = new StringBuilder();
         while (p != null){
-            LogUtil.print(p.val + " -> ");
+            builder.append(p.val);
+            if (p.next != null){
+                builder.append(" -> ");
+            }
             p = p.next;
         }
-        LogUtil.print("NULL");
-        LogUtil.println("");
+        LogUtil.println(builder.toString());
     }
 
 }
