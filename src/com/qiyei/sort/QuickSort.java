@@ -173,7 +173,7 @@ public class QuickSort extends BaseSort {
         int j = lo;
         //找到切分点 a[lo..j-1] < a[j],a[j+1..hi] > a[j]
         for (int i = lo + 1; i <= hi ;i++){
-            //如果a[i]比v大，就交换j+1和i,并且j++
+            //如果a[i]比v小，就交换j+1和i,并且j++
             if (less(array[i],v)){
                 exch(array,j + 1,i);
                 j++;
