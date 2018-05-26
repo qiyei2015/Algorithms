@@ -12,7 +12,8 @@ public class LeetCodeLinkedTest {
 
 //        testReverseLinkedList();
 //        testRemoveDuplicatesFromSortedList();
-        testRemoveLinkedListElement();
+//        testRemoveLinkedListElement();
+        testSwapNodesInPairs();
     }
 
     static void testReverseLinkedList(){
@@ -27,7 +28,7 @@ public class LeetCodeLinkedTest {
         ListNode list = ListNode.creatRandomSortListNode(10,20);
         ListNode.show(list);
 
-        ListNode list2 = new RemoveDuplicatesFromSortedList().deleteDuplicates(list);
+        ListNode list2 = new RemoveDuplicatesFromList().deleteDuplicates(list);
         ListNode.show(list2);
     }
 
@@ -39,5 +40,13 @@ public class LeetCodeLinkedTest {
         ListNode.show(list2);
         ListNode list3 = new RemoveLinkedListElement().removeElements(list,2);
         ListNode.show(list3);
+    }
+
+    static void testSwapNodesInPairs(){
+        ListNode list = ListNode.creatRandomListNode(10,10);
+        ListNode.show(list);
+
+        ListNode list2 = new SwapNodesInPairs().swapPairs(list);
+        ListNode.show(list2);
     }
 }

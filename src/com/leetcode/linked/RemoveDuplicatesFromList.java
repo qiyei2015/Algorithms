@@ -6,7 +6,7 @@ package com.leetcode.linked;
  * @email: 1273482124@qq.com
  * @description: 83 删除链表重复元素
  */
-public class RemoveDuplicatesFromSortedList {
+public class RemoveDuplicatesFromList {
 
     /**
      * 删除重复元素
