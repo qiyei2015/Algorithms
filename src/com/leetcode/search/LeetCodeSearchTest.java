@@ -13,7 +13,8 @@ import java.util.List;
 public class LeetCodeSearchTest {
 
     public static void main(String[] args){
-        testThreeSum();
+//        testThreeSum();
+        testNumberOfBoomerangs();
     }
 
 
@@ -23,4 +24,9 @@ public class LeetCodeSearchTest {
         LogUtil.println(list.toString());
      }
 
+    private static void testNumberOfBoomerangs(){
+        int[][] nums = new int[][]{{0,0},{1,0},{2,0}};
+        int res = new NumberOfBoomerangs().numberOfBoomerangs(nums);
+        LogUtil.println("res:" + res);
+    }
 }
