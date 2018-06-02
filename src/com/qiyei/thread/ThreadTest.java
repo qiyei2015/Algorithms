@@ -11,6 +11,15 @@ public class ThreadTest {
 
     public static void main(String[] args){
 
+//        testDoubleLock();
+
+//        new ReentrantLockDemo().testTryLock();
+//        new ReentrantLockDemo().testTryLock2();
+//        new ReentrantLockDemo().testLock();
+        new ReentrantLockDemo().testInterruptiblyLock();
+    }
+
+    private static void testDoubleLock() {
         DoubleLock lock = new DoubleLock();
 
         new Thread(new Runnable() {
