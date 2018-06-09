@@ -1,5 +1,7 @@
 package com.qiyei;
 
+import com.qiyei.java8.JavaNew;
+
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -12,7 +14,8 @@ import java.net.URLClassLoader;
 public class JavaTest {
 
     public static void main(String[] args){
-        testClassLoader();
+//        testClassLoader();
+        new JavaNew().testStream();
     }
 
 
@@ -35,6 +38,8 @@ public class JavaTest {
             //是BootstrapLoader
             System.out.println("ExtClassLoader parent ClassLoader:" + parent2.toString());
         }
+
+
 
     }
 
