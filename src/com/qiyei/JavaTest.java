@@ -16,6 +16,12 @@ public class JavaTest {
     public static void main(String[] args){
 //        testClassLoader();
         new JavaNew().testStream();
+
+
+        final Son son = new Son();
+        son.setName("hello");
+        son.setName("hehh ");
+
     }
 
 

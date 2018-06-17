@@ -10,7 +10,16 @@ import java.util.HashMap;
  */
 public class FourSumII {
 
+    /**
+     *
+     * @param A
+     * @param B
+     * @param C
+     * @param D
+     * @return
+     */
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+        //记录A+B中 key freq出现的pinglv
         HashMap<Integer,Integer> record1 = new HashMap<>();
 
         for (int i = 0 ;i < A.length ;i++){

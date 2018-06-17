@@ -11,7 +11,9 @@ import com.qiyei.util.LogUtil;
 public class LeetCodeQuqueTest {
 
     public static void main(String[] args){
-        testTopKFrequentElements();
+        testValidParentheses();
+
+//        testTopKFrequentElements();
     }
 
     private static void testTopKFrequentElements(){
@@ -19,4 +21,10 @@ public class LeetCodeQuqueTest {
         LogUtil.println(new TopKFrequentElements().topKFrequent(nums,2).toString());
     }
 
+    private static void testValidParentheses(){
+        String s = "()";
+        LogUtil.println(s + ":"+new ValidParentheses().isValid(s));
+        String s2 = "(]";
+        LogUtil.println(s2 + ":"+new ValidParentheses().isValid(s2));
+    }
 }
