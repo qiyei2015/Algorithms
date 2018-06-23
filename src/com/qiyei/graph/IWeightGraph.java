@@ -39,10 +39,21 @@ public interface IWeightGraph<T extends Number & Comparable<T>> {
     void addEdge(Edge<T> edge);
 
     /**
+     * 返回 v - w 对应的权值
+     * @param v
+     * @param w
+     * @return
+     */
+    T getWeight(int v,int w);
+
+    /**
      * 返回v连接的边
      * @param v
      * @return
      */
     Iterable<Edge<T>> adj(int v);
+
+
+    T getWeigthFor(int[] array);
 
 }

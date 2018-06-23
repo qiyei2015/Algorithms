@@ -94,6 +94,13 @@ public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeig
         mE++;
     }
 
+    @Override
+    public T getWeight(int v, int w) {
+        if (mG[v][w] != null){
+            return mG[v][w].getWeight();
+        }
+        return null;
+    }
 
     /**
      * 与其相邻的边
@@ -109,6 +116,11 @@ public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeig
             }
         }
         return list;
+    }
+
+    @Override
+    public Number getWeigthFor(int[] list) {
+        return null;
     }
 
 

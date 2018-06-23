@@ -40,4 +40,19 @@ public class BubbleSort extends BaseSort{
             }
         }
     }
+
+    /**
+     * 从后往前扫描，每次把最大的元素排好序
+     * @param array
+     */
+    public void sortFaceToBack(Comparable[] array) {
+        for (int i = 0 ;i < array.length ;i++){
+            for (int j = 0; j < array.length - i - 1;j++){
+                //如果j比j+1小，就排到后面去
+                if (less(array[j],array[j+1])){
+                    exch(array,j,j+1);
+                }
+            }
+        }
+    }
 }

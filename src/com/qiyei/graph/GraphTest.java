@@ -1,5 +1,6 @@
 package com.qiyei.graph;
 
+import com.qiyei.graph.th.SolutionTrains;
 import com.qiyei.util.LogUtil;
 
 import java.util.Random;
@@ -21,6 +22,8 @@ public class GraphTest {
     private static String weightGraphFile2 = "src/com/qiyei/graph/mediumEWG.txt";
     private static String weightGraphFile3 = "src/com/qiyei/graph/testG2.txt";
 
+    private static String directGraph = "src/com/qiyei/graph/tinyDirectGraph.txt";
+
     private static Random random = new Random();
 
 
@@ -29,15 +32,17 @@ public class GraphTest {
 //        testGraph1();
 //        testWeightGraph();
 
-        testLazyPrimMST();
-        LogUtil.println("\n\n");
-        testPrimMST();
-        LogUtil.println("\n\n");
-        testKruskalMST();
-        LogUtil.println("\n\n");
-        testDijikstra();
-        LogUtil.println("\n\n");
-        testBellmanFord();
+//        testLazyPrimMST();
+//        LogUtil.println("\n\n");
+//        testPrimMST();
+//        LogUtil.println("\n\n");
+//        testKruskalMST();
+//        LogUtil.println("\n\n");
+//        testDijikstra();
+//        LogUtil.println("\n\n");
+//        testBellmanFord();
+
+        testDijikstra222222();
     }
 
     /**
@@ -151,6 +156,7 @@ public class GraphTest {
 
     }
 
+
     /**
      * 测试Dijkstra算法
      */
@@ -166,6 +172,46 @@ public class GraphTest {
         dijkstra.showShortestPath(w);
 
     }
+
+    /**
+     * 测试Dijkstra算法
+     */
+    private static void testDijikstra222222(){
+        IWeightGraph<Integer> sparseGraph = (IWeightGraph<Integer>) GraphReadUtil.readWeightGraph(directGraph,true,true);
+
+        //A:0 B:1 C:2 D:3 E:4
+
+        int[] a1 = new int[]{0,1,2};
+        int[] a2 = new int[]{0,3};
+        int[] a3 = new int[]{0,3,2};
+        int[] a4 = new int[]{0,4,1,2,3};
+        int[] a5 = new int[]{0,4,3};
+
+//        LogUtil.println("a1:" + sparseGraph.getWeigthFor(a1));
+//        LogUtil.println("a2:" + sparseGraph.getWeigthFor(a2));
+//        LogUtil.println("a3:" + sparseGraph.getWeigthFor(a3));
+//        LogUtil.println("a4:" + sparseGraph.getWeigthFor(a4));
+//        LogUtil.println("a5:" + sparseGraph.getWeigthFor(a5));
+
+
+        SolutionTrains<Integer> solutionTrains = new SolutionTrains<>(sparseGraph);
+//        LogUtil.println("res:" + solutionTrains.getTripsMax(2,2,3).toString());
+//        LogUtil.println("res 2 :" + solutionTrains.getTripsMax(0,1,5).toString());
+//        LogUtil.println("res exactly :" + solutionTrains.getTripsExactly(0,2,4).toString());
+
+        LogUtil.println("res number :" + solutionTrains.getTrips(2,2,30).toString());
+
+
+    }
+
+    private static void print(Dijkstra<?> dijkstra,int w){
+        LogUtil.println("Dijkstra:");
+        LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
+        LogUtil.println("Dijkstra shortestPathTo("  + w +"):"+ dijkstra.shortestPathTo(w));
+        dijkstra.showShortestPath(w);
+        LogUtil.println("\n");
+    }
+
 
     /**
      * 测试BellmanFord算法

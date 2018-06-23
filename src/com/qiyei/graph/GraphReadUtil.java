@@ -15,6 +15,20 @@ import java.util.Scanner;
 public class GraphReadUtil {
 
     /**
+     * 5 9
+     0 1 5 //AB 5
+     1 2 4 //DB 4
+     2 3 8 //CD 8
+     3 2 8 //DC 8
+     3 4 6 //DE 6
+     0 3 5 //AD 5
+     2 4 2 //CE 2
+     4 1 3 // EB 3
+     0 4 7 //AE 7
+     */
+
+
+    /**
      * 从某个文件中读取图
      * @param path
      * @param direct

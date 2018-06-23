@@ -38,13 +38,13 @@ public class SortCompare {
                 break;
             case "insertionOpt" :
                 insertionSort.sortOpt(array);
-//                insertionSort.print(array);
+                insertionSort.print(array);
                 break;
             case "selection" :
                 selectionSort.sort(array);
                 break;
             case "bubble" :
-                bubbleSort.sortBackToFace(array);
+                bubbleSort.sortFaceToBack(array);
 //                bubbleSort.print(array);
                 break;
             case "shell" :
@@ -64,7 +64,7 @@ public class SortCompare {
                 break;
             case "quick2" :
                 quickSort.sortTwoWays(array);
-                quickSort.print(array);
+//                quickSort.print(array);
                 break;
             case "quick3" :
                 quickSort.sortThreeWays(array);

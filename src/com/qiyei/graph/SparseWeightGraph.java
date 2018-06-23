@@ -96,6 +96,27 @@ public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWei
     }
 
     /**
+     * 返回 v - w 权值
+     * @param v
+     * @param w
+     * @return
+     */
+    @Override
+    public T getWeight(int v,int w){
+        if (!assertV(v) || !assertV(w)){
+            return null;
+        }
+
+        //遍历，发现如果有等于w的节点就表示有边，就返回对应的权值
+        for (int i = 0 ; i < mG[v].size() ; i++){
+            if (mG[v].get(i).other(v) == w){
+                return mG[v].get(i).getWeight();
+            }
+        }
+        return null;
+    }
+
+    /**
      * 判断n是否在顶点之内
      * @param n
      * @return
@@ -107,4 +128,29 @@ public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWei
         return false;
     }
 
+
+    //做一个简单的路径遍历
+
+    //单源最短路径算法
+
+    @Override
+    public T getWeigthFor(int[] path){
+        Number number = new Double(0);
+        boolean reachable = true;
+        if (path == null){
+            return (T) number;
+        }
+        for (int i = 0 ; i < path.length - 1; i++){
+            if (hasEdge(path[i],path[i+1])){
+                number = number.doubleValue() + (getWeight(path[i],path[i+1])).doubleValue();
+            }else {
+                reachable = false;
+            }
+        }
+        if (reachable){
+            return (T)number;
+        }else {
+            return null;
+        }
+    }
 }
