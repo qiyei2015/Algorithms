@@ -1,4 +1,4 @@
-package com.qiyei.graph;
+package com.qiyei.graph.th;
 
 /**
  * @author Created by qiyei2015 on 2018/4/15.
@@ -6,21 +6,22 @@ package com.qiyei.graph;
  * @email: 1273482124@qq.com
  * @description: 边对于有向图，v -> w
  */
-public class Edge<T extends Number & Comparable> implements Comparable<Edge<T>>{
+public class Edge<T extends Number & Comparable<T>,W extends Number & Comparable<W>> implements Comparable<Edge<T,W>>{
     /**
      * 顶点v
      */
-    private int v;
+    private T v;
     /**
      * 顶点w
      */
-    private int w;
+    private T w;
+
     /**
      * 权重
      */
-    private T weight;
+    private W weight;
 
-    public Edge(int v, int w, T weight) {
+    public Edge(T v, T w, W weight) {
         this.v = v;
         this.w = w;
         this.weight = weight;
@@ -31,35 +32,39 @@ public class Edge<T extends Number & Comparable> implements Comparable<Edge<T>>{
      * @param n
      * @return
      */
-    public int other(int n){
-        if (n == v || n == w){
-            return n == v ? w : v;
+    public T other(T n){
+        if (n == null){
+            return null;
         }
-        return -1;
+
+        if (n.equals(v) || n.equals(w)){
+            return n.equals(v) ? w : v;
+        }
+        return null;
     }
 
     /**
      * 返回v-w的镜像边 即 w-v
      * @return
      */
-    public Edge<T> mirrorEdge(){
+    public Edge<T,W> mirrorEdge(){
         return new Edge<>(w,v,weight);
     }
 
-    public int getV() {
+    public T getV() {
         return v;
     }
 
-    public int getW() {
+    public T getW() {
         return w;
     }
 
-    public T getWeight() {
+    public W getWeight() {
         return weight;
     }
 
     @Override
-    public int compareTo(Edge<T> o) {
+    public int compareTo(Edge<T,W> o) {
         if (weight.compareTo(o.getWeight()) < 0){
             return -1;
         }else if (weight.compareTo(o.getWeight()) > 0){

@@ -1,6 +1,5 @@
 package com.qiyei.graph;
 
-import com.qiyei.graph.th.SolutionTrains;
 import com.qiyei.util.LogUtil;
 
 import java.util.Random;
@@ -41,8 +40,7 @@ public class GraphTest {
 //        testDijikstra();
 //        LogUtil.println("\n\n");
 //        testBellmanFord();
-
-        testDijikstra222222();
+        testBellmanFord2();
     }
 
     /**
@@ -173,37 +171,6 @@ public class GraphTest {
 
     }
 
-    /**
-     * 测试Dijkstra算法
-     */
-    private static void testDijikstra222222(){
-        IWeightGraph<Integer> sparseGraph = (IWeightGraph<Integer>) GraphReadUtil.readWeightGraph(directGraph,true,true);
-
-        //A:0 B:1 C:2 D:3 E:4
-
-        int[] a1 = new int[]{0,1,2};
-        int[] a2 = new int[]{0,3};
-        int[] a3 = new int[]{0,3,2};
-        int[] a4 = new int[]{0,4,1,2,3};
-        int[] a5 = new int[]{0,4,3};
-
-//        LogUtil.println("a1:" + sparseGraph.getWeigthFor(a1));
-//        LogUtil.println("a2:" + sparseGraph.getWeigthFor(a2));
-//        LogUtil.println("a3:" + sparseGraph.getWeigthFor(a3));
-//        LogUtil.println("a4:" + sparseGraph.getWeigthFor(a4));
-//        LogUtil.println("a5:" + sparseGraph.getWeigthFor(a5));
-
-
-        SolutionTrains<Integer> solutionTrains = new SolutionTrains<>(sparseGraph);
-//        LogUtil.println("res:" + solutionTrains.getTripsMax(2,2,3).toString());
-//        LogUtil.println("res 2 :" + solutionTrains.getTripsMax(0,1,5).toString());
-//        LogUtil.println("res exactly :" + solutionTrains.getTripsExactly(0,2,4).toString());
-
-        LogUtil.println("res number :" + solutionTrains.getTrips(2,2,30).toString());
-
-
-    }
-
     private static void print(Dijkstra<?> dijkstra,int w){
         LogUtil.println("Dijkstra:");
         LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
@@ -221,6 +188,22 @@ public class GraphTest {
         BellmanFord<Double> bellmanFord = new BellmanFord<>(sparseGraph,0);
 
         int w = 3;
+
+        LogUtil.println("BellmanFord:");
+        LogUtil.println("BellmanFord hasPath("  + w +"):"+ bellmanFord.hasPath(w));
+        LogUtil.println("BellmanFord shortestPathTo("  + w +"):"+ bellmanFord.shortestPathTo(w));
+        bellmanFord.showShortestPath(w);
+
+    }
+
+    /**
+     * 测试BellmanFord算法
+     */
+    private static void testBellmanFord2(){
+        IWeightGraph<Integer> sparseGraph = (IWeightGraph<Integer>) GraphReadUtil.readWeightGraph(directGraph,true,true);
+        BellmanFord<Integer> bellmanFord = new BellmanFord<>(sparseGraph,0);
+
+        int w = 2;
 
         LogUtil.println("BellmanFord:");
         LogUtil.println("BellmanFord hasPath("  + w +"):"+ bellmanFord.hasPath(w));

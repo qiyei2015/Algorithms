@@ -55,8 +55,8 @@ public class BellmanFord<T extends Number & Comparable<T>> {
                 for (Edge<T> edge : mGraph.adj(j)){
                     // edge 这条边 v - w
                     //如果该点没有被访问(from[w] == null) 并且，到达 w的权值比从v 这边过来的更大
-                    if (from[edge.getW()] == null
-                            || distTo[edge.getV()].doubleValue() + edge.getWeight().doubleValue() < distTo[edge.getW()].doubleValue()){
+                    if (from[edge.getV()] != null && (from[edge.getW()] == null
+                            || distTo[edge.getV()].doubleValue() + edge.getWeight().doubleValue() < distTo[edge.getW()].doubleValue())){
                         distTo[edge.getW()] = distTo[edge.getV()].doubleValue() + edge.getWeight().doubleValue();
                         from[edge.getW()] = edge;
                     }
@@ -150,8 +150,8 @@ public class BellmanFord<T extends Number & Comparable<T>> {
             for (Edge<T> edge : mGraph.adj(j)){
                 // edge 这条边 v - w
                 //如果该点没有被访问(from[w] == null) 并且，到达 w的权值比从v 这边过来的更大
-                if (from[edge.getW()] == null
-                        || distTo[edge.getV()].doubleValue() + edge.getWeight().doubleValue() < distTo[edge.getW()].doubleValue()){
+                if (from[edge.getV()] != null && (from[edge.getW()] == null
+                        || distTo[edge.getV()].doubleValue() + edge.getWeight().doubleValue() < distTo[edge.getW()].doubleValue())){
                     return true;
                 }
             }
