@@ -7,38 +7,50 @@ package com.qiyei.graph.th;
  * @description:
  */
 public class Town extends Number implements Comparable<Town>{
+
+    /**
+     * 名字
+     */
     private String name;
-    private int value;
+
+    /**
+     * 用于记录的key值
+     */
+    private int key;
 
     public Town(String name) {
         this.name = name;
+        this.key = getValueFromName(name);
     }
 
     @Override
     public int intValue() {
-        return value;
+        return key;
     }
 
     @Override
     public long longValue() {
-        return value;
+        return key;
     }
 
     @Override
     public float floatValue() {
-        return value;
+        return key;
     }
 
     @Override
     public double doubleValue() {
-        return value;
+        return key;
     }
 
     @Override
     public int compareTo(Town o) {
-        if (value < o.value){
+        if (o == null){
+            throw new NullPointerException("compareTo object is null!");
+        }
+        if (key < o.key){
             return -1;
-        }else if (value == o.value){
+        }else if (key == o.key){
             return 0;
         }else {
             return 1;
