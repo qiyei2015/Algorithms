@@ -40,7 +40,10 @@ public class GraphTest {
 //        testDijikstra();
 //        LogUtil.println("\n\n");
 //        testBellmanFord();
-        testBellmanFord2();
+//        testBellmanFord2();
+
+
+        testPathWeight();
     }
 
     /**
@@ -229,7 +232,16 @@ public class GraphTest {
         System.out.print( " m = " + m + " n = " + n);
     }
 
+    private static void testPathWeight(){
+        LogUtil.println("testPathWeight");
 
+        IWeightGraph<Integer> sparseGraph = (IWeightGraph<Integer>) GraphReadUtil.readWeightGraph(directGraph,true,true);
 
+        IPath path = new PathWeight<Integer>(sparseGraph,3);
+        int w = 1;
+
+        LogUtil.println("DFS hasPath("  + w +"):"+ path.hasPath(w));
+        LogUtil.println("DFS shortestPathTo("  + w +"):"+ path.path(w).toString());
+    }
 
 }
