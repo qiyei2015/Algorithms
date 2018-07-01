@@ -29,7 +29,7 @@ public class SwapNodesInPairs {
             node1.next = next;
             p.next = node2;
 
-            //更新结点
+            //更新结点,p指向的node1的上一个结点
             p = node1;
         }
 

@@ -67,6 +67,32 @@ public class ListNode {
     }
 
     /**
+     * 判断单链表是否有环
+     * @param head
+     * @return
+     */
+    public static boolean hasCycle(ListNode head){
+        if (head == null || head.next == null){
+            return false;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while (fast != null && fast.next != null){
+            //找到环了
+            if (slow == fast){
+                break;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //没有环的话，fast.next = null
+        return (fast != null && fast.next != null);
+    }
+
+    /**
      * 打印结点
      * @param node
      */

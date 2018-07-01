@@ -4,7 +4,7 @@ package com.leetcode.linked;
  * @author Created by qiyei2015 on 2018/5/26.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 203
+ * @description: 203 删除链表中的节点
  */
 public class RemoveLinkedListElement {
 
@@ -42,7 +42,7 @@ public class RemoveLinkedListElement {
     }
 
     /**
-     * 删除链表中指定的节点
+     * 删除链表中指定值为val的节点
      * @param head
      * @param val
      * @return
@@ -53,8 +53,6 @@ public class RemoveLinkedListElement {
         dummyHead.next = head;
 
         ListNode cur = dummyHead;
-
-
         while (cur.next != null){
             //cur.next就是要删除的节点
             if (cur.next.val == val){

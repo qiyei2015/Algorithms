@@ -13,15 +13,15 @@ public class LeetCodeLinkedTest {
 //        testReverseLinkedList();
 //        testRemoveDuplicatesFromSortedList();
 //        testRemoveLinkedListElement();
-        testSwapNodesInPairs();
+//        testSwapNodesInPairs();
+        testFindLinkedMedianNode();
     }
 
     static void testReverseLinkedList(){
         ListNode list = ListNode.creatRandomListNode(100,10);
         ListNode.show(list);
-        ListNode list2 = new ReverseLinkedList().reverseList(list);
+        ListNode list2 = new ReverseLinkedList().reverseList2(list);
         ListNode.show(list2);
-
     }
 
     static void testRemoveDuplicatesFromSortedList(){
@@ -49,4 +49,13 @@ public class LeetCodeLinkedTest {
         ListNode list2 = new SwapNodesInPairs().swapPairs(list);
         ListNode.show(list2);
     }
+
+    private static void testFindLinkedMedianNode(){
+        ListNode list = ListNode.creatRandomListNode(10,11);
+        ListNode.show(list);
+
+        ListNode list2 = new FindLinkedMedianNode().findMedianNode(list);
+        ListNode.show(list2);
+    }
+
 }
