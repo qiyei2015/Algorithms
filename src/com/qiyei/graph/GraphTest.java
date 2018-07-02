@@ -29,6 +29,7 @@ public class GraphTest {
     public static void main(String[] args){
 
 //        testGraph1();
+        testBreadthFirstSearch();
 //        testWeightGraph();
 
 //        testLazyPrimMST();
@@ -43,7 +44,7 @@ public class GraphTest {
 //        testBellmanFord2();
 
 
-        testPathWeight();
+//        testPathWeight();
     }
 
     /**
@@ -92,6 +93,25 @@ public class GraphTest {
             shortPath1.showPath(211);
         }
 
+        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(sparseGraph,0);
+        LogUtil.println("\n bfs  :" + breadthFirstSearch.hasPath(211));
+        LogUtil.println("\n bfs path :" + breadthFirstSearch.path(211).toString());
+
+    }
+
+    private static void testBreadthFirstSearch(){
+
+        SparseGraph sparseGraph = new SparseGraph(N,false);
+        for (int i = 0 ;i < N ; i++){
+            int v = random.nextInt(N);
+            int w = random.nextInt(N);
+            sparseGraph.addEdge(v,w);
+
+        }
+
+        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(sparseGraph,0);
+        LogUtil.println("bfs  :" + breadthFirstSearch.hasPath(99));
+        LogUtil.println("bfs path :" + breadthFirstSearch.path(99).toString());
     }
 
     /**
