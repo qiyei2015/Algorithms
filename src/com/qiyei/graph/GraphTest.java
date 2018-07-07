@@ -1,5 +1,6 @@
 package com.qiyei.graph;
 
+import com.qiyei.graph.weight.*;
 import com.qiyei.util.LogUtil;
 
 import java.util.Random;
@@ -22,14 +23,16 @@ public class GraphTest {
     private static String weightGraphFile3 = "src/com/qiyei/graph/testG2.txt";
 
     private static String directGraph = "src/com/qiyei/graph/tinyDirectGraph.txt";
+    private static String directGraph2 = "src/com/qiyei/graph/tinyDirectGraph2.txt";
+
+    private static String tinySymbolG = "src/com/qiyei/graph/tinySymbolG.txt";
 
     private static Random random = new Random();
-
 
     public static void main(String[] args){
 
 //        testGraph1();
-        testBreadthFirstSearch();
+//        testBreadthFirstSearch();
 //        testWeightGraph();
 
 //        testLazyPrimMST();
@@ -45,6 +48,9 @@ public class GraphTest {
 
 
 //        testPathWeight();
+//        testSymbolGraph();
+
+        testSymbolWeightGraph();
     }
 
     /**
@@ -262,6 +268,31 @@ public class GraphTest {
 
         LogUtil.println("DFS hasPath("  + w +"):"+ path.hasPath(w));
         LogUtil.println("DFS shortestPathTo("  + w +"):"+ path.path(w).toString());
+    }
+
+    private static void testSymbolGraph(){
+
+        ISymbolGraph symbolGraph = new SymbolGraphImpl(tinySymbolG,false);
+        LogUtil.println("symbolGraph:" + symbolGraph.name(0));
+
+        IGraph graph = symbolGraph.graph();
+        LogUtil.println("graph, V :" + graph.V());
+    }
+
+    /**
+     * 测试权重的符号图
+     */
+    private static void testSymbolWeightGraph(){
+
+        ISymbolWeightGraph<Integer> symbolWeightGraph = new SymbolWeightGraphImpl<>(directGraph2,true);
+
+        for (int i = 0; i < symbolWeightGraph.size(); i++){
+            LogUtil.println("index:" + i + " name:" + symbolWeightGraph.name(i));
+        }
+
+        String[] path1 = new String[]{"A","E","B","C","D"};
+        IWeightGraph<Integer> graph = symbolWeightGraph.graph();
+        LogUtil.println("" + graph.getWeightFor(symbolWeightGraph.toIndex(path1)));
     }
 
 }

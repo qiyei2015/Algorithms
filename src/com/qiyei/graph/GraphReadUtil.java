@@ -1,5 +1,10 @@
 package com.qiyei.graph;
 
+import com.qiyei.graph.weight.DenseWeightGraph;
+import com.qiyei.graph.weight.Edge;
+import com.qiyei.graph.weight.IWeightGraph;
+import com.qiyei.graph.weight.SparseWeightGraph;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -81,7 +86,7 @@ public class GraphReadUtil {
      * @param sparse 是否是稀疏图
      * @return
      */
-    public static IWeightGraph readWeightGraph(String path,boolean direct,boolean sparse){
+    public static IWeightGraph readWeightGraph(String path, boolean direct, boolean sparse){
         File file = new File(path);
         return readWeightGraph(file,direct,sparse);
     }

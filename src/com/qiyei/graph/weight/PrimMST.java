@@ -1,5 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
 
+import com.qiyei.graph.weight.Edge;
+import com.qiyei.graph.weight.IWeightGraph;
 import com.qiyei.heap.IndexMinHeap;
 
 import java.util.ArrayList;

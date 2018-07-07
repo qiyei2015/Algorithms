@@ -1,4 +1,4 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description:
  */
-public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph{
+public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph {
 
     /**
      * 顶点个数
@@ -134,7 +134,7 @@ public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWei
     //单源最短路径算法
 
     @Override
-    public T getWeigthFor(int[] path){
+    public T getWeightFor(int[] path){
         Number number = new Double(0);
         boolean reachable = true;
         if (path == null){

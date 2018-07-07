@@ -1,4 +1,4 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description: 稠密有权图 用邻接矩阵表示
  */
-public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph{
+public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeightGraph {
 
     /**
      * 顶点个数
@@ -119,7 +119,7 @@ public class DenseWeightGraph<T extends Number & Comparable<T>> implements IWeig
     }
 
     @Override
-    public Number getWeigthFor(int[] list) {
+    public Number getWeightFor(int[] list) {
         return null;
     }
 

@@ -1,4 +1,4 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
 
 /**
  * @author Created by qiyei2015 on 2018/4/15.
@@ -53,7 +53,11 @@ public interface IWeightGraph<T extends Number & Comparable<T>> {
      */
     Iterable<Edge<T>> adj(int v);
 
-
-    T getWeigthFor(int[] array);
+    /**
+     * 遍历路径权重
+     * @param path
+     * @return
+     */
+    T getWeightFor(int[] path);
 
 }

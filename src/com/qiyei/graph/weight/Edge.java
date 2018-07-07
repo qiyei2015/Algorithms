@@ -1,4 +1,4 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
 
 /**
  * @author Created by qiyei2015 on 2018/4/15.

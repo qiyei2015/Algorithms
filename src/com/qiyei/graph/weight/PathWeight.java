@@ -1,4 +1,6 @@
-package com.qiyei.graph;
+package com.qiyei.graph.weight;
+
+import com.qiyei.graph.IPath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Stack;
  * @email: 1273482124@qq.com
  * @description: 有权图DFS算法
  */
-public class PathWeight<T extends Number & Comparable<T>> implements IPath{
+public class PathWeight<T extends Number & Comparable<T>> implements IPath {
 
     /**
      * 图
