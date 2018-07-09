@@ -41,7 +41,7 @@ public class GraphTest {
 //        LogUtil.println("\n\n");
 //        testKruskalMST();
 //        LogUtil.println("\n\n");
-//        testDijikstra();
+        testDijikstra();
 //        LogUtil.println("\n\n");
 //        testBellmanFord();
 //        testBellmanFord2();
@@ -50,7 +50,7 @@ public class GraphTest {
 //        testPathWeight();
 //        testSymbolGraph();
 
-        testSymbolWeightGraph();
+//        testSymbolWeightGraph();
     }
 
     /**
@@ -188,17 +188,39 @@ public class GraphTest {
      * 测试Dijkstra算法
      */
     private static void testDijikstra(){
-        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,false,true);
+        IWeightGraph<Double> sparseGraph = (IWeightGraph<Double>) GraphReadUtil.readWeightGraph(weightGraphFile2,true,true);
         Dijkstra<Double> dijkstra = new Dijkstra<>(sparseGraph,0);
+        DijkstraSP<Double> dijkstraSP = new DijkstraSP<>(sparseGraph,0);
+        int w = 0;
+        for (int i = 0 ;i < sparseGraph.V() ;i ++){
+            w = i;
+            if (w == 0){
+                continue;
+            }
+            print(sparseGraph, dijkstra,dijkstraSP, w);
+        }
+    }
 
-        int w = 10;
+    private static void print(IWeightGraph<Double> sparseGraph, Dijkstra<Double> dijkstra, DijkstraSP<Double> dijkstraSP,int w) {
 
-        LogUtil.println("Dijkstra:");
-        LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
-        LogUtil.println("Dijkstra shortestPathTo("  + w +"):"+ dijkstra.shortestPathTo(w));
-        dijkstra.showShortestPath(w);
+        if (dijkstra.hasPath(w)){
+            LogUtil.println("Dijkstra:");
+            LogUtil.println("Dijkstra hasPath("  + w +"):"+ dijkstra.hasPath(w));
+            LogUtil.println("Dijkstra PathTo("  + w +"):"+ dijkstra.shortestPath(w));
+//            dijkstra.showShortestPath(w);
+            LogUtil.println("");
+        }
+
+        if (dijkstraSP.hasPath(w)){
+            LogUtil.println("dijkstraSP:");
+            LogUtil.println("dijkstraSP hasPath("  + w +"):"+ dijkstraSP.hasPath(w));
+            LogUtil.println("dijkstraSP PathTo("  + w +"):"+ dijkstraSP.pathTo(w));
+//            dijkstraSP.showPath(w);
+            LogUtil.println("\n");
+        }
 
     }
+
 
     private static void print(Dijkstra<?> dijkstra,int w){
         LogUtil.println("Dijkstra:");

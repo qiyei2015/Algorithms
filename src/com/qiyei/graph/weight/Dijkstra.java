@@ -47,7 +47,9 @@ public class Dijkstra<T extends Number & Comparable<T>> {
         distTo = new Number[mGraph.V()];
         marked = new boolean[mGraph.V()];
         from = new Edge[mGraph.V()];
-
+        for (int i = 0 ;i < mGraph.V();i++){
+            distTo[i] = 0;
+        }
         //最小索引堆，辅助数据结构
         IndexMinHeap<T> indexMinHeap = new IndexMinHeap<>(mGraph.V());
 
@@ -108,8 +110,11 @@ public class Dijkstra<T extends Number & Comparable<T>> {
      * @return
      */
     public List<Edge<T>> shortestPath(int w){
-        List<Edge<T>> list = new ArrayList<>();
 
+        List<Edge<T>> list = new ArrayList<>();
+        if (!hasPath(w)){
+            return list;
+        }
         // 通过from数组逆向查找到从s到w的路径, 存放到栈中
         Stack<Edge<T>> stack = new Stack<Edge<T>>();
         Edge<T> edge = from[w];
