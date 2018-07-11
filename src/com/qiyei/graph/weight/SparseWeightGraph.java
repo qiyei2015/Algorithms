@@ -135,7 +135,7 @@ public class SparseWeightGraph<T extends Number & Comparable<T>> implements IWei
 
     @Override
     public T getWeightFor(int[] path){
-        Number number = new Double(0);
+        Number number = (Number) new Double(0);
         boolean reachable = true;
         if (path == null){
             return (T) number;

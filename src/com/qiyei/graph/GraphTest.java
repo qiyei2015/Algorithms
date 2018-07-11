@@ -41,7 +41,7 @@ public class GraphTest {
 //        LogUtil.println("\n\n");
 //        testKruskalMST();
 //        LogUtil.println("\n\n");
-        testDijikstra();
+//        testDijikstra();
 //        LogUtil.println("\n\n");
 //        testBellmanFord();
 //        testBellmanFord2();
@@ -50,7 +50,7 @@ public class GraphTest {
 //        testPathWeight();
 //        testSymbolGraph();
 
-//        testSymbolWeightGraph();
+        testSymbolWeightGraph();
     }
 
     /**
@@ -313,8 +313,10 @@ public class GraphTest {
         }
 
         String[] path1 = new String[]{"A","E","B","C","D"};
+        String[] path2 = new String[]{"A","D","C"};
         IWeightGraph<Integer> graph = symbolWeightGraph.graph();
         LogUtil.println("" + graph.getWeightFor(symbolWeightGraph.toIndex(path1)));
+        LogUtil.println("" + graph.getWeightFor(symbolWeightGraph.toIndex(path2)));
     }
 
 }
