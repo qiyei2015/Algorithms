@@ -215,9 +215,9 @@ public class SolutionTrains<T extends Number & Comparable<T>,W extends Number & 
 
     /**
      * 深度优先搜索
-     * @param path
-     * @param end
-     * @param costList
+     * @param path 已经搜索过的路径
+     * @param end 结束点
+     * @param costList 总权重
      */
     private void dfs(LinkedList<T> path,T end, LinkedList<W> costList){
 
