@@ -24,7 +24,7 @@ public class SymbolWeightGraphImpl<T extends Number & Comparable<T>> implements 
      */
     private HashMap<String,Integer> indexRecord;
     /**
-     * 索引数组
+     * 索引数组,保存图中顶点与字符名的关系
      */
     private String[] indexArray;
 
