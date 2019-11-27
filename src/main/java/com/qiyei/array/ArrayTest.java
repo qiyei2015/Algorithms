@@ -22,7 +22,7 @@ public class ArrayTest {
 
 
     private static void testDynamicArray() {
-        DynamicArray<Integer> integerDynamicArray = new DynamicArray<>();
+        com.qiyei.array.DynamicArray<Integer> integerDynamicArray = new com.qiyei.array.DynamicArray<>();
         Random random = new Random();
 
         for (int i = 0 ;i < 100 ;i++){
@@ -45,10 +45,10 @@ public class ArrayTest {
                 array[i][j] = ++k;
             }
         }
-        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.NONE);
+        com.qiyei.array.ArrayUtil.printTwoDimensionalArray(array, com.qiyei.array.ArrayUtil.Dir.NONE);
 //        ArrayUtil.printTwoDimensionalArray(array, ArrayUtil.Dir.TOP_LEFT);
 //        ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.TOP_RIGHT);
-        ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.BOTTOM_LEFT);
-        ArrayUtil.printTwoDimensionalArray(array,ArrayUtil.Dir.BOTTOM_RIGHT);
+        com.qiyei.array.ArrayUtil.printTwoDimensionalArray(array, com.qiyei.array.ArrayUtil.Dir.BOTTOM_LEFT);
+        com.qiyei.array.ArrayUtil.printTwoDimensionalArray(array, com.qiyei.array.ArrayUtil.Dir.BOTTOM_RIGHT);
     }
 }

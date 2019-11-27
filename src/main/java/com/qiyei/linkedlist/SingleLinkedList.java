@@ -1,4 +1,4 @@
-package com.qiyei.linked;
+package com.qiyei.linkedlist;
 
 import com.qiyei.util.LogUtil;
 
@@ -8,7 +8,23 @@ import com.qiyei.util.LogUtil;
  * @email: 1273482124@qq.com
  * @description: 链表
  */
-public class NodeList<T> {
+public class SingleLinkedList<T> {
+
+
+    /**
+     * 单链表结点
+     * @param <T>
+     */
+    public static class Node<T> {
+
+        public T data;
+        public Node next;
+
+        public Node(T data, Node next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
 
     /**
      * 头结点
@@ -24,7 +40,7 @@ public class NodeList<T> {
      */
     private int count;
 
-    public NodeList() {
+    public SingleLinkedList() {
         count = 0;
         head = null;
         last = null;
@@ -62,6 +78,50 @@ public class NodeList<T> {
      */
     public Node<T> getNodeList(){
         return head;
+    }
+
+    public int size(){
+        return count;
+    }
+
+    /**
+     * 删除结点
+     * @param node
+     * @return
+     */
+    public Node remove(Node<T> node){
+        Node p = head;
+        //找到node的前一个结点
+        while (p != null && p.next == node){
+            p = p.next;
+        }
+
+        if (node == head){
+            head = head.next;
+            return node;
+        }
+
+        if (node == last){
+            last = p;
+        }
+
+        //删除node
+        p.next = node.next;
+        Node temp = node;
+        node.next = null;
+        node = null;
+        return temp;
+    }
+
+    public Node get(int index){
+        if (index < 0 || index >= count){
+            return null;
+        }
+        Node p = head;
+        for (int i = 0; i < index ;i++){
+            p = p.next;
+        }
+        return p;
     }
 
     /**
