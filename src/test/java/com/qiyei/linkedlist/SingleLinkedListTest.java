@@ -1,5 +1,6 @@
 package com.qiyei.linkedlist;
 
+import com.qiyei.util.LogUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,44 +13,49 @@ import org.junit.Test;
  */
 public class SingleLinkedListTest {
 
-    SingleLinkedList<Integer> singleLinkedList;
+    SingleLinkedList<Integer> listFirst;
+    SingleLinkedList<Integer> listLast;
 
     @Before
     public void init(){
-        singleLinkedList = new SingleLinkedList<>();
+        listFirst = new SingleLinkedList<>();
         for (int i = 0 ; i < 100; i++){
-            singleLinkedList.addNode(i);
+            listFirst.addFirst(i);
+        }
+
+        listLast = new SingleLinkedList<>();
+        for (int i = 0 ; i < 100; i++){
+            listLast.addLast(i);
         }
     }
 
     @Test
     public void testShow(){
-        singleLinkedList.show(singleLinkedList.getNodeList());
+        LogUtil.println(listFirst.toString());
+        LogUtil.println(listLast.toString());
     }
 
     @Test
     public void testSize(){
-        Assert.assertEquals(singleLinkedList.size(),100);
+        Assert.assertEquals(listFirst.size(),100);
+        Assert.assertEquals(listLast.size(),100);
     }
 
     @Test
     public void testReverse(){
-        Assert.assertEquals(singleLinkedList.reverse().data,new Integer(99));
+        Assert.assertEquals(listFirst.reverse().data,new Integer(99));
     }
 
     @Test
     public void getTest(){
-        Assert.assertEquals(singleLinkedList.get(0).data,new Integer(0));
-        Assert.assertEquals(singleLinkedList.get(55).data,new Integer(55));
-        Assert.assertEquals(singleLinkedList.get(89).data,new Integer(89));
+        Assert.assertEquals(listFirst.get(0).data,new Integer(0));
+        Assert.assertEquals(listFirst.get(55).data,new Integer(55));
+        Assert.assertEquals(listFirst.get(89).data,new Integer(89));
     }
 
     @Test
     public void removeTest(){
-        SingleLinkedList.Node node = singleLinkedList.get(5);
-        Assert.assertEquals(singleLinkedList.remove(node).data,5);
-        //Assert.assertEquals(singleLinkedList.remove(node).data,0);
-//        Assert.assertEquals(singleLinkedList.get(55).data,new Integer(55));
-//        Assert.assertEquals(singleLinkedList.get(89).data,new Integer(89));
+        SingleLinkedList.Node node = listFirst.get(5);
+        Assert.assertEquals(listFirst.remove(node).data,5);
     }
 }

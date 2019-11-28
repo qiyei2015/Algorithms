@@ -1,7 +1,5 @@
 package com.qiyei.linkedlist;
 
-import com.qiyei.util.LogUtil;
-
 /**
  * @author Created by qiyei2015 on 2018/4/23.
  * @version: 1.0
@@ -10,6 +8,7 @@ import com.qiyei.util.LogUtil;
  */
 public class SingleLinkedList<T> {
 
+    public static final String NODE_ARROW = " -> ";
 
     /**
      * 单链表结点
@@ -24,12 +23,19 @@ public class SingleLinkedList<T> {
             this.data = data;
             this.next = next;
         }
+
+        public Node(T data) {
+            this.data = data;
+        }
+
+        public Node() {
+        }
     }
 
     /**
      * 头结点
      */
-    private Node<T> head;
+    private Node dummyHead;
     /**
      * 尾结点
      */
@@ -42,7 +48,7 @@ public class SingleLinkedList<T> {
 
     public SingleLinkedList() {
         count = 0;
-        head = null;
+        dummyHead = new Node<>();
         last = null;
     }
 
@@ -50,18 +56,66 @@ public class SingleLinkedList<T> {
      * 添加链表 结点
      * @param t
      */
-    public void addNode(T t){
+    public void addFirst(T t){
+        addFirst(0,t);
+    }
 
-        //保存last
-        Node<T> temp = last;
-
-        last = new Node<>(t,null);
-        if (isEmpty()){
-            head = last;
-        }else {
-            temp.next = last;
+    /**
+     * 添加到前面
+     * @param index
+     * @param t
+     */
+    public void addFirst(int index,T t){
+        if (checkRangeIllegal(index)){
+            return ;
         }
+        Node p = dummyHead;
+        //找到index的上一个结点
+        for (int i = 0; i < index;i++){
+            p = p.next;
+        }
+
+        Node node = new Node(t);
+
+        //更新node结点，指向p原来next结点
+        node.next = p.next;
+        p.next = node;
         count++;
+    }
+
+    public void addLast(T t){
+        if (isEmpty()){
+            addLast(0,t);
+        }else {
+            addLast(count - 1,t);
+        }
+    }
+
+    /**
+     * 添加到后面
+     * @param index
+     * @param t
+     */
+    public void addLast(int index,T t){
+        if (checkRangeIllegal(index)){
+            return ;
+        }
+        Node p = dummyHead.next;
+        //找到index结点
+        for (int i = 0; i < index;i++){
+            p = p.next;
+        }
+
+        Node node = new Node(t);
+        count++;
+        //为null时
+        if (isEmpty()){
+            dummyHead.next = node;
+            return;
+        }
+        //更新node结点，指向p的下一个结点
+        node.next = p.next;
+        p.next = node;
     }
 
     /**
@@ -69,15 +123,7 @@ public class SingleLinkedList<T> {
      * @return
      */
     public boolean isEmpty(){
-        return head == null;
-    }
-
-    /**
-     * 获取链表
-     * @return
-     */
-    public Node<T> getNodeList(){
-        return head;
+        return dummyHead.next == null;
     }
 
     public int size(){
@@ -90,14 +136,14 @@ public class SingleLinkedList<T> {
      * @return
      */
     public Node remove(Node<T> node){
-        Node p = head;
+        Node p = dummyHead;
         //找到node的前一个结点
         while (p != null && p.next == node){
             p = p.next;
         }
 
-        if (node == head){
-            head = head.next;
+        if (node == dummyHead){
+            dummyHead = dummyHead.next;
             return node;
         }
 
@@ -114,10 +160,11 @@ public class SingleLinkedList<T> {
     }
 
     public Node get(int index){
-        if (index < 0 || index >= count){
+        if (checkRangeIllegal(index)){
             return null;
         }
-        Node p = head;
+
+        Node p = dummyHead.next;
         for (int i = 0; i < index ;i++){
             p = p.next;
         }
@@ -128,7 +175,7 @@ public class SingleLinkedList<T> {
      * 反转链表结点
      */
     public Node<T> reverse(){
-        Node<T> p = head;
+        Node<T> p = dummyHead;
         Node<T> newHead = null;
 
         //更新last
@@ -153,7 +200,7 @@ public class SingleLinkedList<T> {
 
         }
         //更新head
-        head = newHead;
+        dummyHead = newHead;
         return newHead;
     }
 
@@ -161,7 +208,7 @@ public class SingleLinkedList<T> {
      * 反转链表结点
      */
     public Node<T> reverse2(){
-        Node<T> p = head;
+        Node<T> p = dummyHead;
         Node<T> newHead = null;
 
         //更新last
@@ -181,23 +228,33 @@ public class SingleLinkedList<T> {
 
         }
         //更新head
-        head = newHead;
+        dummyHead = newHead;
         return newHead;
     }
 
 
-
-    /**
-     * 打印结点
-     * @param node
-     */
-    public void show(Node<T> node){
-        Node<T> p = node;
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[SingleLinkedList] ");
+        Node<T> p = dummyHead.next;
         while (p != null){
-            LogUtil.print(" " + p.data);
+            builder.append(p.data);
+            if (p.next != null){
+                builder.append(NODE_ARROW);
+            }
             p = p.next;
         }
-        LogUtil.println("");
+        return builder.toString();
     }
+
+    private boolean checkRangeIllegal(int index) {
+        if (index < 0 || index > count){
+            return true;
+        }
+        return false;
+    }
+
+
 
 }
