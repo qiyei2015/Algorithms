@@ -22,18 +22,18 @@ public class ArrayTest {
 
 
     private static void testDynamicArray() {
-        com.qiyei.array.DynamicArray<Integer> integerDynamicArray = new com.qiyei.array.DynamicArray<>();
+        Array<Integer> integerArray = new Array<>();
         Random random = new Random();
 
         for (int i = 0 ;i < 100 ;i++){
-            integerDynamicArray.add(random.nextInt(1000));
+            integerArray.addLast(random.nextInt(1000));
         }
-        LogUtil.println(integerDynamicArray.toString());
+        LogUtil.println(integerArray.toString());
 
         for (int i = 0 ;i < 80 ;i++){
-            integerDynamicArray.remove();
+            integerArray.removeLast();
         }
-        LogUtil.println(integerDynamicArray.toString());
+        LogUtil.println(integerArray.toString());
     }
 
     private static void testTwoDimensionalArray(){
