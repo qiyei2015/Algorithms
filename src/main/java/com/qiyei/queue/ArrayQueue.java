@@ -10,7 +10,7 @@ import com.qiyei.array.Array;
  */
 public class ArrayQueue<E> implements IQueue<E>{
 
-    private Array<E> array;
+    protected Array<E> array;
 
 
     public ArrayQueue() {
@@ -49,7 +49,7 @@ public class ArrayQueue<E> implements IQueue<E>{
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(String.format("Queue:size=%d\n",array.size()));
+        builder.append(String.format("Queue:size=%d,capacity=%d\n",array.size(),array.getCapacity()));
         builder.append("[");
         for (int i = 0 ; i < size() ; i++){
             builder.append(array.get(i));
