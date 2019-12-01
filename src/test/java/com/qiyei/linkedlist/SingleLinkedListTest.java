@@ -1,61 +1,111 @@
 package com.qiyei.linkedlist;
 
-import com.qiyei.util.LogUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
- * @author Created by qiyei2015 on 2019/11/27.
+ * @author Created by qiyei2015 on 2019/12/1.
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description:
  */
 public class SingleLinkedListTest {
 
-    SingleLinkedList<Integer> listFirst;
-    SingleLinkedList<Integer> listLast;
+
+    SingleLinkedList<Integer> list;
 
     @Before
-    public void init(){
-        listFirst = new SingleLinkedList<>();
-        for (int i = 0 ; i < 100; i++){
-            listFirst.addFirst(i);
+    public void setUp() throws Exception {
+        list = new SingleLinkedList<>();
+        for (int i = 0 ; i < 5; i++){
+            list.addFirst(i);
         }
-
-        listLast = new SingleLinkedList<>();
-        for (int i = 0 ; i < 100; i++){
-            listLast.addLast(i);
-        }
+        System.out.println("Original " + list);
     }
 
     @Test
-    public void testShow(){
-        LogUtil.println(listFirst.toString());
-        LogUtil.println(listLast.toString());
+    public void addFirst() {
+        list.addFirst(100);
+
+        System.out.println(list);
     }
 
     @Test
-    public void testSize(){
-        Assert.assertEquals(listFirst.size(),100);
-        Assert.assertEquals(listLast.size(),100);
+    public void addLast() {
+        list.addLast(101);
+        System.out.println(list);
     }
 
     @Test
-    public void testReverse(){
-        Assert.assertEquals(listFirst.reverse().data,new Integer(99));
+    public void add() {
+        list.add(2,88);
+        System.out.println(list);
     }
 
     @Test
-    public void getTest(){
-        Assert.assertEquals(listFirst.get(0).data,new Integer(0));
-        Assert.assertEquals(listFirst.get(55).data,new Integer(55));
-        Assert.assertEquals(listFirst.get(89).data,new Integer(89));
+    public void removeFirst() {
+        list.removeFirst();
+        System.out.println(list);
     }
 
     @Test
-    public void removeTest(){
-        SingleLinkedList.Node node = listFirst.get(5);
-        Assert.assertEquals(listFirst.remove(node).data,5);
+    public void removeLast() {
+        list.removeLast();
+        System.out.println(list);
+    }
+
+    @Test
+    public void remove() {
+        list.remove(3);
+        System.out.println(list);
+    }
+
+    @Test
+    public void set() {
+        list.set(1,56);
+        System.out.println(list);
+    }
+
+    @Test
+    public void contains() {
+        Assert.assertEquals(list.contains(52),false);
+    }
+
+    @Test
+    public void getFirst() {
+        Assert.assertEquals(list.getFirst().intValue(),4);
+    }
+
+    @Test
+    public void getLast() {
+        Assert.assertEquals(list.getLast().intValue(),0);
+    }
+
+    @Test
+    public void get() {
+        Assert.assertEquals(list.get(2).intValue(),2);
+    }
+
+    @Test
+    public void isEmpty() {
+        Assert.assertEquals(list.isEmpty(),false);
+    }
+
+    @Test
+    public void size() {
+        Assert.assertEquals(list.size(),5);
+    }
+
+    @Test
+    public void reverse() {
+        //System.out.println(list.reverse());
+    }
+
+    @Test
+    public void reverse2() {
+        //System.out.println(list.reverse2());
     }
 }
