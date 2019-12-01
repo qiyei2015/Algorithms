@@ -29,6 +29,12 @@ public class SingleLinkedList<E> {
         }
 
         public Node() {
+
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
         }
     }
 
