@@ -34,7 +34,14 @@ public class SingleLinkedList<E> {
 
         @Override
         public String toString() {
-            return value.toString();
+            StringBuilder builder = new StringBuilder();
+            Node<E> p = this;
+            while (p != null){
+                builder.append(p.value + NODE_ARROW);
+                p = p.next;
+            }
+            builder.append("NULL");
+            return builder.toString();
         }
     }
 
@@ -51,6 +58,23 @@ public class SingleLinkedList<E> {
     public SingleLinkedList() {
         size = 0;
         dummyHead = new Node<>();
+    }
+
+    /**
+     * 数组转换为 LinkedList
+     * @param array
+     */
+    public SingleLinkedList(E[] array){
+        this();
+        size = array.length;
+        if (array != null && array.length > 0){
+            Node<E> p = new Node<>(array[0]);
+            dummyHead.next = p;
+            for (int i = 1 ; i < array.length ;i++){
+                p.next = new Node(array[i]);
+                p = p.next;
+            }
+        }
     }
 
     /**
@@ -193,6 +217,45 @@ public class SingleLinkedList<E> {
 
     public int size(){
         return size;
+    }
+
+    /**
+     * 删除指定元素
+     * @param e
+     */
+    public void removeElement(E e){
+        if (e == null){
+            return;
+        }
+
+        dummyHead.next = removeElement(dummyHead.next,e,0);
+    }
+
+    /**
+     * 删除以指定的头结点开始的指定元素,递归实现
+     * @param head
+     * @param e
+     * @return
+     */
+    private Node<E> removeElement(Node<E> head,E e,int depth){
+        System.out.println(generateDepthInfo(depth) + " Call:" + "remove " + e + " in " + head);
+        if (head == null){
+            System.out.println(generateDepthInfo(depth) + " Return:" + " ret=" + null);
+            return null;
+        }
+        head.next = removeElement(head.next,e,depth + 1);
+        System.out.println(generateDepthInfo(depth) + " After:" + " remove "  + e + " head= " + head);
+        Node<E> node = e.equals(head.value) ? head.next : head;
+        System.out.println(generateDepthInfo(depth) + " After:" + " remove "  + e + " ret= " + node);
+        return node;
+    }
+
+    private String generateDepthInfo(int depth){
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0 ;i < depth ;i++){
+            builder.append("-");
+        }
+        return builder.toString();
     }
 
 //    /**
