@@ -6,7 +6,7 @@ package com.qiyei.linkedlist;
  * @email: 1273482124@qq.com
  * @description: 链表
  */
-public class SingleLinkedList<E> {
+public class SingleLinkedList<E> implements ILinkedList<E>{
 
     public static final String NODE_ARROW = " -> ";
 
@@ -99,6 +99,9 @@ public class SingleLinkedList<E> {
      * @param e
      */
     public void add(int index,E e){
+        if (e == null){
+            throw new IllegalArgumentException("params is null");
+        }
         checkRangeForAdd(index);
 
         Node p = dummyHead;
@@ -150,6 +153,9 @@ public class SingleLinkedList<E> {
      * @param e
      */
     public void set(int index,E e){
+        if (e == null){
+            throw new IllegalArgumentException("params is null");
+        }
         checkRangeForGet(index);
 
         Node p = dummyHead.next;
@@ -165,6 +171,9 @@ public class SingleLinkedList<E> {
      * @return
      */
     public boolean contains(E e){
+        if (e == null){
+            throw new IllegalArgumentException("params is null");
+        }
         Node p = dummyHead.next;
         while (p != null){
             if (p.value.equals(e)){
@@ -173,6 +182,20 @@ public class SingleLinkedList<E> {
             p = p.next;
         }
         return false;
+    }
+
+    @Override
+    public int indexOf(E e) {
+        if (e == null){
+            throw new IllegalArgumentException("params is null");
+        }
+        Node<E> p = dummyHead.next;
+        for (int i = 0 ; i < size ; i++){
+            if (e.equals(p.value)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -225,9 +248,8 @@ public class SingleLinkedList<E> {
      */
     public void removeElement(E e){
         if (e == null){
-            return;
+            throw new IllegalArgumentException("params is null");
         }
-
         dummyHead.next = removeElement(dummyHead.next,e,0);
     }
 
