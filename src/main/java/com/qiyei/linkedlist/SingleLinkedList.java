@@ -46,7 +46,7 @@ public class SingleLinkedList<E> implements ILinkedList<E>{
     }
 
     /**
-     * 头结点
+     * 虚拟头结点
      */
     private Node dummyHead;
 
