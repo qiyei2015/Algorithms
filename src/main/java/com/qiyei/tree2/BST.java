@@ -92,6 +92,38 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
+     * 查找元素
+     * @param e
+     * @return
+     */
+    public boolean contains(E e){
+        if (e == null){
+            return false;
+        }
+        return contains(root,e);
+    }
+
+    /**
+     * 以node为根查找
+     * @param node
+     * @param e
+     * @return 返回是否存在该元素
+     */
+    private boolean contains(Node<E> node,E e){
+        if (node == null){
+            return false;
+        }
+
+        if (e.compareTo(node.value) < 0){
+            return contains(node.left,e);
+        } else if (e.compareTo(node.value) > 0){
+            return contains(node.right,e);
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * 前序遍历 根结点 -> 左子树 -> 右子树
      * @return
      */
