@@ -1,6 +1,6 @@
 package com.leetcode.array;
 
-import com.qiyei.util.LogUtil;
+import com.qiyei.backup.util.LogUtil;
 
 /**
  * @author Created by qiyei2015 on 2018/5/24.

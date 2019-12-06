@@ -1,6 +1,6 @@
 package com.leetcode.queue;
 
-import com.qiyei.util.LogUtil;
+import com.qiyei.backup.util.LogUtil;
 
 import java.util.Stack;
 
