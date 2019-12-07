@@ -2,6 +2,8 @@ package com.qiyei.datastructure.heap;
 
 import com.qiyei.datastructure.array.Array;
 
+import java.util.Comparator;
+
 /**
  * @author Created by qiyei2015 on 2019/12/7.
  * @version: 1.0
@@ -16,9 +18,15 @@ public class MaxHeap<E extends Comparable<E>> {
      */
     private Array<E> data;
 
+    private Comparator<? super E> comparator;
 
     public MaxHeap() {
         data = new Array<>(10);
+    }
+
+    public MaxHeap(Comparator<? super E> comparator ) {
+        data = new Array<>(10);
+        this.comparator = comparator;
     }
 
     /**
@@ -157,4 +165,8 @@ public class MaxHeap<E extends Comparable<E>> {
                 "data=" + data +
                 '}';
     }
+
+//    private int compareTo(E a,E b){
+//
+//    }
 }

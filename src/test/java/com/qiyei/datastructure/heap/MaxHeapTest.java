@@ -41,8 +41,12 @@ public class MaxHeapTest {
 
     @Test
     public void extractMax() {
-        System.out.println(maxHeap);
-        Assert.assertEquals(maxHeap.extractMax().intValue(),9);
+        int size = maxHeap.size();
+        for (int i = 0 ;i < size ;i++){
+            System.out.println(maxHeap);
+            System.out.println("extractMax=" + maxHeap.extractMax());
+        }
+        System.out.println("finally extractMax " + maxHeap);
     }
 
     @Test
