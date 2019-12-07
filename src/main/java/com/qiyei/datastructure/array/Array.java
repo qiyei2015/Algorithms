@@ -103,9 +103,9 @@ public class Array<E> {
             throw new IllegalArgumentException("index illegal");
         }
         E e = element[index];
-        //左移一位
-        for (int i = index;i < size;i++){
-            element[i] = element[i + 1];
+        //左移一位,注意不要从index开始，否则可能数组越界
+        for (int i = index + 1;i < size;i++){
+            element[i - 1] = element[i];
         }
         size--;
         element[size] = null;
@@ -184,6 +184,19 @@ public class Array<E> {
         System.arraycopy(element,0,newData,0,size);
         element = newData;
         capacity = element.length;
+    }
+
+    /**
+     * 交换两个元素
+     * @param index1
+     * @param index2
+     */
+    public void swap(int index1,int index2){
+        if ((index1 < size && index1 >= 0) && (index2 < size && index2 >= 0)){
+            E temp = element[index1];
+            element[index1] = element[index2];
+            element[index2] = temp;
+        }
     }
 
     @Override
