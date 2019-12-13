@@ -12,14 +12,14 @@ import org.junit.Test;
  */
 public class BSTTest {
 
-    BST<Integer> bst;
+    BST<Integer,String> bst;
 
     @Before
     public void setUp() throws Exception {
         bst = new BST<>();
         int[] array = new int[]{5,6,4,2,9,6,7,0,3};
         for (int i = 0 ;i < array.length;i++){
-            bst.add(array[i]);
+            bst.add(array[i],"" + i);
         }
     }
 
@@ -35,7 +35,7 @@ public class BSTTest {
 
     @Test
     public void add() {
-        bst.add(85);
+        bst.add(85,"85");
         Assert.assertEquals(bst.size(),11);
     }
 
@@ -69,13 +69,13 @@ public class BSTTest {
     @Test
     public void mininum(){
         System.out.println(bst.levelOrder());
-        System.out.println(bst.mininum());
+        System.out.println(bst.findMin());
     }
 
     @Test
     public void maxnum(){
         System.out.println(bst.levelOrder());
-        System.out.println(bst.maxnum());
+        System.out.println(bst.findMax());
     }
 
 

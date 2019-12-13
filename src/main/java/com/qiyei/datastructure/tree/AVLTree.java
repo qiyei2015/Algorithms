@@ -3,12 +3,12 @@ package com.qiyei.datastructure.tree;
 import java.util.*;
 
 /**
- * @author Created by qiyei2015 on 2019/12/3.
+ * @author Created by qiyei2015 on 2019/12/13.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 二分搜索树实现
+ * @description: AVL树 平衡二叉树
  */
-public class BST<K extends Comparable<K>,V> {
+public class AVLTree<K extends Comparable<K>,V> {
 
     /**
      * 结点定义
@@ -18,13 +18,16 @@ public class BST<K extends Comparable<K>,V> {
     private static class Node<K,V>{
         K key;
         V value;
+        int height;
         Node<K,V> left;
         Node<K,V> right;
 
         public Node(K key,V value) {
             this.key = key;
             this.value = value;
+            height = 1;
         }
+
     }
 
     /**
@@ -36,7 +39,7 @@ public class BST<K extends Comparable<K>,V> {
      */
     private int size;
 
-    public BST() {
+    public AVLTree() {
         root = null;
         size = 0;
     }
@@ -60,7 +63,6 @@ public class BST<K extends Comparable<K>,V> {
     /**
      * 添加结点
      * @param key
-     * @param value
      */
     public void add(K key,V value){
         root = add(root,key,value);
@@ -73,7 +75,7 @@ public class BST<K extends Comparable<K>,V> {
      * @param value
      * @return
      */
-    private Node<K,V> add(Node<K,V> node,K key,V value){
+    private Node<K,V> add(Node<K,V> node, K key, V value){
         if (node == null){
             size++;
             return new Node<>(key,value);
@@ -86,6 +88,30 @@ public class BST<K extends Comparable<K>,V> {
         } else {
             node.value = value;
         }
+
+        //更新height
+        node.height = Math.max(getHeight(node.left),getHeight(node.right));
+
+        //获取平衡因子
+        int balance = getBalanceFactor(node);
+        //进行平衡处理
+        if (balance > 1 && getBalanceFactor(node.left) >= 0){
+            //添加的结点在左子树的左侧 LL 右旋
+            node = rightRotate(node);
+        }else if (balance > 1 && getBalanceFactor(node.left) < 0){
+            //添加的结点在左子树的右侧 LR 先左旋左子树再右旋
+            node.left = leftRotate(node.left);
+            node = rightRotate(node);
+
+        }else if (balance < -1 && getBalanceFactor(node.right) > 0){
+            //添加的结点在右子树的左侧 RL 先右旋右子树再左旋
+            node.right = rightRotate(root.right);
+            node = leftRotate(node);
+        } else if (balance < -1 && getBalanceFactor(node.right) <= 0){
+            //添加的结点在右子树的右侧 RR 左旋
+            node = leftRotate(node);
+        }
+        System.out.println("balance=" + getBalanceFactor(node));
         return node;
     }
 
@@ -101,7 +127,7 @@ public class BST<K extends Comparable<K>,V> {
         return getNode(root,key) != null;
     }
 
-
+    
     /**
      * 根据k获取对应的结点值
      * @param key
@@ -112,7 +138,7 @@ public class BST<K extends Comparable<K>,V> {
         return node == null ? null : node.value;
     }
 
-    private Node<K,V> getNode(Node<K,V> node, K key){
+    private Node<K,V> getNode(Node<K,V> node,K key){
         if (key == null || node == null){
             return null;
         }
@@ -141,7 +167,6 @@ public class BST<K extends Comparable<K>,V> {
         return old;
     }
 
-
     /**
      * 前序遍历 根结点 -> 左子树 -> 右子树
      * @return
@@ -152,7 +177,7 @@ public class BST<K extends Comparable<K>,V> {
         return list;
     }
 
-    private void preOrder(Node<K,V> node,List<K> list){
+    private void preOrder(Node<K,V> node, List<K> list){
         if (node == null){
             return;
         }
@@ -200,7 +225,7 @@ public class BST<K extends Comparable<K>,V> {
         return list;
     }
 
-    private void inOrder(Node<K,V> node,List<K> list){
+    private void inOrder(Node<K,V> node, List<K> list){
         if (node == null){
             return;
         }
@@ -219,7 +244,7 @@ public class BST<K extends Comparable<K>,V> {
         return list;
     }
 
-    private void postOrder(Node<K,V> node,List<K> list){
+    private void postOrder(Node<K,V> node, List<K> list){
         if (node == null){
             return;
         }
@@ -368,7 +393,7 @@ public class BST<K extends Comparable<K>,V> {
      * @param key
      * @return
      */
-    private Node remove(Node<K,V> node,K key){
+    private Node remove(Node<K,V> node, K key){
         if (node == null){
             return null;
         }
@@ -380,7 +405,6 @@ public class BST<K extends Comparable<K>,V> {
             node.right = remove(node.right,key);
             return node;
         } else {
-
             if (node.left == null){
                 Node right = node.right;
                 //断开指向
@@ -435,4 +459,84 @@ public class BST<K extends Comparable<K>,V> {
         }
         return findMaxNode(node.right);
     }
+
+    /**
+     * 获取结点的高度
+     * @param node
+     * @return
+     */
+    private int getHeight(Node node){
+        if (node == null){
+            return 0;
+        }
+        return node.height;
+    }
+
+    /**
+     * 获取平衡因子
+     * @param node
+     * @return
+     */
+    private int getBalanceFactor(Node node){
+        if (node == null){
+            return 0;
+        }
+        return getHeight(node.left) - getHeight(node.right);
+    }
+
+    /**
+     *  对节点node进行向左旋转操作，返回旋转后新的根节点x
+     *      node                            x
+     *    /   \                          /   \
+     *   T1   x      向左旋转 (y)     node   z
+     *      / \   - - - - - - - ->   / \   / \
+     *    T2  z                     T1 T2 T3 T4
+     *      / \
+     *     T3 T4
+     * @param node
+     * @return
+     */
+    private Node leftRotate(Node node){
+        Node x = node.right;
+        Node t2 = x.left;
+
+        //左旋
+        x.left = node;
+        node.right = t2;
+
+        //更新高度
+        node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
+        x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
+
+        return x;
+    }
+
+    /**
+     *  对节点node进行向右旋转操作，返回旋转后新的根节点x
+     *          node                             x
+     *          / \                           /   \
+     *         x   T4     向右旋转 (y)       z    node
+     *        / \       - - - - - - - ->    / \   / \
+     *       z   T3                       T1  T2 T3 T4
+     *     / \
+     *    T1   T2
+     * @param node
+     * @return
+     */
+    private Node rightRotate(Node node){
+        Node x = node.right;
+        Node t3 = x.right;
+
+        //右旋
+        x.right = node;
+        node.left = t3;
+
+        //更新高度
+        node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
+        x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
+        return x;
+    }
+
+
+
 }
