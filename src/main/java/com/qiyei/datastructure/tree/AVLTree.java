@@ -522,10 +522,8 @@ public class AVLTree<K extends Comparable<K>,V> {
      *      node                            x
      *    /   \                          /   \
      *   T1   x      向左旋转 (y)     node   z
-     *      / \   - - - - - - - ->   / \   / \
-     *    T2  z                     T1 T2 T3 T4
-     *      / \
-     *     T3 T4
+     *      / \   - - - - - - - ->   / \   
+     *    T2  z                     T1 T2 
      * @param node
      * @return
      */
@@ -537,7 +535,7 @@ public class AVLTree<K extends Comparable<K>,V> {
         x.left = node;
         node.right = t2;
 
-        //更新高度
+        //更新颜色
         node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
         x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
 
@@ -548,23 +546,21 @@ public class AVLTree<K extends Comparable<K>,V> {
      *  对节点node进行向右旋转操作，返回旋转后新的根节点x
      *          node                             x
      *          / \                           /   \
-     *         x   T4     向右旋转 (y)       z    node
-     *        / \       - - - - - - - ->    / \   / \
-     *       z   T3                       T1  T2 T3 T4
-     *     / \
-     *    T1   T2
+     *         x   T2     向右旋转 (y)       z    node
+     *        / \       - - - - - - - ->         /  \
+     *       z   T1                             T1  T2
      * @param node
      * @return
      */
     private Node rightRotate(Node node){
         Node x = node.right;
-        Node t3 = x.right;
+        Node t1 = x.right;
 
         //右旋
         x.right = node;
-        node.left = t3;
+        node.left = t1;
 
-        //更新高度
+        //更新颜色
         node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
         x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
         return x;
