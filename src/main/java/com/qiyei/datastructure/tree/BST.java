@@ -387,23 +387,22 @@ public class BST<K extends Comparable<K>,V> {
                 node.right = null;
                 size--;
                 return right;
-            }
-
-            if (node.right == null){
+            } else if (node.right == null){
                 Node left = node.left;
                 //断开指向
                 node.left = null;
                 size--;
                 return left;
+            } else {
+                //找到后继结点
+                Node<K,V> newNode = findMinNode(node.right);
+                newNode.left = node.left;
+                //删除右子树最小的结点
+                newNode.right = removeMin(node.right);
+                node.left = null;
+                node.right = null;
+                return newNode;
             }
-            //找到后继结点
-            Node<K,V> newNode = findMinNode(node.right);
-            newNode.left = node.left;
-            //删除右子树最小的结点
-            newNode.right = removeMin(node.right);
-            node.left = null;
-            node.right = null;
-            return newNode;
         }
     }
 

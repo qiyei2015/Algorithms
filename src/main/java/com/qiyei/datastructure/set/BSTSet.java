@@ -10,7 +10,7 @@ import com.qiyei.datastructure.tree.BST;
  */
 public class BSTSet<E extends Comparable<E>> implements ISet<E> {
 
-    private BST<E> bst;
+    private BST<E,Object> bst;
 
     public BSTSet() {
         bst = new BST<>();
@@ -18,7 +18,7 @@ public class BSTSet<E extends Comparable<E>> implements ISet<E> {
 
     @Override
     public void add(E e) {
-        bst.add(e);
+        bst.add(e,null);
     }
 
     @Override

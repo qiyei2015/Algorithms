@@ -105,13 +105,12 @@ public class AVLTree<K extends Comparable<K>,V> {
 
         }else if (balance < -1 && getBalanceFactor(node.right) > 0){
             //添加的结点在右子树的左侧 RL 先右旋右子树再左旋
-            node.right = rightRotate(root.right);
+            node.right = rightRotate(node.right);
             node = leftRotate(node);
         } else if (balance < -1 && getBalanceFactor(node.right) <= 0){
             //添加的结点在右子树的右侧 RR 左旋
             node = leftRotate(node);
         }
-        System.out.println("balance=" + getBalanceFactor(node));
         return node;
     }
 
@@ -138,6 +137,12 @@ public class AVLTree<K extends Comparable<K>,V> {
         return node == null ? null : node.value;
     }
 
+    /**
+     * 在以node为根结点的树中查找key的结点
+     * @param node
+     * @param key
+     * @return
+     */
     private Node<K,V> getNode(Node<K,V> node,K key){
         if (key == null || node == null){
             return null;
@@ -397,38 +402,66 @@ public class AVLTree<K extends Comparable<K>,V> {
         if (node == null){
             return null;
         }
+        Node retNode = null;
 
         if (key.compareTo(node.key) < 0){
             node.left = remove(node.left,key);
-            return node;
+            retNode = node;
         } else if (key.compareTo(node.key) > 0){
             node.right = remove(node.right,key);
-            return node;
+            retNode = node;
         } else {
             if (node.left == null){
                 Node right = node.right;
                 //断开指向
                 node.right = null;
                 size--;
-                return right;
-            }
-
-            if (node.right == null){
+                retNode = right;
+            } else if (node.right == null){
                 Node left = node.left;
                 //断开指向
                 node.left = null;
                 size--;
-                return left;
+                retNode = left;
+            } else {
+                //找到后继结点
+                Node<K,V> newNode = findMinNode(node.right);
+                newNode.left = node.left;
+                //删除右子树最小的结点
+                newNode.right = remove(node.right,newNode.key);
+                node.left = null;
+                node.right = null;
+                retNode = newNode;
             }
-            //找到后继结点
-            Node<K,V> newNode = findMinNode(node.right);
-            newNode.left = node.left;
-            //删除右子树最小的结点
-            newNode.right = removeMin(node.right);
-            node.left = null;
-            node.right = null;
-            return newNode;
         }
+
+        if (retNode == null){
+            return retNode;
+        }
+
+        //更新height
+        retNode.height = Math.max(getHeight(retNode.left),getHeight(retNode.right));
+
+        //获取平衡因子
+        int balance = getBalanceFactor(retNode);
+        //进行平衡处理
+        if (balance > 1 && getBalanceFactor(retNode.left) >= 0){
+            //添加的结点在左子树的左侧 LL 右旋
+            retNode = rightRotate(retNode);
+        }else if (balance > 1 && getBalanceFactor(retNode.left) < 0){
+            //添加的结点在左子树的右侧 LR 先左旋左子树再右旋
+            retNode.left = leftRotate(retNode.left);
+            retNode = rightRotate(retNode);
+
+        }else if (balance < -1 && getBalanceFactor(retNode.right) > 0){
+            //添加的结点在右子树的左侧 RL 先右旋右子树再左旋
+            retNode.right = rightRotate(retNode.right);
+            retNode = leftRotate(retNode);
+        } else if (balance < -1 && getBalanceFactor(retNode.right) <= 0){
+            //添加的结点在右子树的右侧 RR 左旋
+            retNode = leftRotate(retNode);
+        }
+        return retNode;
     }
 
     /**
@@ -536,7 +569,5 @@ public class AVLTree<K extends Comparable<K>,V> {
         x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
         return x;
     }
-
-
 
 }
