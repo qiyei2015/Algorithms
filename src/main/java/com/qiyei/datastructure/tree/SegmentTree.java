@@ -48,8 +48,8 @@ public class SegmentTree<E> {
     /**
      * 在index处创建[l...r]的线段树
      * @param treeIndex
-     * @param l
-     * @param r
+     * @param l 左边界
+     * @param r 右边界
      */
     private void buildSegmentTree(int treeIndex, int l, int r) {
 
@@ -186,7 +186,7 @@ public class SegmentTree<E> {
     }
 
     /**
-     * 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
+     * 返回二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
      * @param index
      * @return
      */
@@ -195,7 +195,7 @@ public class SegmentTree<E> {
     }
 
     /**
-     * 返回完全二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
+     * 返回二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
      * @param index
      * @return
      */

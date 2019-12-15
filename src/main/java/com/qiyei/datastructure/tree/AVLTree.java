@@ -535,7 +535,7 @@ public class AVLTree<K extends Comparable<K>,V> {
         x.left = node;
         node.right = t2;
 
-        //更新颜色
+        //更新结点高度
         node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
         x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
 
@@ -560,7 +560,7 @@ public class AVLTree<K extends Comparable<K>,V> {
         x.right = node;
         node.left = t1;
 
-        //更新颜色
+        //更新结点高度
         node.height = Math.max(getHeight(node.left),getHeight(node.right)) + 1;
         x.height = Math.max(getHeight(x.left),getHeight(x.right)) + 1;
         return x;
