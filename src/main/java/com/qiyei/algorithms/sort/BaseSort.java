@@ -52,7 +52,7 @@ public abstract class BaseSort {
         }
         for (int i = 1 ;i < array.length ; i++){
             if (array[i - 1].compareTo(array[i]) > 0){
-                System.out.println("array[i - 1]=" + array[i-1] + ",array[i]=" + array[i]);
+                System.out.println("i=" + i + " array[i - 1]=" + array[i-1] + ",array[i]=" + array[i]);
                 return false;
             }
         }
