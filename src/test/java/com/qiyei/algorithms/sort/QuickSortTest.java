@@ -23,7 +23,7 @@ public class QuickSortTest {
         int size = 100;
         array = new Integer[size];
         for (int i = 0 ; i < size ; i++){
-            array[i] = new Random().nextInt(size/10);
+            array[i] = new Random().nextInt(size);
         }
     }
 
@@ -37,6 +37,13 @@ public class QuickSortTest {
     @Test
     public void sortTwoWays() {
         quickSort.sortTwoWays(array);
+        quickSort.print(array);
+        Assert.assertEquals(quickSort.isSort(array),true);
+    }
+
+    @Test
+    public void sortThreeWays() {
+        quickSort.sortThreeWays(array);
         quickSort.print(array);
         Assert.assertEquals(quickSort.isSort(array),true);
     }

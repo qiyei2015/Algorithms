@@ -57,7 +57,10 @@ public class QuickSort extends BaseSort {
         return j;
     }
 
-
+    /**
+     * 双路快排
+     * @param array
+     */
     public void sortTwoWays(Comparable[] array) {
         super.sort(array);
         quickSortTwoWays(array,0,array.length - 1);
@@ -116,4 +119,54 @@ public class QuickSort extends BaseSort {
         swap(array,l,j);
         return j;
     }
+
+    /**
+     * 三路快排
+     * @param array
+     */
+    public void sortThreeWays(Comparable[] array) {
+        super.sort(array);
+        quickSortThreeWays(array,0,array.length - 1);
+    }
+
+    /**
+     * 对a[l..r]进行三路快速排序
+     * @param array
+     * @param l
+     * @param r
+     */
+    private void quickSortThreeWays(Comparable[] array, int l, int r) {
+        if (l >= r){
+            return;
+        }
+
+        Comparable v = array[l];
+        //a[l+1,lt] < v
+        int lt = l;
+        //a[gt..r] > v
+        int gt = r+1;
+        //a[lt+1..i) == v
+        int i = l + 1;
+        //遍历整个数组，将数组分为 < v,==v, >v 的三组.当i==gt时代表遍历了整个数组
+        while (i < gt){
+            if (array[i].compareTo(v) < 0){
+                //将小于v的移到左边
+                swap(array,lt + 1,i);
+                i++;
+                lt++;
+            } else if (array[i].compareTo(v) > 0){
+                //大于v移到右边
+                swap(array,i,gt - 1);
+                gt--;
+            } else {
+                //等于v ，直接移动下标
+                i++;
+            }
+        }
+        //lt最后一个小于v的元素，交换后a[l..lt-1] < v
+        swap(array,l,lt);
+        quickSortThreeWays(array,l,lt -1);
+        quickSortThreeWays(array,gt,r);
+    }
+
 }
