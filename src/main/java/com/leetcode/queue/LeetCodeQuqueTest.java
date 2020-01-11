@@ -1,6 +1,6 @@
 package com.leetcode.queue;
 
-import com.qiyei.backup.util.LogUtil;
+import com.backup.backup.util.LogUtil;
 
 /**
  * @author Created by qiyei2015 on 2018/6/2.

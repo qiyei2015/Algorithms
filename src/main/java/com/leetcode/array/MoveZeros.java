@@ -1,7 +1,7 @@
 package com.leetcode.array;
 
-import com.qiyei.backup.array.ArrayUtil;
-import com.qiyei.backup.util.LogUtil;
+import com.backup.backup.array.ArrayUtil;
+import com.backup.backup.util.LogUtil;
 
 /**
  * @author Created by qiyei2015 on 2018/5/21.

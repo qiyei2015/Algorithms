@@ -1,6 +1,6 @@
 package com.leetcode.linked;
 
-import com.qiyei.backup.util.LogUtil;
+import com.backup.backup.util.LogUtil;
 
 import java.util.Arrays;
 import java.util.Random;
