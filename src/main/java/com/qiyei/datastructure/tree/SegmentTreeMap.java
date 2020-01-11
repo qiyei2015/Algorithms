@@ -1,12 +1,15 @@
 package com.qiyei.datastructure.tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Created by qiyei2015 on 2019/12/8.
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 线段树
  */
-public class SegmentTree<E> {
+public class SegmentTreeMap<E> {
 
     /**
      * 融合操作定义
@@ -20,27 +23,29 @@ public class SegmentTree<E> {
          * @param b
          * @return
          */
-        E merge(E a,E b);
+        Map<E,Integer> merge(Map<E,Integer> a, Map<E,Integer> b);
     }
 
     /**
-     * 线段树元素存储区
+     * 线段树元素存储区,index处的值表示的
      */
     private E[] data;
     /**
      * 线段树
      */
-    private E[] tree;
+    private Map<E,Integer>[] tree;
     /**
      * 融合器
      */
     private Merger<E> merger;
 
-    public SegmentTree(E[] array,Merger<E> merger) {
+    public SegmentTreeMap(E[] array, Merger<E> merger) {
         this.data = (E[]) new Object[array.length];
         System.arraycopy(array,0,data,0,array.length);
-        tree = (E[]) new Object[4 * array.length];
-
+        tree =  new Map[4 * array.length];
+        for (int i = 0 ;i < tree.length ;i++){
+            tree[i] = new HashMap<>();
+        }
         this.merger = merger;
         buildSegmentTree(0,0,data.length - 1);
     }
@@ -68,7 +73,7 @@ public class SegmentTree<E> {
 
         //无法再分割了，已经到了最小区间
         if (l == r){
-            tree[treeIndex] = data[l];
+            tree[treeIndex].put(data[l],1);
             return;
         }
 
@@ -108,7 +113,7 @@ public class SegmentTree<E> {
      * @param r
      * @return
      */
-    public E query(int l,int r){
+    public Map<E,Integer> query(int l,int r){
         if (l < 0 || l >= data.length || r < 0 || r >= data.length){
             throw new IllegalArgumentException("illegalArgument for l r");
         }
@@ -124,7 +129,7 @@ public class SegmentTree<E> {
      * @param queryR
      * @return
      */
-    private E query(int treeIndex,int l,int r,int queryL,int queryR){
+    private Map<E,Integer> query(int treeIndex,int l,int r,int queryL,int queryR){
 
         //查询到结果了
         if (l == queryL && r == queryR){
@@ -143,8 +148,8 @@ public class SegmentTree<E> {
         }
 
         //左右子树都有
-        E leftResult = query(leftChildIndex,l,mid,queryL,mid);
-        E rightResult = query(rightChildIndex,mid + 1,r,mid + 1,queryR);
+        Map<E,Integer> leftResult = query(leftChildIndex,l,mid,queryL,mid);
+        Map<E,Integer> rightResult = query(rightChildIndex,mid + 1,r,mid + 1,queryR);
         return merger.merge(leftResult,rightResult);
     }
 
@@ -153,7 +158,7 @@ public class SegmentTree<E> {
      * @param index
      * @param e
      */
-    public void set(int index,E e){
+    public void set(int index,Integer e){
         set(0,0,size() - 1,index,e);
     }
 
@@ -165,10 +170,10 @@ public class SegmentTree<E> {
      * @param index
      * @param e
      */
-    private void set(int treeIndex,int l,int r,int index,E e){
+    private void set(int treeIndex,int l,int r,int index,Integer e){
 
         if (l == r){
-            tree[treeIndex] = e;
+            tree[treeIndex].put(data[l],e);
             return;
         }
 
