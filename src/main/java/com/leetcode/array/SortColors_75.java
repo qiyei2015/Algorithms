@@ -7,8 +7,9 @@ import com.backup.backup.array.ArrayUtil;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 75 sort colors
+ * https://leetcode-cn.com/problems/sort-colors/
  */
-public class SortColors {
+public class SortColors_75 {
 
     /**
      * 计数排序
@@ -55,4 +56,35 @@ public class SortColors {
         }
     }
 
+    public void sortColors3(int[] nums){
+        //[0..zero] == 0
+        int zero = -1;
+        //[two..length-1] = 1
+        int two = nums.length;
+        int i = 0;
+        while (i < two){
+            if (nums[i] == 1){
+                i++;
+            } else if (nums[i] == 2){
+                two--;
+                swap(nums,two,i);
+            } else if (nums[i] == 0){
+                zero++;
+                swap(nums,zero,i);
+                i++;
+            }
+        }
+    }
+
+    /**
+     * 交换数组
+     * @param array
+     * @param i
+     * @param j
+     */
+    public static void swap(int[] array,int i,int j){
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
