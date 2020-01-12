@@ -8,13 +8,14 @@ import com.backup.backup.util.LogUtil;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 283
+ * https://leetcode-cn.com/problems/move-zeroes/
  */
-public class MoveZeros {
+public class MoveZeros_283 {
 
 
     public static void main(String[] args){
         int[] array = new int[]{0,1,0,3,12};
-        new MoveZeros().moveZeroes(array);
+        new MoveZeros_283().moveZeroes(array);
         LogUtil.printArray(args);
 
     }
