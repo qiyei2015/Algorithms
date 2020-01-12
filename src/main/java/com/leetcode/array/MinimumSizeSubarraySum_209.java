@@ -5,11 +5,14 @@ package com.leetcode.array;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 209
+ * https://leetcode-cn.com/problems/minimum-size-subarray-sum/
  */
-public class MinimumSizeSubarraySum {
+public class MinimumSizeSubarraySum_209 {
 
     public int minSubArrayLen(int s, int[] nums) {
         int res = nums.length + 1;
+
+        //[left..right]为滑动窗口
         int left = 0;
         int right = -1;
         int sum = 0;
