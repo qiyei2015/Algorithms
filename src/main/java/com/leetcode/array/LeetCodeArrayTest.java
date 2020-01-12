@@ -20,7 +20,7 @@ public class LeetCodeArrayTest {
 
     private static void testReverseString() {
         String s6 = "hello";
-        LogUtil.println("" + new ReverseString().reverseString(s6));
+        LogUtil.println("" + new ReverseString_344().reverseString(s6));
     }
 
     private static void testValidPalindrome() {
@@ -28,18 +28,18 @@ public class LeetCodeArrayTest {
         String s1 = "race a car";
         String s2 = "0P";
         String s3 = "Zeus was deified, saw Suez.";
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s1));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s2));
-        LogUtil.println("" + new ValidPalindrome().isPalindrome(s3));
+        LogUtil.println("" + new ValidPalindrome_125().isPalindrome(s));
+        LogUtil.println("" + new ValidPalindrome_125().isPalindrome(s1));
+        LogUtil.println("" + new ValidPalindrome_125().isPalindrome(s2));
+        LogUtil.println("" + new ValidPalindrome_125().isPalindrome(s3));
     }
 
 
     private static void testReverseVowels(){
         String s = "hello";
         String s1 = "leetcode";
-        LogUtil.println("" + new ReverseVowels().reverseVowels(s));
-        LogUtil.println("" + new ReverseVowels().reverseVowels(s1));
+        LogUtil.println("" + new ReverseVowels_345().reverseVowels(s));
+        LogUtil.println("" + new ReverseVowels_345().reverseVowels(s1));
 
     }
 

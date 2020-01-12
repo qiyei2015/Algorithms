@@ -6,7 +6,7 @@ package com.leetcode.array;
  * @email: 1273482124@qq.com
  * @description: 11 盛水最多的容器
  */
-public class ContainerWithMostWater {
+public class ContainerWithMostWater_11 {
 
     private int[] index = new int[2];
 

@@ -7,8 +7,9 @@ import com.backup.backup.array.ArrayUtil;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 345 反转元音字母
+ * https://leetcode-cn.com/problems/reverse-vowels-of-a-string/
  */
-public class ReverseVowels {
+public class ReverseVowels_345 {
 
     public String reverseVowels(String s) {
         //元音字符是 a e i o u

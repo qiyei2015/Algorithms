@@ -6,8 +6,9 @@ package com.leetcode.array;
  * @email: 1273482124@qq.com
  * @description: 344
  * 反转字符串
+ * https://leetcode-cn.com/problems/reverse-string/
  */
-public class ReverseString {
+public class ReverseString_344 {
 
 
 

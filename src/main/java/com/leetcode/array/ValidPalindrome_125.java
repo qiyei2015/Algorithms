@@ -1,15 +1,14 @@
 package com.leetcode.array;
 
-import com.backup.backup.util.LogUtil;
-
 /**
  * @author Created by qiyei2015 on 2018/5/24.
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 125
  * 验证回文串 使用双索引技术
+ * https://leetcode-cn.com/problems/valid-palindrome/
  */
-public class ValidPalindrome {
+public class ValidPalindrome_125 {
 
 
     public boolean isPalindrome(String s) {
@@ -28,7 +27,6 @@ public class ValidPalindrome {
             if (i > j ){
                 break;
             }
-            LogUtil.println("i: " + array[i] + " j: " + array[j]);
             if (equalsChar(array[i],array[j])){
                 i++;
                 j--;
@@ -41,6 +39,8 @@ public class ValidPalindrome {
 
     private boolean isChar(char c){
         //是字母或者数字
+        //字母A:65 Z:90 a:97  z:122
+        //48:0 9:57
         if (c >= 48 && c <= 57 || c >= 65 && c <= 90 || c >= 97 && c <= 122){
             return true;
         }else {
