@@ -47,7 +47,7 @@ public class LeetCodeArrayTest {
         String s = "baa";
         String p = "aa";
 
-        LogUtil.println("" + new FindAllAnagrams().findAnagrams(s,p));
+        LogUtil.println("" + new FindAllAnagramsInAString_438().findAnagrams(s,p));
 
     }
 }

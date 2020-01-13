@@ -1,7 +1,9 @@
 package com.leetcode.array;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Created by qiyei2015 on 2020/1/12.
@@ -103,4 +105,34 @@ public class FindAllAnagramsInAString_438 {
         return true;
     }
 
+    private boolean match2(char[] arr1,int l,int r,char[] arr2){
+
+        Map<Character,Integer> record1 = new HashMap<>();
+        Map<Character,Integer> record2 = new HashMap<>();
+
+        for (int i = 0 ;i < arr2.length ;i++){
+            Integer value = record2.getOrDefault(arr2[i],0);
+            record2.put(arr2[i],++value);
+        }
+
+        for (int i = l;i <= r;i++){
+            Integer value = record1.getOrDefault(arr1[i],0);
+            record1.put(arr1[i],++value);
+        }
+
+        if (record1.size() != record2.size()){
+            return false;
+        }
+
+        for (Map.Entry<Character,Integer> entry:record1.entrySet()){
+            Character key = entry.getKey();
+            Integer value = entry.getValue();
+            //相等才是对的
+            if (!record2.containsKey(key) || !(record2.get(key).intValue() == value)){
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
