@@ -1,4 +1,4 @@
-package com.leetcode.linked;
+package com.leetcode.linkedlist;
 
 /**
  * @author Created by qiyei2015 on 2018/5/26.

@@ -1,4 +1,4 @@
-package com.leetcode.linked;
+package com.leetcode.linkedlist;
 
 import com.backup.backup.util.LogUtil;
 
