@@ -28,7 +28,7 @@ public class LeetCodeLinkedTest {
         ListNode list = ListNode.creatRandomSortListNode(10,20);
         ListNode.show(list);
 
-        ListNode list2 = new RemoveDuplicatesFromList().deleteDuplicates(list);
+        ListNode list2 = new RemoveDuplicatesFromList_83().deleteDuplicates(list);
         ListNode.show(list2);
     }
 
