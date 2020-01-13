@@ -5,8 +5,9 @@ package com.leetcode.linkedlist;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 206. 反转链表
+ * https://leetcode-cn.com/problems/reverse-linked-list/
  */
-public class ReverseLinkedList {
+public class ReverseLinkedList_206 {
 
     /**
      * 反转链表

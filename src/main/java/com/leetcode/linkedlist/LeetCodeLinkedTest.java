@@ -20,7 +20,7 @@ public class LeetCodeLinkedTest {
     static void testReverseLinkedList(){
         ListNode list = ListNode.creatRandomListNode(100,10);
         ListNode.show(list);
-        ListNode list2 = new ReverseLinkedList().reverseList2(list);
+        ListNode list2 = new ReverseLinkedList_206().reverseList2(list);
         ListNode.show(list2);
     }
 
