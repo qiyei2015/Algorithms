@@ -5,8 +5,9 @@ package com.leetcode.linkedlist;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 19. 删除链表的倒数第N个节点
+ * https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
  */
-public class RemoveNthNodeFromEndOfList {
+public class RemoveNthNodeFromEndOfList_19 {
 
     /**
      * 使用双索引技术 快慢指针
@@ -47,5 +48,8 @@ public class RemoveNthNodeFromEndOfList {
         dummyHead.next = null;
         return retNode;
     }
+
+
+
 
 }

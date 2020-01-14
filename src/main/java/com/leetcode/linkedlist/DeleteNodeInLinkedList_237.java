@@ -5,8 +5,9 @@ package com.leetcode.linkedlist;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 237. 删除链表中的节点
+ * https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
  */
-public class DeleteNodeInLinkedList {
+public class DeleteNodeInLinkedList_237 {
 
     /**
      * 删除给定的结点
@@ -23,11 +24,12 @@ public class DeleteNodeInLinkedList {
         }
 
         //找到node的下一个结点，将其值赋值给node，删除下一个结点
-        ListNode next = node.next;
-        node.val = next.val;
+        node.val = node.next.val;
 
         //删除next结点
-        node.next = next.next;
-        next = null;
+        ListNode del = node.next;
+        node.next = node.next.next;
+
+        del.next = null;
     }
 }
