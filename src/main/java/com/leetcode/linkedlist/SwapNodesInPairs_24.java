@@ -5,8 +5,9 @@ package com.leetcode.linkedlist;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 24
+ * https://leetcode-cn.com/problems/swap-nodes-in-pairs/
  */
-public class SwapNodesInPairs {
+public class SwapNodesInPairs_24 {
 
     /**
      * 两两交换

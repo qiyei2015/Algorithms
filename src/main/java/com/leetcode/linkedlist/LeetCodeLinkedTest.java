@@ -36,9 +36,9 @@ public class LeetCodeLinkedTest {
         ListNode list = ListNode.creatRandomListNode(10,20);
         ListNode.show(list);
 
-        ListNode list2 = new RemoveLinkedListElement().removeElements2(list,1);
+        ListNode list2 = new RemoveLinkedListElement_203().removeElements2(list,1);
         ListNode.show(list2);
-        ListNode list3 = new RemoveLinkedListElement().removeElements(list,2);
+        ListNode list3 = new RemoveLinkedListElement_203().removeElements(list,2);
         ListNode.show(list3);
     }
 
@@ -46,7 +46,7 @@ public class LeetCodeLinkedTest {
         ListNode list = ListNode.creatRandomListNode(10,10);
         ListNode.show(list);
 
-        ListNode list2 = new SwapNodesInPairs().swapPairs(list);
+        ListNode list2 = new SwapNodesInPairs_24().swapPairs(list);
         ListNode.show(list2);
     }
 

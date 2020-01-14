@@ -5,8 +5,42 @@ package com.leetcode.linkedlist;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 203 删除链表中的节点
+ * https://leetcode-cn.com/problems/remove-linked-list-elements/
  */
-public class RemoveLinkedListElement {
+public class RemoveLinkedListElement_203 {
+
+
+    /**
+     * 删除链表中指定值为val的节点
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        //设置虚拟头结点
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+
+        ListNode cur = dummyHead;
+        while (cur.next != null){
+            //cur.next就是要删除的节点
+            if (cur.next.val == val){
+                ListNode delNode = cur.next;
+                //cur 指向下一个的下一个结点
+                cur.next = cur.next.next;
+                delNode.next = null;
+
+            }else {
+                cur = cur.next;
+            }
+        }
+
+        ListNode retNode = dummyHead.next;
+        //释放虚拟头结点
+        dummyHead.next = null;
+        return retNode;
+    }
+
 
     /**
      * 删除链表中指定的节点
@@ -41,35 +75,6 @@ public class RemoveLinkedListElement {
         return head;
     }
 
-    /**
-     * 删除链表中指定值为val的节点
-     * @param head
-     * @param val
-     * @return
-     */
-    public ListNode removeElements(ListNode head, int val) {
-        //设置虚拟头结点
-        ListNode dummyHead = new ListNode(0);
-        dummyHead.next = head;
 
-        ListNode cur = dummyHead;
-        while (cur.next != null){
-            //cur.next就是要删除的节点
-            if (cur.next.val == val){
-                ListNode delNode = cur.next;
-                //cur 指向下一个的下一个结点
-                cur.next = cur.next.next;
-                delNode.next = null;
-
-            }else {
-                cur = cur.next;
-            }
-        }
-
-        ListNode retNode = dummyHead.next;
-        //释放虚拟头结点
-        dummyHead.next = null;
-        return retNode;
-    }
 
 }
