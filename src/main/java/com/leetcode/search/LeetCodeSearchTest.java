@@ -20,7 +20,7 @@ public class LeetCodeSearchTest {
 
     private static void testThreeSum(){
         int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> list = new ThreeSum().threeSum(nums);
+        List<List<Integer>> list = new ThreeSum_15().threeSum(nums);
         LogUtil.println(list.toString());
      }
 

@@ -7,8 +7,9 @@ import java.util.HashSet;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 349 两个数组的交集
+ * https://leetcode-cn.com/problems/intersection-of-two-arrays/
  */
-public class IntersectionOfTwoArrays {
+public class IntersectionOfTwoArrays_349 {
 
 
     public int[] intersection(int[] nums1, int[] nums2) {

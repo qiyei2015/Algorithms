@@ -6,9 +6,10 @@ import java.util.HashMap;
  * @author Created by qiyei2015 on 2018/5/30.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description: 四数相加 II
+ * @description: 454 四数相加 II
+ * https://leetcode-cn.com/problems/4sum-ii/
  */
-public class FourSumII {
+public class FourSumII_454 {
 
     /**
      *

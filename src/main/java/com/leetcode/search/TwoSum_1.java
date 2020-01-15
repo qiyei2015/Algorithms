@@ -7,8 +7,9 @@ import java.util.HashMap;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 1. 两数之和
+ * https://leetcode-cn.com/problems/two-sum/
  */
-public class TwoSum {
+public class TwoSum_1 {
 
     /**
      * 使用map来记录值与索引 O(n)

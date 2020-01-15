@@ -8,7 +8,7 @@ import java.util.*;
  * @email: 1273482124@qq.com
  * @description: 15. 三数之和
  */
-public class ThreeSum {
+public class ThreeSum_15 {
 
     /**
      * O(n2)
@@ -28,6 +28,28 @@ public class ThreeSum {
        }
        return result;
     }
+
+    /**
+     * O(n2)
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> threeSum2(int[] nums) {
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        //key: value:
+        HashMap<Integer,Integer> record = new HashMap<>();
+
+        for (int i = 0 ;i < nums.length ; i++){
+            int[] array = twoSum(nums,0,0 - nums[i]);
+            if (array != null){
+                check(result,nums[i],nums[array[0]],nums[array[1]]);
+            }
+        }
+        return result;
+    }
+
 
 
     /**
