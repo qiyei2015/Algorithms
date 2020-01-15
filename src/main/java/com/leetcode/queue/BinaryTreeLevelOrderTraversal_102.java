@@ -15,7 +15,7 @@ import java.util.Queue;
  * @email: 1273482124@qq.com
  * @description: 102. 二叉树的层次遍历
  */
-public class BinaryTreeLevelOrderTraversal {
+public class BinaryTreeLevelOrderTraversal_102 {
 
     static class NodeInfo{
         TreeNode node;

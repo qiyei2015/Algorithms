@@ -8,7 +8,7 @@ import java.util.*;
  * @email: 1273482124@qq.com
  * @description: 347. 前K个高频元素 23 题很有意思
  */
-public class TopKFrequentElements {
+public class TopKFrequentElements_347 {
 
     static class Node{
         //频率
@@ -45,24 +45,20 @@ public class TopKFrequentElements {
         //建立一个最小堆
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>(k,comparator);
 
-        //1 统计数组中个元素出现的频率
+        //1 统计数组中个元素出现的频率 key是树，value出现的频率
         HashMap<Integer,Integer> record = new HashMap<>();
         for (int i = 0 ;i < nums.length ;i++){
-
-            //注意拆包与被拆包
-            Integer num = nums[i];
-            Integer value = record.get(num);
-            if (value == null){
-                value = 0;
-            }
+            Integer value = record.getOrDefault(nums[i],0);
             value++;
-            record.put(num,value);
+            record.put(nums[i],value);
         }
 
         //遍历map
         for (Map.Entry<Integer,Integer> entry : record.entrySet()){
+
             //频率 key
             Node node = new Node(entry.getValue(),entry.getKey());
+
             //存储满了k个大小，再来一个就需要与堆顶元素比较，如果小于堆顶不做处理，大于堆顶，删除堆顶，然后把新元素添加进去
             if (priorityQueue.size() == k){
                 if (node.freq > priorityQueue.peek().freq){
@@ -78,8 +74,8 @@ public class TopKFrequentElements {
         while (!priorityQueue.isEmpty()){
             list.add(priorityQueue.poll().key);
         }
-        //排序
-        Collections.sort(list);
+//        //排序
+//        Collections.sort(list);
         return list;
     }
 

@@ -8,9 +8,10 @@ import java.util.Stack;
  * @author Created by qiyei2015 on 2018/6/17.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 20. 有效的括号
+ * https://leetcode-cn.com/problems/valid-parentheses/
  */
-public class ValidParentheses {
+public class ValidParentheses_20 {
 
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();

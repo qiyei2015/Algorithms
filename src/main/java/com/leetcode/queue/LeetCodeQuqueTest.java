@@ -18,13 +18,13 @@ public class LeetCodeQuqueTest {
 
     private static void testTopKFrequentElements(){
         int[] nums = new int[]{4,1,-1,2,-1,2,3};
-        LogUtil.println(new TopKFrequentElements().topKFrequent(nums,2).toString());
+        LogUtil.println(new TopKFrequentElements_347().topKFrequent(nums,2).toString());
     }
 
     private static void testValidParentheses(){
         String s = "()";
-        LogUtil.println(s + ":"+new ValidParentheses().isValid(s));
+        LogUtil.println(s + ":"+new ValidParentheses_20().isValid(s));
         String s2 = "(]";
-        LogUtil.println(s2 + ":"+new ValidParentheses().isValid(s2));
+        LogUtil.println(s2 + ":"+new ValidParentheses_20().isValid(s2));
     }
 }

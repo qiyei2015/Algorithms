@@ -10,7 +10,7 @@ import java.util.Queue;
  * @email: 1273482124@qq.com
  * @description: 279. 完全平方数
  */
-public class PerfectSquares {
+public class PerfectSquares_279 {
 
     static class Node{
         int value;
