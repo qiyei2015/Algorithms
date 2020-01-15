@@ -5,19 +5,20 @@ package com.leetcode.tree;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 104. 二叉树的最大深度
+ * https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
  */
 public class MaximumDepthOfBinaryTree {
 
     /**
      * 使用递归 表示该树的最大深度
-     * @param root
+     * @param node
      * @return
      */
-    public int maxDepth(TreeNode root) {
+    public int maxDepth(TreeNode node) {
         //递归终止条件
-        if (root == null){
+        if (node == null){
             return 0;
         }
-        return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;
+        return Math.max(maxDepth(node.left),maxDepth(node.right)) + 1;
     }
 }

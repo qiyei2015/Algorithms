@@ -6,7 +6,7 @@ package com.leetcode.tree;
  * @email: 1273482124@qq.com
  * @description: 226. 翻转二叉树
  */
-public class InvertBinaryTree {
+public class InvertBinaryTree_226 {
 
     /**
      * 采用递归的思想
