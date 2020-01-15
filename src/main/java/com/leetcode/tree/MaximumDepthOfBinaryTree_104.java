@@ -7,7 +7,7 @@ package com.leetcode.tree;
  * @description: 104. 二叉树的最大深度
  * https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
  */
-public class MaximumDepthOfBinaryTree {
+public class MaximumDepthOfBinaryTree_104 {
 
     /**
      * 使用递归 表示该树的最大深度

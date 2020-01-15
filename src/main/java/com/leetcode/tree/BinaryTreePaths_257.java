@@ -8,8 +8,9 @@ import java.util.List;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 257. 二叉树的所有路径
+ * https://leetcode-cn.com/problems/binary-tree-paths/
  */
-public class BinaryTreePaths {
+public class BinaryTreePaths_257 {
 
     /**
      * 递归调用

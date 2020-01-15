@@ -5,8 +5,9 @@ package com.leetcode.tree;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 112. 路径总和 求路径总和 sum
+ * https://leetcode-cn.com/problems/path-sum/
  */
-public class PathSum {
+public class PathSum_112 {
 
     /**
      * 求路径总和

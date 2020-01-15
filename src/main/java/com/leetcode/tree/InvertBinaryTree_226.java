@@ -5,6 +5,7 @@ package com.leetcode.tree;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description: 226. 翻转二叉树
+ * https://leetcode-cn.com/problems/invert-binary-tree/
  */
 public class InvertBinaryTree_226 {
 
@@ -22,7 +23,8 @@ public class InvertBinaryTree_226 {
         //反转右子树
         invertTree(root.right);
         //交换左右子结点
-        return exchChild(root);
+        swapChild(root);
+        return root;
     }
 
     /**
@@ -30,13 +32,9 @@ public class InvertBinaryTree_226 {
      * @param node
      * @return
      */
-    private TreeNode exchChild(TreeNode node){
-        if (node == null){
-            return null;
-        }
+    private void swapChild(TreeNode node){
         TreeNode node1 = node.left;
         node.left = node.right;
         node.right = node1;
-        return node;
     }
 }
