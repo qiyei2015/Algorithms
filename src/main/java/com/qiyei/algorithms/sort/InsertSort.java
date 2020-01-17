@@ -29,4 +29,19 @@ public class InsertSort extends BaseSort {
             }
         }
     }
+
+    public void sort2(Comparable[] array) {
+        super.sort(array);
+        //从a[i]开始考察，因为我们默认a[0]处已经有序了
+        int j = 0;
+        for (int i = 1; i < array.length ;i++){
+            //比较与其前一个元素，如果较小，就交换位置
+            Comparable temp = array[i];
+            for (j = i ; j > 0 && temp.compareTo(array[j-1]) < 0;j--){
+                //后移一位
+                array[j] = array[j-1];
+            }
+            array[j] = temp;
+        }
+    }
 }

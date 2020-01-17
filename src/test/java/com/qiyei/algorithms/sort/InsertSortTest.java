@@ -32,4 +32,11 @@ public class InsertSortTest {
         Assert.assertEquals(insertSort.isSort(array),true);
         insertSort.print(array);
     }
+
+    @Test
+    public void sort2() {
+        insertSort.sort2(array);
+        Assert.assertEquals(insertSort.isSort(array),true);
+        insertSort.print(array);
+    }
 }

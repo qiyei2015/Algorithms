@@ -71,6 +71,7 @@ public class MergeSort extends BaseSort{
     private void merge(Comparable[] array, int l, int mid, int r) {
         Comparable[] aux = Arrays.copyOfRange(array,l,r + 1);
         int k = l;
+
         int i = l;
         int j = mid + 1;
 

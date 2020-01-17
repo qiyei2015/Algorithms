@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
+import java.util.concurrent.Executors;
 
 /**
  * @author Created by qiyei2015 on 2019/12/18.
@@ -46,5 +47,44 @@ public class QuickSortTest {
         quickSort.sortThreeWays(array);
         quickSort.print(array);
         Assert.assertEquals(quickSort.isSort(array),true);
+    }
+
+    private void quick(int[] arr,int l,int r){
+        if (l >= r){
+            return;
+        }
+        int val = arr[l];
+        //[l+1.. lt] < val
+        int lt = l;
+        //[gt..r] > val
+        int gt =  r + 1;
+        //[lt + 1..i) == val
+        int i = l+ 1;
+
+        while (i < gt){
+            if (arr[i] < val){
+                swap(arr,i,lt+1);
+                lt++;
+                i++;
+            } else if (arr[i] > val){
+                swap(arr,i,gt-1);
+                gt--;
+            } else {
+                i++;
+            }
+        }
+
+        //
+        swap(arr,l,lt);
+        quick(arr,l,lt-1);
+        quick(arr,gt,r);
+    }
+
+    protected void swap(int[] array, int i, int j){
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+        Executors.newCachedThreadPool();
     }
 }
