@@ -4,7 +4,8 @@ package com.leetcode.dynamicprogramming;
  * @author Created by qiyei2015 on 2020/1/19.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 198. 打家劫舍
+ * https://leetcode-cn.com/problems/house-robber/
  */
 public class HouseRobber_198 {
 
