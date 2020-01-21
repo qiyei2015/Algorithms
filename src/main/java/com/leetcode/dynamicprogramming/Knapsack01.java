@@ -47,6 +47,29 @@ public class Knapsack01 {
         return memo[n-1][C];
     }
 
+    public int knapsack01Opt(int[] w,int[] v,int C) {
+        if (w == null || v == null || w.length != v.length || w.length == 0){
+            return 0;
+        }
+        int n = w.length - 1;
+        //记录的是memo[j]，其中j表示第i个元素放进容量为j的背包的总价值大小
+        int[] memo = new int[C+1];
+
+        //先考虑第1个元素w[0] 放进容量为[0...j]的背包
+        for (int j = 0 ;j <= C;j++){
+            memo[j] = (j >= w[0] ? v[0] : 0);
+        }
+
+        for (int i = 1; i < n; i++){
+            for (int j = C;j >= w[i];j--){
+                //先考虑不放进第i个个元素
+                memo[j] = Math.max(memo[j],v[i] + memo[j - w[i]]);
+            }
+        }
+        //返回n-1个元素放进C中
+        return memo[C];
+    }
+
     /**
      * n个元素放进容量为C中，总价值最大
      * @param w 每个元素的重量
