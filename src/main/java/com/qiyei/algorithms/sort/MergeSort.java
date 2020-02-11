@@ -29,7 +29,7 @@ public class MergeSort extends BaseSort{
     public void sortBU(Comparable[] array) {
         super.sort(array);
         //每次归并时的size，从1 开始逐步增加
-        for (int size = 1; size <= array.length ; size += size){
+        for (int size = 1; size < array.length ; size += size){
             //对子数组a[i..i+ size-1] a[i+ size.. i + 2*size-1]进行归并，每个子数组的大小是size
             //array.length - size是因为最后的size个数据已经在前面被算过了
             for (int i = 0; i < array.length - size ;i += 2 * size){
