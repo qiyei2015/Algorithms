@@ -87,5 +87,29 @@ public class Test {
         return dummyHead.next;
     }
 
+    public static void main(String[] args) {
+        //f();
+        //startNewMethod();
 
+        String str1 = new StringBuilder("计算机").append("java").toString();
+        System.out.println(str1.intern() == str1);
+
+        String str2 = new StringBuilder("ja").append("va").toString();
+        System.out.println(str2.intern() == str2);
+    }
+
+    private static int f(){
+        return f();
+    }
+
+    private static void startNewMethod(){
+        while (true){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(Thread.currentThread().getName());
+                }
+            }).start();
+        }
+    }
 }
