@@ -26,12 +26,20 @@ public class AdjTreeSet implements IGraph {
      */
     private TreeSet<Integer>[] mAdj;
 
+    /**
+     * 记录是否被访问
+     */
+    private boolean[] mMarked;
+
+    private List<Integer> dfsList = new ArrayList<>();
+
     public AdjTreeSet(String filename) {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)){
             V = scanner.nextInt();
             validVertex(V);
             mAdj = new TreeSet[V];
+            mMarked = new boolean[V];
             for (int i = 0 ; i < mAdj.length ; i++){
                 mAdj[i] = new TreeSet<>();
             }
@@ -121,9 +129,27 @@ public class AdjTreeSet implements IGraph {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        IGraph graph = new AdjTreeSet("g.txt");
-        System.out.println(graph.toString());
+    public List<Integer> dfs(){
+        dfsList.clear();
+        for (int v = 0;  v < V; v++){
+            if (!mMarked[v]){
+                dfs(v);
+            }
+        }
+        return dfsList;
     }
 
+    /**
+     * 递归的深度优先遍历
+     * @param v
+     */
+    private void dfs(int v){
+        mMarked[v] = true;
+        dfsList.add(v);
+        for (int w: mAdj[v]){
+            if (!mMarked[w]){
+                dfs(w);
+            }
+        }
+    }
 }
