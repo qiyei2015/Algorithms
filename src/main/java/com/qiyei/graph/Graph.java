@@ -51,16 +51,9 @@ public class Graph implements IGraph {
         return mGraphImpl.toString();
     }
 
-    /**
-     * 深度优先遍历
-     * @return
-     */
-    public List<Integer> dfs(){
-        return mGraphImpl.dfs();
-    }
 
     public static void main(String[] args) {
         Graph graph = new Graph("g.txt");
-        System.out.println(graph.dfs());
+        System.out.println(graph.toString());
     }
 }
