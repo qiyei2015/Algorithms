@@ -47,6 +47,11 @@ public class Graph implements IGraph {
     }
 
     @Override
+    public void validateVertex(int v) {
+        mGraphImpl.validateVertex(v);
+    }
+
+    @Override
     public String toString() {
         return mGraphImpl.toString();
     }

@@ -30,7 +30,7 @@ public class AdjTreeSet implements IGraph {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)){
             V = scanner.nextInt();
-            validVertex(V);
+            validateVertex(V);
             mAdj = new TreeSet[V];
             for (int i = 0 ; i < mAdj.length ; i++){
                 mAdj[i] = new TreeSet<>();
@@ -47,7 +47,8 @@ public class AdjTreeSet implements IGraph {
 
     }
 
-    private void validVertex(int v) {
+    @Override
+    public void validateVertex(int v) {
         if (v < 0 || v > V){
             throw new IllegalArgumentException(v + " is a IllegalArgument,must be in[0.." + V + "]");
         }
@@ -66,15 +67,15 @@ public class AdjTreeSet implements IGraph {
 
     @Override
     public boolean hasEdge(int v, int w) {
-        validVertex(v);
-        validVertex(w);
+        validateVertex(v);
+        validateVertex(w);
         return mAdj[v].contains(w);
     }
 
     @Override
     public void addEdge(int v, int w) {
-        validVertex(v);
-        validVertex(w);
+        validateVertex(v);
+        validateVertex(w);
         //忽略自旋边
         if (v == w){
             return;
@@ -94,7 +95,7 @@ public class AdjTreeSet implements IGraph {
 
     @Override
     public List<Integer> adj(int v) {
-        validVertex(v);
+        validateVertex(v);
         List<Integer> list = new ArrayList<>();
         for (int w : mAdj[v]){
             list.add(w);

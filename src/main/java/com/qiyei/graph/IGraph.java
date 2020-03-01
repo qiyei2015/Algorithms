@@ -57,4 +57,9 @@ public interface IGraph {
      */
     int degree(int v);
 
+    /**
+     * 验证顶点
+     * @param v
+     */
+    void validateVertex(int v);
 }

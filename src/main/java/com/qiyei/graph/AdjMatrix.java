@@ -31,7 +31,7 @@ public class AdjMatrix implements IGraph{
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)){
             V = scanner.nextInt();
-            validVertex(V);
+            validateVertex(V);
             mAdj = new int[V][V];
             E = scanner.nextInt();
             for (int i = 0; i < E ;i++){
@@ -45,7 +45,8 @@ public class AdjMatrix implements IGraph{
 
     }
 
-    private void validVertex(int v) {
+    @Override
+    public void validateVertex(int v) {
         if (v < 0 || v > V){
             throw new IllegalArgumentException(v + " is a IllegalArgument,must be in[0.." + V + "]");
         }
@@ -64,15 +65,15 @@ public class AdjMatrix implements IGraph{
 
     @Override
     public boolean hasEdge(int v, int w) {
-        validVertex(v);
-        validVertex(w);
+        validateVertex(v);
+        validateVertex(w);
         return mAdj[v][w] == 1;
     }
 
     @Override
     public void addEdge(int v, int w) {
-        validVertex(v);
-        validVertex(w);
+        validateVertex(v);
+        validateVertex(w);
         //忽略自旋边
         if (v == w){
             return;
@@ -92,7 +93,7 @@ public class AdjMatrix implements IGraph{
 
     @Override
     public List<Integer> adj(int v) {
-        validVertex(v);
+        validateVertex(v);
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < V;i++){
             if (mAdj[v][i] == 1){
