@@ -9,7 +9,7 @@ import java.util.List;
  * @email: 1273482124@qq.com
  * @description:
  */
-public class DFSGraph {
+public class GraphDFS {
 
     private IGraph mGraph;
 
@@ -20,23 +20,23 @@ public class DFSGraph {
     /**
      * 遍历结果
      */
-    private List<Integer> mDFSList;
+    private List<Integer> mOrder;
 
 
-    public DFSGraph(IGraph graph) {
+    public GraphDFS(IGraph graph) {
         mGraph = graph;
         mVisited = new boolean[mGraph.V()];
-        mDFSList = new ArrayList<>();
+        mOrder = new ArrayList<>();
     }
 
     public List<Integer> dfs(){
-        mDFSList.clear();
+        mOrder.clear();
         for (int v = 0;  v < mGraph.V(); v++){
             if (!mVisited[v]){
                 dfs(v);
             }
         }
-        return mDFSList;
+        return mOrder;
     }
 
     /**
@@ -45,7 +45,7 @@ public class DFSGraph {
      */
     private void dfs(int v){
         mVisited[v] = true;
-        mDFSList.add(v);
+        mOrder.add(v);
         for (int w: mGraph.adj(v)){
             if (!mVisited[w]){
                 dfs(w);
@@ -56,7 +56,7 @@ public class DFSGraph {
 
     public static void main(String[] args) {
         IGraph graph = new Graph("g2.txt");
-        DFSGraph dfsGraph = new DFSGraph(graph);
-        System.out.println(dfsGraph.dfs());
+        GraphDFS graphDFS = new GraphDFS(graph);
+        System.out.println(graphDFS.dfs());
     }
 }
