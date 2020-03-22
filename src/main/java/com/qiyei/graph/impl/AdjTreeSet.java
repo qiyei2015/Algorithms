@@ -1,4 +1,6 @@
-package com.qiyei.graph;
+package com.qiyei.graph.impl;
+
+import com.qiyei.graph.Graph;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +12,7 @@ import java.util.*;
  * @email: 1273482124@qq.com
  * @description:
  */
-public class AdjTreeSet implements IGraph {
+public class AdjTreeSet implements Graph {
 
     /**
      * 顶点数

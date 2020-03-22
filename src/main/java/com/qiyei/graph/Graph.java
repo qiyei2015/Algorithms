@@ -3,62 +3,64 @@ package com.qiyei.graph;
 import java.util.List;
 
 /**
- * @author Created by qiyei2015 on 2020/2/27.
+ * @author Created by qiyei2015 on 2020/2/23.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
+ * @description: 图论算法框架
+ * 这里的图示无权无向图
  */
-public class Graph implements IGraph {
+public interface Graph {
 
-    private AdjTreeSet mGraphImpl;
+    /**
+     * 返回顶点数
+     * @return
+     */
+    int V();
 
-    public Graph(String filename) {
-        mGraphImpl = new AdjTreeSet(filename);
-    }
+    /**
+     * 返回边数
+     * @return
+     */
+    int E();
 
-    @Override
-    public int V() {
-        return mGraphImpl.V();
-    }
+    /**
+     * 是否为有向图
+     * @return
+     */
+    default boolean isDirected() {
+        return false;
+    };
 
-    @Override
-    public int E() {
-        return mGraphImpl.E();
-    }
+    /**
+     * 是否有边
+     * @return
+     */
+    boolean hasEdge(int v,int w);
 
-    @Override
-    public boolean hasEdge(int v, int w) {
-        return mGraphImpl.hasEdge(v,w);
-    }
+    /**
+     * 在v,w之间添加一条边
+     * @param v
+     * @param w
+     */
+    void addEdge(int v,int w);
 
-    @Override
-    public void addEdge(int v, int w) {
-        mGraphImpl.addEdge(v,w);
-    }
+    /**
+     * 返回v相邻的顶点
+     * @param v
+     * @return
+     */
+    List<Integer> adj(int v);
 
-    @Override
-    public List<Integer> adj(int v) {
-        return mGraphImpl.adj(v);
-    }
+    /**
+     * 返回顶点的度数
+     * @param v
+     * @return
+     */
+    int degree(int v);
 
-    @Override
-    public int degree(int v) {
-        return mGraphImpl.degree(v);
-    }
-
-    @Override
-    public void validateVertex(int v) {
-        mGraphImpl.validateVertex(v);
-    }
-
-    @Override
-    public String toString() {
-        return mGraphImpl.toString();
-    }
-
-
-    public static void main(String[] args) {
-        Graph graph = new Graph("g.txt");
-        System.out.println(graph.toString());
-    }
+    /**
+     * 验证顶点
+     * @param v
+     */
+    void validateVertex(int v);
 }

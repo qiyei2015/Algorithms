@@ -1,4 +1,6 @@
-package com.qiyei.graph;
+package com.qiyei.graph.impl;
+
+import com.qiyei.graph.Graph;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +14,7 @@ import java.util.Scanner;
  * @email: 1273482124@qq.com
  * @description: 图的邻接矩阵表示
  */
-public class AdjMatrix implements IGraph{
+public class AdjMatrix implements Graph {
     /**
      * 顶点数
      */
@@ -121,7 +123,7 @@ public class AdjMatrix implements IGraph{
     }
 
     public static void main(String[] args) {
-        IGraph graph = new AdjMatrix("g.txt");
+        Graph graph = new AdjMatrix("g.txt");
         System.out.println(graph.toString());
     }
 }

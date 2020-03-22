@@ -1,4 +1,8 @@
-package com.qiyei.graph;
+package com.qiyei.Graph.dfs;
+
+
+import com.qiyei.graph.Graph;
+import com.qiyei.graph.impl.GraphImpl;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -17,8 +21,8 @@ public class CycleDetection {
     private int[] mPre;
     private boolean hasCycle = false;
 
-    public CycleDetection(Graph graph) {
-        mGraph = graph;
+    public CycleDetection(Graph Graph) {
+        mGraph = Graph;
         mVisited = new boolean[mGraph.V()];
         mPre = new int[mGraph.V()];
         for(int i = 0; i < mPre.length; i ++){
@@ -65,8 +69,8 @@ public class CycleDetection {
     }
 
     public static void main(String[] args) {
-        Graph graph = new Graph("g3.txt");
-        CycleDetection cycleDetection = new CycleDetection(graph);
+        Graph Graph = new GraphImpl("g3.txt");
+        CycleDetection cycleDetection = new CycleDetection(Graph);
         System.out.println(cycleDetection.hasCycle());
     }
 }

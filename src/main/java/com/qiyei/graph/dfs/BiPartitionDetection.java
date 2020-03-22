@@ -1,5 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.dfs;
 
+
+import com.qiyei.graph.Graph;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

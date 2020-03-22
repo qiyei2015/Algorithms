@@ -1,4 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.bfs;
+
+import com.qiyei.graph.Graph;
+import com.qiyei.graph.impl.GraphImpl;
 
 import java.util.*;
 
@@ -82,7 +85,7 @@ public class UnweightedShortestPath {
     }
 
     public static void main(String[] args) {
-        Graph g = new Graph("g.txt");
+        Graph g = new GraphImpl("g.txt");
         UnweightedShortestPath usssPath = new UnweightedShortestPath(g, 0);
         System.out.println("0 -> 6 : " + usssPath.path(6));
         System.out.println("0 -> 6 : " + usssPath.dis(6));

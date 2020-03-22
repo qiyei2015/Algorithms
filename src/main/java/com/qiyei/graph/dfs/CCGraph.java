@@ -1,4 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.dfs;
+
+import com.qiyei.graph.impl.GraphImpl;
+import com.qiyei.graph.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +15,17 @@ import java.util.List;
  */
 public class CCGraph {
 
-    private IGraph mGraph;
+    private Graph mGraph;
+    /**
+     * 记录某个订点的连通分量id ccid
+     */
     private int[] mVisited;
+    /**
+     * 连通分量个数，也对应与连通分量id
+     */
     private int count;
 
-    public CCGraph(IGraph graph) {
+    public CCGraph(Graph graph) {
         mGraph = graph;
         mVisited = new int[mGraph.V()];
         for (int i = 0 ; i < mGraph.V() ; i++){
@@ -39,17 +48,30 @@ public class CCGraph {
         }
     }
 
-
+    /**
+     * 连通分量个数
+     * @return
+     */
     public int count(){
         return count;
     }
 
+    /**
+     * 任意两点是否相连
+     * @param v
+     * @param w
+     * @return
+     */
     public boolean isConnected(int v, int w){
         mGraph.validateVertex(v);
         mGraph.validateVertex(w);
         return mVisited[v] == mVisited[w];
     }
 
+    /**
+     * 所有的连通分量
+     * @return
+     */
     public List<Integer>[] components(){
         List[] res = new List[count];
         for (int i = 0 ; i < count ;i++){
@@ -62,7 +84,7 @@ public class CCGraph {
     }
 
     public static void main(String[] args) {
-        IGraph graph = new Graph("g2.txt");
+        Graph graph = new GraphImpl("g2.txt");
         System.out.println(graph.toString());
 
         CCGraph ccGraph = new CCGraph(graph);

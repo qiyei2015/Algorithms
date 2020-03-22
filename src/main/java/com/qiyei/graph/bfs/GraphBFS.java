@@ -1,4 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.bfs;
+
+import com.qiyei.graph.Graph;
+import com.qiyei.graph.impl.GraphImpl;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -14,7 +17,7 @@ import java.util.Queue;
  */
 public class GraphBFS {
 
-    private IGraph mGraph;
+    private Graph mGraph;
 
     /**
      * 是否被访问过
@@ -26,7 +29,7 @@ public class GraphBFS {
     private List<Integer> mOrder;
 
 
-    public GraphBFS(IGraph graph) {
+    public GraphBFS(Graph graph) {
         mGraph = graph;
         mVisited = new boolean[mGraph.V()];
         mOrder = new ArrayList<>();
@@ -60,7 +63,7 @@ public class GraphBFS {
 
 
     public static void main(String[] args) {
-        IGraph graph = new Graph("g2.txt");
+        Graph graph = new GraphImpl("g2.txt");
         GraphBFS graphBFS = new GraphBFS(graph);
         System.out.println(graphBFS.bfs());
     }

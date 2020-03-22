@@ -1,4 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.dfs;
+
+import com.qiyei.graph.impl.GraphImpl;
+import com.qiyei.graph.Graph;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,17 +12,17 @@ import java.util.List;
  * @version: 1.0
  * @email: 1273482124@qq.com
  * @description:
- * 单源如今算法
+ * 无权图单源路径算法
  */
 public class SingleSourcePath {
 
-    private IGraph mGraph;
+    private Graph mGraph;
     private boolean[] mVisited;
     //记录到达index处的前一个点
     private int[] mPre;
     private int mSource;
 
-    public SingleSourcePath(IGraph graph,int source) {
+    public SingleSourcePath(Graph graph, int source) {
         mGraph = graph;
         mGraph.validateVertex(source);
         mSource = source;
@@ -64,7 +67,7 @@ public class SingleSourcePath {
     }
 
     public static void main(String[] args) {
-        Graph g = new Graph("g2.txt");
+        GraphImpl g = new GraphImpl("g2.txt");
         SingleSourcePath sspath = new SingleSourcePath(g, 1);
         System.out.println("1 -> 6 : " + sspath.path(6));
         System.out.println("1 -> 5 : " + sspath.path(5));

@@ -1,4 +1,7 @@
-package com.qiyei.graph;
+package com.qiyei.graph.dfs;
+
+import com.qiyei.graph.impl.GraphImpl;
+import com.qiyei.graph.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
  */
 public class GraphDFS {
 
-    private IGraph mGraph;
+    private Graph mGraph;
 
     /**
      * 是否被访问过
@@ -23,7 +26,7 @@ public class GraphDFS {
     private List<Integer> mOrder;
 
 
-    public GraphDFS(IGraph graph) {
+    public GraphDFS(Graph graph) {
         mGraph = graph;
         mVisited = new boolean[mGraph.V()];
         mOrder = new ArrayList<>();
@@ -55,7 +58,7 @@ public class GraphDFS {
 
 
     public static void main(String[] args) {
-        IGraph graph = new Graph("g2.txt");
+        Graph graph = new GraphImpl("g2.txt");
         GraphDFS graphDFS = new GraphDFS(graph);
         System.out.println(graphDFS.dfs());
     }
