@@ -1,4 +1,4 @@
-package com.qiyei.Graph.dfs;
+package com.qiyei.graph.bfs;
 
 
 import com.qiyei.graph.Graph;
@@ -11,17 +11,24 @@ import java.util.Queue;
  * @author Created by qiyei2015 on 2020/3/8.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
- * 环检测
+ * @description: 无向图的环检测
+ *
  */
-public class CycleDetection {
+public class CycleDetectionBFS {
 
     private Graph mGraph;
+    /**
+     * 记录是否访问过
+     */
     private boolean[] mVisited;
+    /**
+     *
+     */
     private int[] mPre;
+
     private boolean hasCycle = false;
 
-    public CycleDetection(Graph Graph) {
+    public CycleDetectionBFS(Graph Graph) {
         mGraph = Graph;
         mVisited = new boolean[mGraph.V()];
         mPre = new int[mGraph.V()];
@@ -70,7 +77,7 @@ public class CycleDetection {
 
     public static void main(String[] args) {
         Graph Graph = new GraphImpl("g3.txt");
-        CycleDetection cycleDetection = new CycleDetection(Graph);
+        CycleDetectionBFS cycleDetection = new CycleDetectionBFS(Graph);
         System.out.println(cycleDetection.hasCycle());
     }
 }

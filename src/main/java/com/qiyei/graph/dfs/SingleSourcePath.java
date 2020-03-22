@@ -36,11 +36,21 @@ public class SingleSourcePath {
         dfs(source,0);
     }
 
+    /**
+     * 到w这一点是否有路径
+     * @param w
+     * @return
+     */
     public boolean hasPath(int w){
         mGraph.validateVertex(w);
         return mVisited[w];
     }
 
+    /**
+     * 到w的路径
+     * @param t
+     * @return
+     */
     public List<Integer> path(int t){
         List<Integer> res = new ArrayList<Integer>();
         if(!hasPath(t)) {
@@ -56,6 +66,11 @@ public class SingleSourcePath {
         return res;
     }
 
+    /**
+     * dfs,
+     * @param v
+     * @param parent 父亲结点
+     */
     private void dfs(int v,int parent){
         mVisited[v] = true;
         mPre[v] = parent;

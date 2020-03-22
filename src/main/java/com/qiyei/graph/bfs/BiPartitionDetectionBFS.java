@@ -1,7 +1,8 @@
-package com.qiyei.graph.dfs;
+package com.qiyei.graph.bfs;
 
 
 import com.qiyei.graph.Graph;
+import com.qiyei.graph.impl.GraphImpl;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -10,18 +11,21 @@ import java.util.Queue;
  * @author Created by qiyei2015 on 2020/3/8.
  * @version: 1.0
  * @email: 1273482124@qq.com
- * @description:
- * 二分图检测
+ * @description: 二分图检测基于BFS
+ *
  */
-public class BiPartitionDetection {
+public class BiPartitionDetectionBFS {
 
     private Graph mGraph;
     private boolean[] mVisited;
+    /**
+     * 每个顶点对应的颜色
+     */
     private int[] mColor;
 
     private boolean isBipartite = true;
 
-    public BiPartitionDetection(Graph graph) {
+    public BiPartitionDetectionBFS(Graph graph) {
         mGraph = graph;
         mVisited = new boolean[mGraph.V()];
         mColor = new int[mGraph.V()];
@@ -29,9 +33,11 @@ public class BiPartitionDetection {
             mColor[i] = -1;
         }
         for (int v = 0 ; v < mGraph.V() ; v++){
-            if (!bfs(v)){
-                isBipartite = false;
-                break;
+            if (!mVisited[v]){
+                if (!bfs(v)){
+                    isBipartite = false;
+                    break;
+                }
             }
         }
 
@@ -64,5 +70,11 @@ public class BiPartitionDetection {
 
     public boolean isBipartite(){
         return isBipartite;
+    }
+
+    public static void main(String[] args) {
+        Graph Graph = new GraphImpl("g3.txt");
+        BiPartitionDetectionBFS biPartitionDetectionBFS  = new BiPartitionDetectionBFS(Graph);
+        System.out.println(biPartitionDetectionBFS.isBipartite());
     }
 }
