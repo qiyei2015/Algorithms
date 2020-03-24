@@ -96,6 +96,19 @@ public class AdjTreeSet implements Graph {
     }
 
     @Override
+    public void removeEdge(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
+        //添加边
+        if (!isDirected()){
+            mAdj[v].remove(w);
+            mAdj[w].remove(v);
+        } else {
+            mAdj[v].remove(w);
+        }
+    }
+
+    @Override
     public List<Integer> adj(int v) {
         validateVertex(v);
         List<Integer> list = new ArrayList<>();
@@ -108,6 +121,24 @@ public class AdjTreeSet implements Graph {
     @Override
     public int degree(int v) {
         return adj(v).size();
+    }
+
+
+    @Override
+    public AdjTreeSet clone(){
+        AdjTreeSet clone = null;
+        try {
+            clone = (AdjTreeSet) super.clone();
+            clone.mAdj = new TreeSet[clone.V()];
+            for(int v = 0; v < V; v ++){
+                clone.mAdj[v] = new TreeSet<Integer>();
+                for(int w: mAdj[v])
+                    clone.mAdj[v].add(w);
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clone;
     }
 
     @Override

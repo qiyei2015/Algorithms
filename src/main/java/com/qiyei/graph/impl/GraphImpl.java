@@ -38,6 +38,12 @@ public class GraphImpl implements Graph {
         mGraphImpl.addEdge(v,w);
     }
 
+
+    @Override
+    public void removeEdge(int v, int w) {
+        mGraphImpl.removeEdge(v,w);
+    }
+
     @Override
     public List<Integer> adj(int v) {
         return mGraphImpl.adj(v);
@@ -51,6 +57,11 @@ public class GraphImpl implements Graph {
     @Override
     public void validateVertex(int v) {
         mGraphImpl.validateVertex(v);
+    }
+
+    @Override
+    public Graph clone() {
+        return mGraphImpl.clone();
     }
 
     @Override

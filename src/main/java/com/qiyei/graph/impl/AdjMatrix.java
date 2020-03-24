@@ -94,6 +94,16 @@ public class AdjMatrix implements Graph {
     }
 
     @Override
+    public void removeEdge(int v, int w) {
+
+    }
+
+    @Override
+    public Graph clone() {
+        return null;
+    }
+
+    @Override
     public List<Integer> adj(int v) {
         validateVertex(v);
         List<Integer> list = new ArrayList<>();

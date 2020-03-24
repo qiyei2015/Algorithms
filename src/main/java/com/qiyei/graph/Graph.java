@@ -9,7 +9,7 @@ import java.util.List;
  * @description: 图论算法框架
  * 这里的图示无权无向图
  */
-public interface Graph {
+public interface Graph extends Cloneable{
 
     /**
      * 返回顶点数
@@ -45,6 +45,13 @@ public interface Graph {
     void addEdge(int v,int w);
 
     /**
+     * 删除边
+     * @param v
+     * @param w
+     */
+    void removeEdge(int v,int w);
+
+    /**
      * 返回v相邻的顶点
      * @param v
      * @return
@@ -63,4 +70,10 @@ public interface Graph {
      * @param v
      */
     void validateVertex(int v);
+
+    /**
+     * 拷贝函数
+     * @return
+     */
+    Graph clone();
 }
