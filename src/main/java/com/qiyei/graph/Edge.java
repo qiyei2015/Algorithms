@@ -8,8 +8,8 @@ package com.qiyei.graph;
  */
 public class Edge {
 
-    private int v;
-    private int w;
+    protected int v;
+    protected int w;
 
     public Edge(int v, int w) {
         this.v = v;
@@ -20,4 +20,6 @@ public class Edge {
     public String toString() {
         return String.format("%d-%d",v,w);
     }
+
+
 }
